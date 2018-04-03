@@ -1,0 +1,104 @@
+/*
+Theme Name: JHV on Almond milk
+Theme URI: 
+Author: 2046
+Author URI: http://2046.cz/
+Description: 
+Version: 0.2
+License: Aggressive Copyright
+License URI: http://aggresive-copyright.org
+Tags: 
+*/
+body {
+  background-color: #fff;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+img {
+  width: 100%;
+  display: inline-block;
+  height: auto;
+}
+.home img {
+  width: auto;
+}
+a {
+  color: #000;
+  text-decoration: underline;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+}
+.main h1 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.inner {
+  padding: 3rem;
+}
+.navbar {
+  background-color: #fff;
+}
+.navbar h1,
+.navbar h2 {
+  font-size: 2rem;
+}
+#top_menu ul {
+  padding-left: 0;
+  margin-left: 0;
+}
+#top_menu ul li {
+  display: inline-block;
+  list-style: none;
+}
+#top_menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+}
+#top_menu ul li.active a {
+  text-decoration: underline;
+}
+#top_menu ul li .dropdown-menu {
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 0 0 transparent;
+}
+#top_menu ul li .dropdown-menu li a {
+  padding: 0.3rem 0;
+  background-color: #fff;
+}
+#top_menu ul:first-child a {
+  padding-left: 0;
+}
+.more-link {
+  margin-top: 1rem;
+  display: block;
+}
+.more-link:hover {
+  text-decoration: none;
+}
+.edit-link {
+  color: red;
+  text-decoration: none;
+}
+.edit-link:hover {
+  color: red;
+  text-decoration: none;
+}
+.noanim {
+  transition: all 0.0s;
+}
+.anim {
+  transition: all 0.8s;
+}
+.anim2 {
+  transition: all 0.3s;
+}
+@media all and (max-width: 769px) {
+  .container {
+    width: 100%;
+  }
+}

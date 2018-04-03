@@ -1,0 +1,20 @@
+{% extends 'base.twig' %}
+{% import 'macro/edit-link.twig' as editLink %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-6">
+			<div class="hentry">
+				{{ post.content }}
+			</div>
+		</div>
+		{% if post.thumbnail %}
+			<div class="col-6">	
+				<a href="{{ post.link }}">
+					{{ post.title }}
+					{{ editLink.input(post) }}
+				</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

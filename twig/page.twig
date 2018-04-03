@@ -1,0 +1,23 @@
+{% extends 'base.twig' %}
+{% import 'macro/edit-link.twig' as editLink %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			{%if post.thumbnail %}
+				<aside class="col-6">	
+					<img src="{{ post.thumbnail('large')}}" alt="{{post.title}}" />
+				</aside>
+			{% endif %}
+			<article class="col-6">
+				<h1>
+					{{ post.title }}
+					{{ editLink.input(post) }}
+				</h1>
+				<div class="entry">
+					{{ post.content }}
+				</div>
+			</article>
+		</div>
+	</div>
+{% endblock %}

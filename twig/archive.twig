@@ -1,0 +1,16 @@
+{% extends 'base.twig' %}
+{% import 'macro/edit-link.twig' as editLink %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+		 	{% for item in posts %}
+	 	 		<a href="{{ item.link }}" title="{{ item.title }}">
+	 	 			<img src="{{ item.thumbnail.src('medium') }}" alt="{{ item.title }}">
+		 	   </a>
+		 	   {{ editLink.input(item) }}
+		  	{% endfor %}
+		</div> 
+	</div>
+{% endblock %}
