@@ -62,11 +62,7 @@ add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 
 // Removes attached image sizes as well
-add_filter( 'the_content', 'remove_thumbnail_dimensions', 10 );
-function remove_thumbnail_dimensions( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
-}
+add_filter( 'wp_calculate_image_srcset_meta', '__return_empty_array' );
 
 // fuck off emoji
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -76,6 +72,27 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
 
+$role_object = get_role( 'editor' );
+$role_object->add_cap( 'edit_theme_options' );
+function hide_menu() {
+
+    if (current_user_can('editor')) {
+
+        remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
+        remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
+        remove_submenu_page( 'themes.php', 'customize.php?return=%2Fwp-admin%2Ftools.php' ); // hide the customizer submenu
+        remove_submenu_page( 'themes.php', 'customize.php?return=%2Fwp-admin%2Ftools.php&#038;autofocus%5Bcontrol%5D=background_image' ); // hide the background submenu
+        remove_submenu_page( 'themes.php', 'customize.php?return=%2Fcontent%2Fwp-admin%2Fprofile.php' ); // hide the background submenu
+
+
+        // these are theme-specific. Can have other names or simply not exist in your current theme.
+        // remove_submenu_page( 'themes.php', 'yiw_panel' );
+        remove_submenu_page( 'themes.php', 'custom-header' );
+        remove_submenu_page( 'themes.php', 'custom-background' );
+    }
+}
+
+add_action('admin_head', 'hide_menu');
 
 
 
