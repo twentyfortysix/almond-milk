@@ -94,6 +94,29 @@ function hide_menu() {
 
 add_action('admin_head', 'hide_menu');
 
+// colorize the ACF cells a bit 
+add_action('admin_head', 'my_custom_fonts');
 
+function my_custom_fonts() {
+  echo '<style>
+    .acf-flexible-content .layout .acf-fc-layout-handle{background: #dedede;} 
+    .acf-flexible-content .layout{box-shadow: 0 4px 15px #e2e2e2;}
+    .acf-flexible-content .layout.ui-sortable-helper{
+    	layout{box-shadow: 0 10px 50px #e2e2e2;
+    }
+    .acf-field .acf-label label {
+    	font-size: 16px;
+	    font-weight: 400;
+	    margin: 0;
+	    padding: 9px 15px 4px 0;
+	    line-height: 29px;
+    }
+
+    .acf-field .acf-fields .acf-label label {
+    	font-size: 14px;
+	    line-height:1.2em;
+    }
+  </style>';
+}
 
 
