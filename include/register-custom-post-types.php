@@ -37,6 +37,7 @@ function codex_work_init() {
 			'rewrite'            => array( 'slug' => 'work' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
+			// 'taxonomies' => array( 'king-dog'),
 			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'editor', 'thumbnail' ),
