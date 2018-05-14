@@ -1,6 +1,6 @@
 <?php
 // // hook into the init action and call create_event_taxonomies when it fires
-// add_action( 'init', 'create_Location_taxonomies', 0 );
+add_action( 'init', 'create_Location_taxonomies', 0 );
 
 // // create two taxonomies, genres and writers for the post type "book"
 function create_Location_taxonomies() {
