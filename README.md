@@ -7,7 +7,6 @@
 - /css/ Bootstrap 4
 - /js/ Bootstrap 4
 - /includes/
-  - bootstrap-nav-walker.php
   - create-taxonomies.php
   - customize-menu-order.php
   - p2p-registers.php
@@ -18,6 +17,9 @@
   - rename-pages.php
   - rename-posts.php
   - theme-support.php
+- /twig/
+- - /partial/
+- - - *
 
 
 What I use over and over again, is:
