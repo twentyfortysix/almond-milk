@@ -1,4 +1,5 @@
 {% import 'macro/wpml_switch.twig' as wpml_switch %}
+{% import "partial/menu_items.twig" as menu_items %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,13 +21,18 @@
         {% block top_menu %}
             <nav class="navbar">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            {% block menu %}
-                               {{ function('bootstrap_menu', 'top_menu') }}
-                            {% endblock %}
-                        </div>
-                    </div>
+                    <nav class="navbar" role="navigation">
+						<button class="navbar-toggler" data-toggle="collapse" data-target="#top_menu" aria-controls="top_menu" aria-expanded="false" aria-label="Toggle navigation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<a href="{{ site.url }}" id="logo">
+							<img src="{{ theme.path }}/img/logo.svg" alt="{{ site.title }}">
+						</a>
+						{# {{ function('bootstrap_menu', 'top_menu', 'top_menu') }} #}
+						{{ menu_items.input(top_menu, 'top_menu') }}
+					</nav>
                 </div>
             </nav>
         {% endblock %}
