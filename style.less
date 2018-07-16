@@ -11,7 +11,7 @@ Tags:
 */
 @grey: #565656;
 @white: #fff;
-
+@fsize: 17.106px;
 
 body{
   background-color: @white;
@@ -32,6 +32,22 @@ a{
   color:#000;
   text-decoration: underline;
 }
+
+// ratio perfect forth / 1.33
+@ratio: 1.333;
+@elements: h1, h2, h3, h4, h5, h6;
+@iterations: length(@elements); // lehgth of @elements
+
+.set-font-size(@_i, @_elements, @_fsize, @_ratio) when (@_i > 0) {  
+  @selector: extract(@_elements, @_i);
+
+  @{selector} {
+    font-size: @_fsize;
+    margin-bottom: @_fsize * 0.606;
+  }
+  .set-font-size(@_i - 1, @_elements, @_fsize * @_ratio, @_ratio);
+}
+.set-font-size(@iterations, @elements, @fsize, @ratio);
 
 h1, h2, h3{
   font-family: 'Raleway', sans-serif;
