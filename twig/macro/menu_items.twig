@@ -1,0 +1,32 @@
+{% macro input(menu, name) %}
+	<div id="{{ name }}" class="{{ name }} collapse navbar-collapse">
+		<ul id="menu-{{ name }}" class="menu">
+			{% for item in menu.get_items %}
+				{% if (item.get_children) %}
+					<li class="dropdown {{ item.class }}" id="menu-item-{{ item.id }}">
+			            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" target="{{ item.target }}">
+			            	{{ item.title }}
+			            </a>
+			            <ul class="dropdown-menu">
+			            	{% for subitem in item.get_children %}
+				            	<li class="{{ subitem.class }}" id="menu-item-{{ subitem.id }}">
+				            		<a href="{{ subitem.get_link }}" target="{{ subitem.target }}" class="nav-link">
+										{{ subitem.title }}
+					            	</a>
+					            </li>
+			            	{% endfor %}
+			        	</ul>
+					</li>
+				{% else %}
+					<li class="{{ item.class }}" id="menu-item-{{ item.id }}">
+						<a href="{{ item.get_link }}" target="{{ item.target }}" class="nav-link">
+							{{ item.title }}
+						</a>
+
+						{% include "partial/menu_items.twig" with {'menu': item.get_children} %}
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+{% endmacro %}
