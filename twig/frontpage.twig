@@ -3,14 +3,17 @@
 
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
-		{% if view.acf_fc_layout == "big_image" %}
+		{% if view.acf_fc_layout == "lead" %}
 			<div class="container {{ view.acf_fc_layout }}" style="{{ view.image.sizes.large }}">
 			</div>
 			
-		{% elseif view.acf_fc_layout == "products" %}
-			<div class="content">
-				{% for product in products %}
-					{{ product.title }}
+		{% elseif view.acf_fc_layout == "gallery" %}
+			<div class="container {{ view.acf_fc_layout }}">
+				{% for image in view.images %}
+					{% set img = TimberImage(image.id) %}
+						<div class="col-12 col-sm-4 col-md-4">
+							<img src="{{ img.src('thumbnail') }}" alt="{{ post.title }}">
+						</div>
 				{% endfor %}
 			</div>
 
