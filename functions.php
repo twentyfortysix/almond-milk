@@ -55,6 +55,25 @@ if ( ! class_exists( 'Timber' ) ) {
 // set default *.twig location
 Timber::$dirname = 'twig';
 
+// add Timber helpers
+add_filter('get_twig', 'add_to_twig');
+function add_to_twig($twig) {
+    /* this is where you can add your own fuctions to twig */
+    $function = new Twig_SimpleFunction('enqueue_script', function ($handle) {
+        // register it elsewhere
+        wp_enqueue_script( $handle);
+    });
+    $twig->addFunction($function);
+
+    $function = new Twig_SimpleFunction('enqueue_style', function ($handle) {
+        // register it elsewhere
+        wp_enqueue_style( $handle);
+    });
+    $twig->addFunction($function);
+
+
+    return $twig;
+}
 
 // remove image dimensions
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
