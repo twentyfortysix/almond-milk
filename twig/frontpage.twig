@@ -4,7 +4,7 @@
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
 		{% if view.acf_fc_layout == "lead" %}
-			<div class="container {{ view.acf_fc_layout }}" style="{{ view.image.sizes.large }}">
+			<div class="container {{ view.acf_fc_layout }}" style="background-image:url({{ view.image.sizes.large }})">
 			</div>
 			
 		{% elseif view.acf_fc_layout == "gallery" %}
