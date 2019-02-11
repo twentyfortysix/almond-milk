@@ -5,7 +5,7 @@ if( ICL_LANGUAGE_CODE == 'en' ){
 }else{
 	$data['top_menu'] = new TimberMenu('top_menu');
 }
-$data['languages'] = icl_get_languages('skip_missing=0');
+$data['languages'] = apply_filters( 'wpml_active_languages', NULL, 'orderby=code&order=asc&skip_missing=0' );
 $data['current_language'] = ICL_LANGUAGE_NAME;
 
 if(is_front_page()){
