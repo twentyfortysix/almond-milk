@@ -23,7 +23,7 @@
 							{{ item.title }}
 						</a>
 
-						{% include "partial/menu_items.twig" with {'menu': item.get_children} %}
+						{% include "macro/menu_items.twig" with {'menu': item.get_children} %}
 					</li>
 				{% endif %}
 			{% endfor %}
