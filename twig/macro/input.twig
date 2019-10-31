@@ -6,7 +6,7 @@
 	{% elseif type == 'checkbox' and choices %}
 		{% if choices|length == 1 %}
 			<input type="{{ type }}" name="{{ field }}" id="{{ field }}" value="{{ choices[0].value }}" {{ required ? 'required' : '' }}>
-			<label for="{{ field }}">{{ label }}</label>
+			<label for="{{ field }}">{{ label }}{{ required ? '<span class="req">*</span>' : '' }}</label>
 
 		{% else %}
 			<fieldset>
