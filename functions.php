@@ -10,6 +10,8 @@ require_once(TEMPLATEPATH. '/include/theme-support.php');
 // require_once(TEMPLATEPATH. '/include/remove-taxonomies.php');
 // require_once(TEMPLATEPATH. '/include/page-step-navigation.php');
 // require_once(TEMPLATEPATH. '/include/create-taxonomies.php');
+// require_once(TEMPLATEPATH. '/include/googleAPI.php');
+
 // 
 // ;ocalize
 add_action('after_setup_theme', 'localize_theme');
