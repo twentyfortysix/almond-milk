@@ -1,6 +1,7 @@
 <?php
 
 require_once(TEMPLATEPATH. '/include/theme-support.php');
+require_once(TEMPLATEPATH. '/include/remove_api.php');
 // require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
 // require_once(TEMPLATEPATH. '/include/customize-menu-order.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
