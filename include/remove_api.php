@@ -1,3 +1,4 @@
+<?php
 // https://github.com/swissspidy/disable-embeds/blob/master/disable-embeds.php
 function disable_embeds_init() {
 	/* @var WP $wp */
