@@ -19,13 +19,14 @@ function recaptchaSITE_KEY(){
 function recaptchaSECRET_KEY(){
     return '--key--';
 }
-function verifyReCaptcha(){
+function verifyReCaptcha($id){
     $url = 'https://www.google.com/recaptcha/api/siteverify';
-    if(isset($_POST['recaptcha'])){
+    if(isset($_POST[$id.'_recaptcha'])){
         $data  = [
             'secret' => recaptchaSECRET_KEY(),
-            'response' => $_POST['recaptcha'],
+            'response' => $_POST[$id.'_recaptcha'],
             'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
         ];
         $options = array(
             'http' => array(
