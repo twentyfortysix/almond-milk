@@ -11,7 +11,7 @@ Tags:
 */
 @grey: #565656;
 @white: #fff;
-@fsize: 17.106px;
+@f: 17.106px;
 
 body{
   background-color: @white;
@@ -42,16 +42,16 @@ a{
 @elements: h1, h2, h3, h4, h5, h6;
 @iterations: length(@elements); // lehgth of @elements
 
-.set-font-size(@_i, @_elements, @_fsize, @_ratio) when (@_i > 0) {  
+.set-font-size(@_i, @_elements, @_f, @_ratio) when (@_i > 0) {  
   @selector: extract(@_elements, @_i);
 
   @{selector} {
-    font-size: @_fsize;
-    margin-bottom: @_fsize * 0.606;
+    font-size: @_f;
+    margin-bottom: @_f * 0.606;
   }
-  .set-font-size(@_i - 1, @_elements, @_fsize * @_ratio, @_ratio);
+  .set-font-size(@_i - 1, @_elements, @_f * @_ratio, @_ratio);
 }
-.set-font-size(@iterations, @elements, @fsize, @ratio);
+.set-font-size(@iterations, @elements, @f, @ratio);
 
 h1, h2, h3{
   font-family: 'Raleway', sans-serif;
@@ -141,7 +141,32 @@ h1, h2, h3{
 .acf-map img {
    max-width: inherit !important;
 }
-
+._anchor{
+  margin-top: -@f*5;
+  opacity:0;
+  position:absolute;
+  z-index: 3;
+  text-decoration: none;
+}
+.anchor{
+  ._anchor;
+  left: @f;
+  display: inline-block;
+  text-align: center;
+  width:28px;
+  height:28px;
+  background:black;
+  color:#fff;
+  border-radius: 0 0 50% 50%;
+   &:hover, &:active, &:focus{
+    color:#fff;
+   }
+}
+.logged-in{
+  .anchor{
+    opacity:1;
+  }
+}
 @media all and (max-width: 769px) {
   .container{
     width:100%;
