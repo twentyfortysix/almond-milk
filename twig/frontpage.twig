@@ -1,5 +1,6 @@
 {% extends 'base.twig' %}
 {% import 'macro/edit-link.twig' as editLink %}
+{% import 'macro/anchor.twig' as anchor %}
 
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
@@ -8,7 +9,8 @@
 			</div>
 			
 		{% elseif view.acf_fc_layout == "gallery" %}
-			<div class="container {{ view.acf_fc_layout }}">
+			<div class="container {{ view.acf_fc_layout }}">	
+				{{ anchor.input(view.anchor, post) }}
 				{% for image in view.images %}
 					{% set img = TimberImage(image.id) %}
 						<div class="col-12 col-sm-4 col-md-4">
