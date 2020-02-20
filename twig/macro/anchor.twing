@@ -1,0 +1,7 @@
+{% macro input(anchor, post) %}
+	{% if anchor %}
+		<a name="{{ fn('sanitize_title', anchor) }}" id="{{ fn('sanitize_title', anchor) }}" href="{{ post.link }}#{{ fn('sanitize_title', anchor) }}" class="anchor">
+			&#9872; 
+		</a>
+	{% endif %}
+{% endmacro %}
