@@ -12,7 +12,10 @@ Tags:
 @grey: #565656;
 @white: #fff;
 @f: 17.106px;
-
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body{
   background-color: @white;
   font-size:16px;
@@ -113,7 +116,11 @@ h1, h2, h3{
   }
 }
 .edit-link{
-  color:red;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index:10;
+  background: red;
   text-decoration: none;
   &:hover{
     color:red;
