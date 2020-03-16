@@ -1,5 +1,5 @@
 {% macro input(field, type, label, required, choices) %}
-	{% if type == 'text' or type == 'number' %}
+	{% if type == 'text' or type == 'number' or type == 'email' %}
 		<label for="{{ field }}">{{ label }}{{ required ? '<span class="req">*</span>' : '' }}</label>
 		<input type="{{ type }}" name="{{ field }}" id="{{ field }}" {{ required ? 'required' : '' }}>
 
@@ -39,5 +39,8 @@
 				{% endfor %}
 			</select>
 		</div>
+	{% elseif type == 'textarea' %}
+		<label for="{{ field }}">{{ label }}</label>
+		<textarea name="{{ field }}" id="{{ field }}"></textarea>
 	{% endif %}
 {% endmacro %}
