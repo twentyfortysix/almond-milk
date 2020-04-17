@@ -27,7 +27,6 @@ function verifyReCaptcha($id){
             'response' => $_POST[$id.'_recaptcha'],
             'remoteip' => $_SERVER['REMOTE_ADDR']
         ];
-        ];
         $options = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
