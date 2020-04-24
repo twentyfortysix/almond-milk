@@ -7,10 +7,17 @@ function googleApi(){
 function googleServerApi(){
     return '--key--';
 }
-// add google map API to ACF
+// add google map API to ACF front end / Maps javascript
 function my_acf_init() {
     acf_update_setting('google_api_key', googleApi());
 }
+
+// backend, Geocoding, Geolocation, Maps javascript, and Places api
+function my_acf_google_map_api( $api ){
+    $api['key'] = googleApi();
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 // GOOGLE recaptcha V3
 function recaptchaSITE_KEY(){
