@@ -12,7 +12,7 @@ function my_acf_init() {
     acf_update_setting('google_api_key', googleApi());
 }
 
-// backend, Geocoding, Geolocation, Maps javascript, and Places api
+// backend, Maps JavaScript API, Geocoding API and Places API
 function my_acf_google_map_api( $api ){
     $api['key'] = googleApi();
     return $api;
