@@ -80,7 +80,6 @@ function add_to_twig($twig) {
 
 // remove image dimensions
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
-add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 
 // Removes attached image sizes as well
 add_filter( 'wp_calculate_image_srcset_meta', '__return_empty_array' );
