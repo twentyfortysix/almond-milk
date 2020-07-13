@@ -22,27 +22,27 @@ add_filter('show_admin_bar', '__return_false');
 
 
 function localize_theme(){
-	load_theme_textdomain( 'twentyfortysix', get_bloginfo('template_directory').'/languages' );
+	load_theme_textdomain( 'arnika', get_bloginfo('template_directory').'/languages' );
 }
 
 function f_2046_add_scripts() {
 	// register scripts
-	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/js/vendor/bootstrap.min.js', array('jquery'), '', true);
-    wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/js/vendor/prefixfree.min.js', array('jquery'), '', true);
-    
+	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/vendor/bootstrap/js/bootstrap.min.js', array('jquery'), '', true);
+    wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
+
     // register styles
-	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/css/vendor/bootstrap.min.css');
+	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/vendor/bootstrap/css/bootstrap.min.css');
 	wp_register_style ( 'my-css', get_bloginfo('template_directory') .'/style.css', array('bootstrap-css'));
-	wp_register_style ( 'font', 'https://fonts.googleapis.com/css?family=Raleway:400,800,600|Open+Sans:400,700&subset=latin,latin-ext');
-	
+	wp_register_style ( 'font', 'https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Oswald&display=swap');
+
 	// enque scripts
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'autoprefix-js' );			
-	wp_enqueue_script( 'bootstrap-js' );	
+	// wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'autoprefix-js' );
+	wp_enqueue_script( 'bootstrap-js' );
 	// enque styles
-	wp_enqueue_style( 'bootstrap-css' );		
-	wp_enqueue_style( 'my-css' );			
-	wp_enqueue_style( 'font' );		
+	wp_enqueue_style( 'bootstrap-css' );
+	wp_enqueue_style( 'my-css' );
+	wp_enqueue_style( 'font' );
 }
 add_action('wp_enqueue_scripts', 'f_2046_add_scripts');
 

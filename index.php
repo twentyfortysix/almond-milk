@@ -1,12 +1,12 @@
 <?php 
 $data = Timber::get_context();
-if( ICL_LANGUAGE_CODE == 'en' ){
-	$data['top_menu'] = new TimberMenu('top_menu_en');
-}else{
+// if( ICL_LANGUAGE_CODE == 'en' ){
+// 	$data['top_menu'] = new TimberMenu('top_menu_en');
+// }else{
 	$data['top_menu'] = new TimberMenu('top_menu');
-}
-$data['languages'] = apply_filters( 'wpml_active_languages', NULL, 'orderby=code&order=asc&skip_missing=0' );
-$data['current_language'] = ICL_LANGUAGE_NAME;
+// }
+// $data['languages'] = apply_filters( 'wpml_active_languages', NULL, 'orderby=code&order=asc&skip_missing=0' );
+// $data['current_language'] = ICL_LANGUAGE_NAME;
 
 if(is_front_page()){
 	$data['post'] = new TimberPost();

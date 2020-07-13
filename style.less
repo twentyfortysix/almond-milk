@@ -9,6 +9,8 @@ License: Aggressive Copyright
 License URI: http://aggresive-copyright.org
 Tags: 
 */
+
+//////////////// TYPOGRAPHY ///////////////
 @grey: #565656;
 @white: #fff;
 @f: 17.106px;
@@ -19,8 +21,55 @@ Tags:
 body{
   background-color: @white;
   font-size:16px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Georgia', Serif;
 }
+
+@_:12;
+@f : @_ * 1px;
+@lh: 1rem * @D0;
+@A1: 4;
+@D0_: 2.6818; // 1.6818
+@D0: 1.6818; // 1.6818
+@C0: 1.4142;
+@B0: 1.1892;
+@A0: 1;
+@D-1: .8409;
+body {
+  font-size: calc(@f + ((@C0*@_) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((@f * @B0) + ((@D0*@_*@B0) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
+}
+p{
+  margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
+}
+blockquote{
+  font-size: calc(@f + ((@D0*@_) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((@f * @B0) + ((@C0*@_*@D0) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
+}
+@fsizes: @D-1, @A0, @B0, @C0, @D0_, @A1;
+@elements: h6, h5, h4, h3, h2, h1;
+@iterations: length(@elements); // lehgth of @elements
+
+.set-h-size(@_i, @_elements, @_fsizes, @_f) when (@_i > 0) {  
+  @selector: extract(@_elements, @_i);
+  @multiplier: extract(@_fsizes, @_i);
+
+  @{selector} {
+    font-size: 1rem * @multiplier;
+    margin-bottom: 1rem * @multiplier / 2;
+    margin-left:@f * @multiplier / -10;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 400;
+    &._h{
+      font-family: 'Oswald', sans-serif;
+    }
+  }
+  .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
+}
+.set-h-size(@iterations, @elements, @fsizes, @f);
+
+
+
+//////////////// COMMONS ///////////////
 img, iframe{
   max-width:100%;
   display:inline-block;
@@ -35,39 +84,58 @@ a{
   }
 }
 
-// ratio perfect forth / 1.33
-@ratio: 1.333;
-@elements: h1, h2, h3, h4, h5, h6;
-@iterations: length(@elements); // lehgth of @elements
-
-.set-font-size(@_i, @_elements, @_f, @_ratio) when (@_i > 0) {  
-  @selector: extract(@_elements, @_i);
-
-  @{selector} {
-    font-size: @_f;
-    margin-bottom: @_f * 0.606;
-  }
-  .set-font-size(@_i - 1, @_elements, @_f * @_ratio, @_ratio);
-}
-.set-font-size(@iterations, @elements, @f, @ratio);
-
-h1, h2, h3{
-  font-family: 'Raleway', sans-serif;
-  font-weight: 800;
-}
-.main h1{
-  margin-top: 0;
-  padding-top: 0;
-}
-.inner{
-  padding:3rem;
-}
-.navbar{
-  background-color: @white;
-  h1, h2{
-    font-size: 2rem;
+.edit-link{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index:10;
+  background: red;
+  color:#fff;
+  text-decoration: none;
+  &:hover{
+    color:#fff;
+    text-decoration: none;
   }
 }
+._anchor{
+  margin-top: -@f*5;
+  opacity:0;
+  position:absolute;
+  z-index: 3;
+  text-decoration: none;
+}
+.anchor{
+  ._anchor;
+  left: @f;
+  display: inline-block;
+  text-align: center;
+  width:28px;
+  height:28px;
+  background:black;
+  color:#fff;
+  border-radius: 0 0 50% 50%;
+   &:hover, &:active, &:focus{
+    color:#fff;
+   }
+}
+.noanim {
+  transition: all 0.0s;
+}
+.anim {
+  transition: all 0.4s;
+}
+.anim2 {
+  transition: all 0.8s;
+}
+.logged-in{
+  .anchor{
+    opacity:1;
+  }
+}
+
+///////////// SPECIFIC  /////////////
+
+
 #top_menu{
   ul{
     padding-left: 0;
@@ -103,35 +171,6 @@ h1, h2, h3{
     }
   }
 }
-.more-link{
-  margin-top:1rem;
-  display:block;
-  &:hover{
-    text-decoration: none;
-  }
-}
-.edit-link{
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index:10;
-  background: red;
-  color:#fff;
-  text-decoration: none;
-  &:hover{
-    color:#fff;
-    text-decoration: none;
-  }
-}
-.noanim {
-  transition: all 0.0s;
-}
-.anim {
-  transition: all 0.4s;
-}
-.anim2 {
-  transition: all 0.8s;
-}
 
 .acf-map {
   width: 100%;
@@ -144,32 +183,9 @@ h1, h2, h3{
 .acf-map img {
    max-width: inherit !important;
 }
-._anchor{
-  margin-top: -@f*5;
-  opacity:0;
-  position:absolute;
-  z-index: 3;
-  text-decoration: none;
-}
-.anchor{
-  ._anchor;
-  left: @f;
-  display: inline-block;
-  text-align: center;
-  width:28px;
-  height:28px;
-  background:black;
-  color:#fff;
-  border-radius: 0 0 50% 50%;
-   &:hover, &:active, &:focus{
-    color:#fff;
-   }
-}
-.logged-in{
-  .anchor{
-    opacity:1;
-  }
-}
+
+///////////// MEDIA QUERY  /////////////
+
 @media all and (max-width: 769px) {
   .container{
     width:100%;
