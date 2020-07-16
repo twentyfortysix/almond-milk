@@ -9,80 +9,86 @@ add_action( 'init', 'codex_work_init' );
 
 function codex_work_init() {
 
+	$cm_labels = array(
+		'name'               => _x( 'Donastavení', 'post type general name', 'arnika' ),
+		'singular_name'      => _x( 'Donastavení', 'post type singular name', 'arnika' ),
+		'menu_name'          => _x( 'Donastavení', 'admin menu', 'arnika' ),
+		'name_admin_bar'     => _x( 'Donastavení', 'add new on admin bar', 'arnika' ),
+		'add_new'            => _x( 'Přidat', 'Donastavení', 'arnika' ),
+		'add_new_item'       => __( 'Přidat Donastavení', 'arnika' ),
+		'new_item'           => __( 'Nové Donastavení', 'arnika' ),
+		'edit_item'          => __( 'Editovat Donastavení', 'arnika' ),
+		'view_item'          => __( 'Zobrazit Donastavení', 'arnika' ),
+		'all_items'          => __( 'Všechny Donastavení', 'arnika' ),
+		'search_items'       => __( 'Vyhledat Donastavení', 'arnika' ),
+		'parent_item_colon'  => __( 'Nadřazené Donastavení:', 'arnika' ),
+		'not_found'          => __( 'No Donastavení found.', 'arnika' ),
+		'not_found_in_trash' => __( 'No Donastavení found in Trash.', 'arnika' )
+	);
+
+	$cm_args = array(
+		'labels'             => $cm_labels,
+        'description'        => __( 'Description.', 'arnika' ),
+		'public'             => false,
+		'publicly_queryable' => false,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'aside' ),
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => true,
+		'menu_position'      => null,
+		'supports'           => array( 'title' ),
+		// 'capabilities' => array(
+		//     'create_posts' => 'false', // Removes support for the "Add New" function 
+		// ),
+		// 'map_meta_cap' => true, // Set to `false`, if users are not allowed to edit/delete existing posts
+		'menu_icon'          => 'dashicons-buddicons-activity'
+	);
+
+	register_post_type( 'aside', $cm_args );
+
 		$cm_labels = array(
-			'name'               => _x( 'Comm. works', 'post type general name', 'your-plugin-textdomain' ),
-			'singular_name'      => _x( 'Comm. work', 'post type singular name', 'your-plugin-textdomain' ),
-			'menu_name'          => _x( 'Comm. works', 'admin menu', 'your-plugin-textdomain' ),
-			'name_admin_bar'     => _x( 'Comm. work', 'add new on admin bar', 'your-plugin-textdomain' ),
-			'add_new'            => _x( 'Add New', 'Comm. work', 'your-plugin-textdomain' ),
-			'add_new_item'       => __( 'Add New Comm. work', 'your-plugin-textdomain' ),
-			'new_item'           => __( 'New Comm. work', 'your-plugin-textdomain' ),
-			'edit_item'          => __( 'Edit Comm. work', 'your-plugin-textdomain' ),
-			'view_item'          => __( 'View Comm. work', 'your-plugin-textdomain' ),
-			'all_items'          => __( 'All Comm. works', 'your-plugin-textdomain' ),
-			'search_items'       => __( 'Search Comm. works', 'your-plugin-textdomain' ),
-			'parent_item_colon'  => __( 'Parent Comm. works:', 'your-plugin-textdomain' ),
-			'not_found'          => __( 'No Comm. works found.', 'your-plugin-textdomain' ),
-			'not_found_in_trash' => __( 'No Comm. works found in Trash.', 'your-plugin-textdomain' )
-		);
+		'name'               => _x( 'Publikace', 'post type general name', 'arnika' ),
+		'singular_name'      => _x( 'Publikace', 'post type singular name', 'arnika' ),
+		'menu_name'          => _x( 'Publikace', 'admin menu', 'arnika' ),
+		'name_admin_bar'     => _x( 'Publikace', 'add new on admin bar', 'arnika' ),
+		'add_new'            => _x( 'Přidat', 'Publikace', 'arnika' ),
+		'add_new_item'       => __( 'Přidat Publikace', 'arnika' ),
+		'new_item'           => __( 'Nové Publikace', 'arnika' ),
+		'edit_item'          => __( 'Editovat Publikace', 'arnika' ),
+		'view_item'          => __( 'Zobrazit Publikace', 'arnika' ),
+		'all_items'          => __( 'Všechny Publikace', 'arnika' ),
+		'search_items'       => __( 'Vyhledat Publikace', 'arnika' ),
+		'parent_item_colon'  => __( 'Nadřazené Publikace:', 'arnika' ),
+		'not_found'          => __( 'No Publikace found.', 'arnika' ),
+		'not_found_in_trash' => __( 'No Publikace found in Trash.', 'arnika' )
+	);
 
-		$cm_args = array(
-			'labels'             => $cm_labels,
-	        'description'        => __( 'Description.', 'your-plugin-textdomain' ),
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'work' ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			// 'taxonomies' => array( 'king-dog'),
-			'hierarchical'       => true,
-			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'thumbnail' ),
-			'menu_icon'          => 'dashicons-groups'
-		);
+	$cm_args = array(
+		'labels'             => $cm_labels,
+        'description'        => __( 'Description.', 'arnika' ),
+		'public'             => false,
+		'publicly_queryable' => false,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'publikace' ),
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => true,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'thumbnail' ),
+		// 'capabilities' => array(
+		//     'create_posts' => 'false', // Removes support for the "Add New" function 
+		// ),
+		// 'map_meta_cap' => true, // Set to `false`, if users are not allowed to edit/delete existing posts
+		'menu_icon'          => 'dashicons-book'
+	);
 
-		register_post_type( 'work', $cm_args );
+	register_post_type( 'publication', $cm_args );
 
-
-
-		$pm_labels = array(
-			'name'               => _x( 'Personal works', 'post type general name', 'your-plugin-textdomain' ),
-			'singular_name'      => _x( 'Personal work', 'post type singular name', 'your-plugin-textdomain' ),
-			'menu_name'          => _x( 'Personal works', 'admin menu', 'your-plugin-textdomain' ),
-			'name_admin_bar'     => _x( 'Personal work', 'add new on admin bar', 'your-plugin-textdomain' ),
-			'add_new'            => _x( 'Add New', 'Personal work', 'your-plugin-textdomain' ),
-			'add_new_item'       => __( 'Add New Personal work', 'your-plugin-textdomain' ),
-			'new_item'           => __( 'New Personal work', 'your-plugin-textdomain' ),
-			'edit_item'          => __( 'Edit Personal work', 'your-plugin-textdomain' ),
-			'view_item'          => __( 'View Personal work', 'your-plugin-textdomain' ),
-			'all_items'          => __( 'All Personal works', 'your-plugin-textdomain' ),
-			'search_items'       => __( 'Search Personal works', 'your-plugin-textdomain' ),
-			'parent_item_colon'  => __( 'Parent Personal works:', 'your-plugin-textdomain' ),
-			'not_found'          => __( 'No Personal works found.', 'your-plugin-textdomain' ),
-			'not_found_in_trash' => __( 'No Personal works found in Trash.', 'your-plugin-textdomain' )
-		);
-
-		$pm_args = array(
-			'labels'             => $pm_labels,
-	        'description'        => __( 'Description.', 'your-plugin-textdomain' ),
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'love' ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'hierarchical'       => true,
-			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'thumbnail' ),
-			'menu_icon'          => 'dashicons-groups'
-		);
-
-		register_post_type( 'love', $pm_args );
 }
 
 function my_rewrite_flush() {

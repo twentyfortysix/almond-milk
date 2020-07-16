@@ -1,0 +1,93 @@
+{% extends 'base.twig' %}
+{% import 'macro/socials.twig' as socials %}
+{% import 'macro/newsletter.twig' as newsletter %}
+{% import 'macro/money_form.twig' as moneyForm %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row no-gutters">
+			<div class="col-12 col-sm-8 lead_image">
+				{% if post.thumbnail %}
+					{{ rImage.input(post.thumbnail, 'large', null, post.title) }}
+				{% endif %}
+			</div>
+			<div class="col-12 col-sm-4">
+				<h4 class="emphasize">
+					Toxické látky
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row no-gutters">
+			<div class="col-12 col-sm-6 offset-sm-1">
+				<h1>
+					{{ post.title }}
+				</h1>
+				<div class="entry">
+					{{ post.content }}
+				</div>
+				{% if post.references %}
+					<div class="references">
+						<h4>
+							{{ __('Reference', 'arnika') }}
+						</h4>
+						{{ post.references|wpautop }}
+					</div>
+					<a href="#" class="switch"></a>
+				{% endif %}
+			</div>
+			<div class="col-12 col-sm-4 offset-sm-1">
+				{# post meta info #}
+				<div class="meta">
+					<div class="date">
+						{{ post.post_date|date('j. n. Y') }}
+					</div>
+					<div class="categories">
+						{% for cat in post.terms('category') %}
+							<a href="{{ cat.link }}">{{ cat.title }}</a>{{ loop.last ? '' : ', ' }}
+						{% endfor %}
+					</div>
+				</div>
+				{# automatic inpae navigation #}
+				{# heads up, there is a javascript hooked in via register #}
+				{{ enqueue_script('quick_nav-js') }}
+				<div id="quick_navigation"></div>
+				{% if post.press_file %}
+					<a href="{{ TimberImage(post.press_file).src }}" class="btn-primary press_file">
+						{{ __('Tisková zpráva','arnika') }}
+					</a>
+				{% endif %}
+				{# global aside blocks #}
+				<div class="row">
+					<div class="col-12 col-sm-10 offset-sm-1 col-md-9 offset-md-1">
+						<div class="money_form user_entry">
+							{% set mform = global_aside.get_field('donate') %}
+							{{ moneyForm.input(mform.heading, mform.description, mform.amounts, mform.default_amount, mform.frequency, mform.default_frequency, mform.project_id, mform.client_id) }}
+						</div>
+						<div class="socials">
+							{{ socials.input(global_aside.get_field('social')) }}
+						</div>
+						{# newsletter, just plain html for now #}
+						<div class="newsletter user_entry">
+							{{ newsletter.input() }}
+						</div>
+					</div>
+				</div>
+				{# related posts #}
+				{% if related %}
+					<div class="releated">
+						<h4>
+							{{ __('Související články','arnika') }}
+						</h4>
+						{% for item in related %}
+							<a href="{{ item.link }}">
+								{{ item.title }}
+							</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -4,9 +4,11 @@ function custom_menu_order($menu_ord) {
      
     return array(
         'edit.php?post_type=page', // Pages
+        'edit.php', // Posts
+        'edit.php?post_type=publication', // Pages
+        'edit.php?post_type=aside', // Pages
         // 'index.php', // Dashboard
         'separator1', // First separator
-        'edit.php', // Posts
         'upload.php', // Media
         // 'link-manager.php', // Links
         // 'edit-comments.php', // Comments

@@ -1,5 +1,4 @@
 {% extends 'base.twig' %}
-{% import 'macro/edit-link.twig' as editLink %}
 
 {% block content %}
 	<div class="container">
@@ -12,7 +11,6 @@
 			<article class="col-6">
 				<h1>
 					{{ post.title }}
-					{{ editLink.input(post) }}
 				</h1>
 				<div class="entry">
 					{{ post.content }}

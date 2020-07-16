@@ -1,0 +1,5 @@
+{% macro input(socials) %}
+	{% for item in socials %}
+		<a href="{{ item.link }}" class="{{ item.icon }}"></a>
+	{% endfor %}
+{% endmacro %}

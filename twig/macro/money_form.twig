@@ -1,0 +1,89 @@
+{% macro input(heading, description, amounts, default_amount, frequency, default_frequency, project_id, client_id) %}
+	{% set _id = '_' ~ random(2046) %}
+	<div class="row donate" id="{{ _id }}">
+		<div class="col-md-12">
+			<h4 class="_h massive">
+				{{ heading }}
+			</h4>
+		</div>
+		<div class="description">
+			{{ description|wpautop }}
+		</div>
+		<div class="frequencies">
+			{% for frequency in frequency %}
+				<a class="frequency checkbox {{ frequency == default_frequency ? 'active' : '' }}" title="{{ frequency }}">
+					{{ frequency == 0 ? __('Jednorázově', 'arnika') : __('Měsíčně','arnika') }}
+				</a>
+			{% endfor %}
+		</div>
+		{% set amounts = amounts|split(',') %}
+		<div class="amounts stemps">
+			{% for amount in amounts %}
+				<a class="daruj stemp {{ (amount == default_amount) ? 'active': ''}}" href="#">
+					<span>
+						{{ amount }}
+					</span>
+				</a>
+			{% endfor %}
+		</div>
+		<div class="col-12">
+			<input type="checkbox" class="amount_type_switch" id="amount_type_switch">
+			<label for="amount_type_switch">
+				{{ __('jiná částka','arnika') }}
+			</label>
+		</div>
+		<div class="col-12 custom_amount">
+			<input class="amount" type="text" name="amount"></input> <span class="currency">{{__('Kč', 'arnika') }}</span>
+		</div>
+		<div class="col-12 send_holder">
+			<button class="btn-primary-solid send">{{ __('Daruj', 'arnika') }}</button>
+		</div>
+	</div>
+	<script>
+		jQuery(document).ready(function($) {
+			var form_id = '#' + '{{ _id }}' + ' ' ;
+			var defVal = {{ default_amount }};
+			var amount = defVal;
+			var frequency = {{ default_frequency }};
+			var project = "{{ project_id }}";
+			var client = "{{ client_id }}";
+
+			// define ammount
+			$(form_id + '.daruj').click(function (e) {
+				e.preventDefault();
+				$(form_id + '.daruj').removeClass('active');
+				$(this).addClass('active')
+				amount = $(this).text();
+				// erase the manual input field
+				$(form_id + '.amount').val('');
+			});
+			$(form_id + '.amount_type_switch').change(function(event) {
+				$(form_id + '.custom_amount').toggleClass('opened');
+				$(form_id + '.amounts').toggleClass('closed');
+			});
+			// define frequency
+			$(form_id + '.frequency').click(function (e) {
+				e.preventDefault();
+				$(form_id + '.frequency').toggleClass('active');
+				frequency = $(this).attr('title');
+			});
+
+			// manual amount
+			$(form_id + '.amount').on('input',function(e){
+				 $(form_id + '.stemps .stemp a').removeClass('active')
+				 amount = $(this).val();
+				 // if the field is empty set to default value
+				 if($(this).val().length === 0){
+				 	amount = defVal;
+				 	$(form_id + '.stemps .stemp a').first().addClass('active')
+				 }
+			});
+			// do the action
+			$(form_id + '.send').click(function (e) {
+				e.preventDefault();
+				url = 'https://www.darujme.cz/dar/index.php?payment_data____frequency='+frequency+'&ammount='+amount+'&project='+project+'&client='+client+'&page=checkout&currency=CZK';
+				window.open(url, 'new_tab');
+			});
+		});
+	</script>
+{% endmacro %}

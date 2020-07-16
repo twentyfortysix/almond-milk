@@ -1,5 +1,8 @@
 {% import 'macro/wpml_switch.twig' as wpml_switch %}
 {% import "macro/menu_items.twig" as menu_items %}
+{% import "macro/responsive_image.twig" as rImage %}
+{% import 'macro/edit-link.twig' as editLink %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,26 +21,131 @@
         {{ wp_head }}
     </head>
     <body class="{{ body_class }}">
+        {{ editLink.input(post) }}
         {% block top_menu %}
-            <nav class="navbar navbar-expand-sm">
-                <div class="container">
-                    <nav class="navbar" role="navigation">
-						<button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#top_menu" aria-controls="top_menu" aria-expanded="false" aria-label="Toggle navigation">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
-						<a href="{{ site.url }}" id="logo">
-							<img src="{{ theme.path }}/img/logo.svg" alt="{{ site.title }}">
-						</a>
-						{{ menu_items.input(top_menu, 'top_menu') }}
-					</nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12" id="top">
+            			<a href="{{ site.url }}" id="logo">
+            				<img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.title }}">
+            			</a>
+                        <nav class="navbar navbar-expand-sm" role="navigation">
+            				{{ menu_items.input(top_menu, 'top_menu') }}
+            			</nav>
+            			<button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#top_menu" aria-controls="top_menu" aria-expanded="false" aria-label="Toggle navigation">
+            				<span></span>
+            				<span></span>
+            				<span></span>
+            			</button>
+                    </div>
                 </div>
-            </nav>
+            </div>
         {% endblock %}
 
         {% block content %}
         {% endblock %}
+
+        
+        <div class="publications">
+            <div class="container">
+                <div class="row">
+                    {% set publications_view = footer.get_field('publications') %}
+                    <div class="col-12 col-sm-4">
+                        <h4 class="_h">
+                            {{ publications_view.heading }}
+                        </h4>
+                        <div class="description">
+                            {{ publications_view.description|wpautop }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-8">
+                        <div class="row">
+                            {% for item in publications_view.selected %}
+                                <div class="col-6 col-sm-{{ 12 / publications_view.selected|length * 2 }}  col-md-{{ 12 / publications_view.selected|length }}">
+                                    <a href="{{ item.link }}">
+                                        {{ rImage.input(item.thumbnail, 300,450, item.title) }}
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_sections">
+            <div class="container">
+                <div class="row">
+                    {% for item in footer.get_field('main_sections') %}
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <h3>
+                                <a href="{{ item.link }}" class="emphasize">
+                                    {{ item.title }}
+                                </a>
+                            </h3>
+                            <div class="description">
+                                {{ item.perex|wpautop }}
+                            </div>
+                            {% if item.key_pages %}
+                                <div class="key_pages">
+                                    {% for sub in item.get_field('key_pages') %}
+                                        <a href="{{ sub.link }}">
+                                            {{ sub.title }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if item.key_links %}
+                                <div class="key_links">
+                                    {% for link in item.get_field('key_links') %}
+                                        <a href="{{ link.link }}">
+                                            {{ link.heading }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-2 logo_holder">
+                        <a href="#top">
+                            <img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.name }}">
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-10 footer_body">
+                        <div class="row">
+                            {% for item in footer.get_field('cols') %}
+                                <div class="col-12 col-sm-4">
+                                    <div class="in">
+                                        {{ item.content|wpautop }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col-12 col-sm-4">
+                                <div class="in">
+                                    <a href="{{ footer.button_link }}" class="btn-primary" target="_blank">
+                                        {{ footer.button_heading }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-10 offset-sm-2 motto">
+                    <h4>
+                        {{ footer.motto }}
+                    </h4>
+                </div>
+            </div>
+        </div>
 
     {{wp_footer}}
     </body>

@@ -1,0 +1,53 @@
+{#
+break points are given from heaven
+sm: 480px,
+md: 768px,
+lg: 1024px
+
+in general we gonna use pre-generate 3 image sizes, uncropped:
+1536x1536 aka big
+large (1024)
+medium (300)
+
+|| crop our own xs
+#}
+{% macro input(image, x, y, title) %}
+	{% if x and y %}
+		{% if x > y %}
+			{% set _x = 1 %}
+			{% set _y = y / x %}
+		{% else %}
+			{% set _x = x / y %}
+			{% set _y = 1 %}
+		{% endif %}
+		<picture>
+		  	{% if x <= 1400 and y <= 1400 %}
+		  		<source media="(max-width: 1400px)" srcset="{{ image.src|resize((1400 * _x)|round, (1400 * _y)|round) }}">
+		  	{% endif %}
+			{% if x <= 1024 and y <= 1024 %}
+		  		<source media="(max-width: 1024px)" srcset="{{ image.src|resize((1024 * _x)|round, (1024 * _y)|round) }}">
+		  	{% endif %}
+		  	{% if x <= 768 and y <= 768 %}
+		  		<source media="(max-width: 768px)" srcset="{{ image.src|resize((768 * _x)|round, (768 * _y)|round) }}">
+		  	{% endif %}
+		  	<source media="(max-width: 480px)" srcset="{{ image.src|resize((480 * _x)|round, (480 * _y)|round) }}">
+			<img src="{{ image.src()|resize(x, y) }}" alt="{{ title }}">
+		</picture>
+	{% elseif x %}
+		<picture>
+		  	{% if x in ['large', 'medium_large', 'medium'] %}
+		  		<source media="(max-width: 480px)" srcset="{{ image.src('medium') }}">
+		  	{% endif %}
+		  	{% if x in ['large', 'medium_large'] %}
+		  		<source media="(max-width: 768px)" srcset="{{ image.src('medium_large') }}">
+		  	{% endif %}
+			{% if x in ['big','large'] %}
+		  		<source media="(max-width: 1024px)" srcset="{{ image.src('large') }}">
+		  	{% endif %}
+		  	{% if x in ['big'] %}
+		  		<source media="(max-width: 1400px)" srcset="{{ image.src('1536x1536') }}">
+		  	{% endif %}
+			<img src="{{ image.src(x) }}" alt="{{ title }}">
+		</picture>
+   	{% endif %}
+{% endmacro %}
