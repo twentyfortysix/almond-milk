@@ -15,7 +15,7 @@
         <!--[if lt IE 9]>
             <script src="{{ theme.path }}/js/vendor/respond.min.js"></script>
         <![endif]-->
-        {{ wp_head }}
+        {{ fn('wp_head') }}
     </head>
     <body class="{{ body_class }}">
         {% block top_menu %}
@@ -39,6 +39,6 @@
         {% block content %}
         {% endblock %}
 
-    {{wp_footer}}
+    {{ fn('wp_footer') }}
     </body>
 </html>
