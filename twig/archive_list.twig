@@ -1,0 +1,56 @@
+{% extends 'base.twig' %}
+{% block content %}
+	<div class="container alphabetical_list">
+		<div class="row">
+			{% import 'macro/letters.twig' as letters %}
+			{# {% set posts = fn('posts', view.post_type) %} #}
+			{% set letter = null %}
+			<div class="col-12 col-sm-10 offset-sm-1">
+				<h1>
+					{{ archive_title }}
+				</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam vel assumenda cum, distinctio inventore at officia ducimus voluptas mollitia, qui, sequi quisquam rerum neque quibusdam molestiae tenetur. Nobis, officia hic!
+				</p>
+				<div class="box row">
+					{% for term in terms %}
+						<div class="col-12 col-sm-4 col-md-3">
+							<a href="{{ fn('get_term_link', term.term_id) }}">
+								{{ term.name }}
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				{{ letters.input(post.link, posts) }}
+			</div>
+			<div class="col-12 the_list">
+				<div class="row">
+					{% for item in posts %}
+						{# letter divisor #}
+						{% if (item.post_title|slice(0, 2)|lower == 'ch' and item.post_title|slice(0, 2)|lower != letter) 
+						or
+						(item.post_title|slice(0, 2)|lower != 'ch' and item.post_title|first|lower != letter) %}
+							{# dirty closing of the letter container #}
+							{% if letter != null %}
+								</div>
+							{% endif %}
+							<div class="col-12 col-sm-4 col-md-3 alphabet" data-letter="{{ item.post_title|slice(0, 2)|lower == 'ch' ? 'ch' : fn('diacriticEqvivalent',item.post_title|first|lower) }}">
+								<h4>
+									<a class="list_anchor emphasize" name="{{ item.post_title|slice(0, 2)|lower == 'ch' ? 'ch' : fn('diacriticEqvivalent',item.post_title|first|lower) }}">
+										{{ item.post_title|slice(0, 2)|lower == 'ch' ? 'Ch' : item.post_title|first|upper }}
+									</a>
+								</h4>
+								{% set letter = item.post_title|slice(0, 2)|lower == 'ch' ? 'ch' : item.post_title|first  %}
+						{% endif %}
+							<a href="{{ item.link }}" class="item">
+								{{ item.post_title ? item.post_title : "--no name--" }}
+							</a>
+						{% if loop.index == posts|length  %}
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

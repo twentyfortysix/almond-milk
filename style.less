@@ -80,7 +80,7 @@ blockquote{
     font-size: 1.2rem;
   }
 }
-.btn, .meta, #quick_navigation, .key_pages, .key_links, input, textarea, button, .frequencies, .amounts{
+.btn, .meta, #quick_navigation, .key_pages, .key_links, input, textarea, button, .frequencies, .amounts, .letters{
   font-family: 'Barlow Semi Condensed', sans-serif;
 }
 .frequencies, .amounts{
@@ -365,6 +365,10 @@ input:focus, select:focus, textarea:focus, button:focus{
     background:@primary;
   }
 }
+.box{
+  background-color:@primary;
+  padding:@_;
+}
 .space{
   margin-bottom: @_*2;
 }
@@ -465,7 +469,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     }
   }
 }
-.press_file, .entry{
+.press_file, .entry, .letters, .the_list, .alphabet, .box {
   .space;
 }
 .acf-map {
@@ -608,6 +612,18 @@ input:focus, select:focus, textarea:focus, button:focus{
   input[type="email"]{
     margin-bottom: @_/4;
     width:100%;
+  }
+}
+.alphabetical_list{
+  .the_list{
+    .item{
+      display: block;
+    }
+  }
+  .letters{
+    a{
+      padding:0 @_/4;
+    }
   }
 }
 ///////////// HACKS  /////////////

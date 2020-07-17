@@ -3,10 +3,26 @@ $data = Timber::get_context();
 $data['top_menu'] = new TimberMenu('top_menu');
 $data['footer'] = new TimberPost(29);
 
-if(is_front_page()){
+if(is_front_page() || is_page() ){
 	$data['post'] = new TimberPost();
 	$data['global_aside'] = new TimberPost(28);
-	Timber::render('frontpage.twig', $data);
+	Timber::render('modular.twig', $data);
+}elseif(is_archive('chemical')){
+	$terms = get_terms( array(
+	    'taxonomy' => 'chemical-type',
+	    'hide_empty' => false,
+	) );
+	$args = array(
+        'post_type' => 'chemical',
+        'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'post_status' => 'publish'
+    );
+    $data['terms'] = $terms;
+    $data['archive_title'] = post_type_archive_title('', false);
+	$data['posts'] = Timber::get_posts($args);
+	Timber::render('archive_list.twig', $data);
 }elseif(is_archive()){
 	$data['posts'] = Timber::get_posts();
 	Timber::render('archive.twig', $data);

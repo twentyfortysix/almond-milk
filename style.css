@@ -112,7 +112,8 @@ input,
 textarea,
 button,
 .frequencies,
-.amounts {
+.amounts,
+.letters {
   font-family: 'Barlow Semi Condensed', sans-serif;
 }
 .frequencies,
@@ -477,6 +478,10 @@ button:focus {
   padding: 2.28vw;
   background: #FCD42C;
 }
+.box {
+  background-color: #FCD42C;
+  padding: 1.52vw;
+}
 .space {
   margin-bottom: 3.04vw;
 }
@@ -566,7 +571,11 @@ button:focus {
   background-position: -117px 0;
 }
 .press_file,
-.entry {
+.entry,
+.letters,
+.the_list,
+.alphabet,
+.box {
   margin-bottom: 3.04vw;
 }
 .acf-map {
@@ -715,6 +724,12 @@ button:focus {
 .newsletter input[type="email"] {
   margin-bottom: 0.38vw;
   width: 100%;
+}
+.alphabetical_list .the_list .item {
+  display: block;
+}
+.alphabetical_list .letters a {
+  padding: 0 0.38vw;
 }
 #top_menu .menu-item-18 a {
   background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);

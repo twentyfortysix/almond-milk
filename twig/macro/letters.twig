@@ -5,10 +5,12 @@
 			{% if item.post_title|slice(0, 2)|lower == 'ch' and l == 'ch' %}
 				{# nada #}
 			{% elseif item.post_title|slice(0, 2)|lower == 'ch' and l != 'ch' %}
-				<a href="{{ root }}#ch">ch</a>
+				<a href="{{ root }}#ch">CH</a>
 				{% set l = 'ch' %}
 			{% elseif item.post_title|first|lower != l %}
-				<a href="{{ root }}#{{ fn('diacriticEqvivalent',item.post_title|first|lower) }}">{{ item.post_title|first|lower }}</a>
+				<a href="{{ root }}#{{ fn('diacriticEqvivalent',item.post_title|first|lower) }}">
+					{{ item.post_title|first|upper }}
+				</a>
 				{% set l = item.post_title|first|lower %}
 			{% endif %}
 		{% endfor %}

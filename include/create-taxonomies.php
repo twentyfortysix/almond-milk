@@ -4,33 +4,6 @@ add_action( 'init', 'create_Location_taxonomies', 0 );
 
 // // create two taxonomies, genres and writers for the post type "book"
 function create_Location_taxonomies() {
-	// Add new taxonomy, make it hierarchical (like categories)
-	$labels = array(
-		'name'              => _x( 'Locations', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Location', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Locations' ),
-		'all_items'         => __( 'All Locations' ),
-		'parent_item'       => __( 'Parent Location' ),
-		'parent_item_colon' => __( 'Parent Location:' ),
-		'edit_item'         => __( 'Edit Location' ),
-		'update_item'       => __( 'Update Location' ),
-		'add_new_item'      => __( 'Add New Location' ),
-		'new_item_name'     => __( 'New Location Name' ),
-		'menu_name'         => __( 'Location' ),
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		// 'has_archive'       => true,
-		'rewrite'           => array( 'slug' => 'lokace' ),
-	);
-
-	register_taxonomy( 'lokace', array( 'akce' ), $args );
-
 
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels_ = array(
@@ -54,9 +27,9 @@ function create_Location_taxonomies() {
 		'show_admin_column' => true,
 		'query_var'         => true,
 		// 'has_archive'       => true,
-		'rewrite'           => array( 'slug' => 'type' ),
+		'rewrite'           => array( 'slug' => 'typ-chemickych-latek' ),
 	);
 
-	register_taxonomy( 'typ', array( 'akce' ), $args_ );
+	register_taxonomy( 'chemical-type', array( 'chemical' ), $args_ );
 
 }

@@ -109,17 +109,17 @@ function codex_work_init() {
 	$cm_args = array(
 		'labels'             => $cm_labels,
         'description'        => __( 'Description.', 'arnika' ),
-		'public'             => false,
-		'publicly_queryable' => false,
+		'public'             => true,
+		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'chemicka-latka' ),
+		'rewrite'            => array( 'slug' => 'chemicke-latky' ),
 		'capability_type'    => 'post',
-		'has_archive'        => false,
-		'hierarchical'       => true,
+		'has_archive'        => true,
+		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'thumbnail' ),
+		'supports'           => array( 'title', 'editor' ),
 		'menu_icon'          => 'dashicons-color-picker'
 	);
 
