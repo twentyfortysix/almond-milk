@@ -49,12 +49,12 @@
 						{% endfor %}
 					</div>
 				</div>
-				{# automatic inpae navigation #}
+				{# automatic inpage navigation #}
 				{# heads up, there is a javascript hooked in via register #}
 				{{ enqueue_script('quick_nav-js') }}
 				<div id="quick_navigation"></div>
 				{% if post.press_file %}
-					<a href="{{ TimberImage(post.press_file).src }}" class="btn-primary press_file">
+					<a href="{{ TimberImage(post.press_file).src }}" class="btn-primary press_file" target="_blank">
 						{{ __('Tisková zpráva','arnika') }}
 					</a>
 				{% endif %}

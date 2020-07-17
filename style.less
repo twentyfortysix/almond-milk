@@ -33,7 +33,7 @@ body{
 @A1: 2.8;
 @D0_: 2.2; // 1.6818
 @D0: 2; // 1.6818
-@C0: 1.6818 ; //1.4142;
+@C0: 1.5818 ; //1.4142;
 @B0: 1.2892;
 @A0: 1;
 @D-1: .8409;
@@ -99,15 +99,18 @@ blockquote{
     font-weight: 600;
   }
 }
+.description, label{
+  font-size: 1rem;
+  line-height: 1.3;
+}
 //////////////// COMMONS ///////////////
 .container-fluid{
   max-width:1536px;
 }
 .emphasize{
   border-bottom:.1em solid @primary;
-  padding:0 @_ 0 @_/3;
+  padding:0 @_ 0 0;
   display: inline;
-  margin-left:-@_/3;
   .anim;
   &:hover, &:active, &:focus{
     text-decoration: none;
@@ -141,6 +144,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   border:0;
   border-radius:0;
   outline: none;
+  padding:@_/4;
 }
 [type="radio"]:checked,
 [type="radio"]:not(:checked),
@@ -344,6 +348,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     }
   }
 }
+
 .user_entry{
   width: 100%;
   background:@secondary;
@@ -358,11 +363,6 @@ input:focus, select:focus, textarea:focus, button:focus{
     margin:-@_*1.5 -@_*1.5 @_*1.5 -@_*1.5;
     padding:@_*1.5;
     background:@primary;
-  }
-  .description{
-    font-size: 1rem;
-    line-height: 1.2;
-    padding:0 @_;
   }
 }
 .space{
@@ -522,6 +522,10 @@ input:focus, select:focus, textarea:focus, button:focus{
       height:auto;
     }
   }
+  .btn_holder{
+    align-items: center;
+    justify-content: center;
+  }
 }
 .publications{
   padding:@_*2 0;
@@ -599,8 +603,11 @@ input:focus, select:focus, textarea:focus, button:focus{
     right:@_;
     top:@_/4;
   }
-  label{
-    font-size:1rem;
+}
+.newsletter{
+  input[type="email"]{
+    margin-bottom: @_/4;
+    width:100%;
   }
 }
 ///////////// HACKS  /////////////

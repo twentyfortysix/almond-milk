@@ -1,0 +1,16 @@
+{% macro input(root, list_data) %}
+	<div class="letters">
+		{% set l = '' %}
+		{% for item in list_data %}
+			{% if item.post_title|slice(0, 2)|lower == 'ch' and l == 'ch' %}
+				{# nada #}
+			{% elseif item.post_title|slice(0, 2)|lower == 'ch' and l != 'ch' %}
+				<a href="{{ root }}#ch">ch</a>
+				{% set l = 'ch' %}
+			{% elseif item.post_title|first|lower != l %}
+				<a href="{{ root }}#{{ fn('diacriticEqvivalent',item.post_title|first|lower) }}">{{ item.post_title|first|lower }}</a>
+				{% set l = item.post_title|first|lower %}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endmacro %}

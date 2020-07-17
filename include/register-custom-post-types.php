@@ -49,7 +49,7 @@ function codex_work_init() {
 
 	register_post_type( 'aside', $cm_args );
 
-		$cm_labels = array(
+	$cm_labels = array(
 		'name'               => _x( 'Publikace', 'post type general name', 'arnika' ),
 		'singular_name'      => _x( 'Publikace', 'post type singular name', 'arnika' ),
 		'menu_name'          => _x( 'Publikace', 'admin menu', 'arnika' ),
@@ -88,6 +88,42 @@ function codex_work_init() {
 	);
 
 	register_post_type( 'publication', $cm_args );
+
+	$cm_labels = array(
+		'name'               => _x( 'Chemické látky', 'post type general name', 'arnika' ),
+		'singular_name'      => _x( 'Chemické látky', 'post type singular name', 'arnika' ),
+		'menu_name'          => _x( 'Chemické látky', 'admin menu', 'arnika' ),
+		'name_admin_bar'     => _x( 'Chemické látky', 'add new on admin bar', 'arnika' ),
+		'add_new'            => _x( 'Přidat', 'Chemické látky', 'arnika' ),
+		'add_new_item'       => __( 'Přidat Chemické látky', 'arnika' ),
+		'new_item'           => __( 'Nové Chemické látky', 'arnika' ),
+		'edit_item'          => __( 'Editovat Chemické látky', 'arnika' ),
+		'view_item'          => __( 'Zobrazit Chemické látky', 'arnika' ),
+		'all_items'          => __( 'Všechny Chemické látky', 'arnika' ),
+		'search_items'       => __( 'Vyhledat Chemické látky', 'arnika' ),
+		'parent_item_colon'  => __( 'Nadřazené Chemické látky:', 'arnika' ),
+		'not_found'          => __( 'No Chemické látky found.', 'arnika' ),
+		'not_found_in_trash' => __( 'No Chemické látky found in Trash.', 'arnika' )
+	);
+
+	$cm_args = array(
+		'labels'             => $cm_labels,
+        'description'        => __( 'Description.', 'arnika' ),
+		'public'             => false,
+		'publicly_queryable' => false,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'chemicka-latka' ),
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => true,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'thumbnail' ),
+		'menu_icon'          => 'dashicons-color-picker'
+	);
+
+	register_post_type( 'chemical', $cm_args );
 
 }
 

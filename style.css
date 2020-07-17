@@ -20,14 +20,14 @@ body {
 }
 body {
   font-size: calc(14px + ((1.2892*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1.2892) + ((1.6818*14*1.1) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((14px * 1.2892) + ((1.5818*14*1.1) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
 }
 p {
   margin: 0 0 calc(2rem + (2.8 - 0.8409) * ((100vw - 300px)/(1600 - 300))) 0;
 }
 blockquote {
   font-size: calc(14px + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1.2892) + ((1.6818*14*2) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((14px * 1.2892) + ((1.5818*14*2) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
 }
 h1 {
   font-size: calc(14px * 2.8 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
@@ -52,9 +52,9 @@ h2._h {
   font-weight: 400;
 }
 h3 {
-  font-size: calc(14px * 1.6818 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 0.8409rem;
-  margin-left: -2.35452px;
+  font-size: calc(14px * 1.5818 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
+  margin-bottom: 0.7909rem;
+  margin-left: -2.21452px;
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-weight: 600;
 }
@@ -130,14 +130,18 @@ button,
 .main_sections a {
   font-weight: 600;
 }
+.description,
+label {
+  font-size: 1rem;
+  line-height: 1.3;
+}
 .container-fluid {
   max-width: 1536px;
 }
 .emphasize {
   border-bottom: 0.1em solid #FCD42C;
-  padding: 0 1.52vw 0 0.50666667vw;
+  padding: 0 1.52vw 0 0;
   display: inline;
-  margin-left: -0.50666667vw;
   transition: all 0.4s;
 }
 .emphasize:hover,
@@ -184,6 +188,7 @@ button:focus {
   border: 0;
   border-radius: 0;
   outline: none;
+  padding: 0.38vw;
 }
 [type="radio"]:checked,
 [type="radio"]:not(:checked),
@@ -472,11 +477,6 @@ button:focus {
   padding: 2.28vw;
   background: #FCD42C;
 }
-.user_entry .description {
-  font-size: 1rem;
-  line-height: 1.2;
-  padding: 0 1.52vw;
-}
 .space {
   margin-bottom: 3.04vw;
 }
@@ -622,6 +622,10 @@ button:focus {
   width: 80%;
   height: auto;
 }
+.footer .btn_holder {
+  align-items: center;
+  justify-content: center;
+}
 .publications {
   padding: 3.04vw 0;
 }
@@ -708,8 +712,9 @@ button:focus {
   right: 1.52vw;
   top: 0.38vw;
 }
-.money_form label {
-  font-size: 1rem;
+.newsletter input[type="email"] {
+  margin-bottom: 0.38vw;
+  width: 100%;
 }
 #top_menu .menu-item-18 a {
   background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);

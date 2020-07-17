@@ -5,6 +5,7 @@ function custom_menu_order($menu_ord) {
     return array(
         'edit.php?post_type=page', // Pages
         'edit.php', // Posts
+        'edit.php?post_type=chemical', // Pages
         'edit.php?post_type=publication', // Pages
         'edit.php?post_type=aside', // Pages
         // 'index.php', // Dashboard
