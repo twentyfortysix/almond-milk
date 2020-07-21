@@ -93,7 +93,9 @@ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
-
+function getObject($id){
+    return new TimberPost($id);
+}
 
 $role_object = get_role( 'editor' );
 $role_object->add_cap( 'edit_theme_options' );

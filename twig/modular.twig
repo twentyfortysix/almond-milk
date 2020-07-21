@@ -1,11 +1,41 @@
 {% extends 'base.twig' %}
 {% import 'macro/edit-link.twig' as editLink %}
 {% import 'macro/anchor.twig' as anchor %}
+{% import 'macro/socials.twig' as socials %}
+{% import 'macro/newsletter.twig' as newsletter %}
+{% import 'macro/money_form.twig' as moneyForm %}
 
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
-		{% if view.acf_fc_layout == "lead" %}
-			<div class="container {{ view.acf_fc_layout }}" style="background-image:url({{ view.image.sizes.large }})">
+		{% if view.acf_fc_layout == "latest_news" %}
+			{% import 'macro/news.twig' as newsItem %}
+			{% import 'macro/section.twig' as section %}
+			<div class="container {{ view.acf_fc_layout }} {{ post.main_section ? 'main_section' : '' }} ">
+				<div class="row">
+					{# main section has different layout #}
+					{% if post.main_section %}
+						{# lets get the first news only #}
+						{% for item in view.news|slice(0,1) %}
+							<div class="col-12 col-sm-9 large">
+								{% set p = fn('getObject', item ) %}
+								{{ newsItem.input(p) }}
+							</div>
+						{% endfor %}
+						{# inject the subnavigation #}
+							<div class="col-12 col-sm-3">
+								{{ section.input(post, 'h1') }}
+							</div>
+						{# show the rest of the news #}
+						{% for item in view.news|slice(1,3) %}
+							<div class="col-12 col-sm-4 decent">
+								{% set p = fn('getObject', item ) %}
+								{{ newsItem.input(p) }}
+							</div>
+						{% endfor %}
+					{% else %}
+
+					{% endif %}
+				</div>
 			</div>
 
 		{% elseif view.acf_fc_layout == "gallery" %}
@@ -21,4 +51,60 @@
 		{% endif %}
 
 	{% endfor %}
+{% endblock %}
+
+{% block sparseContent %}
+	<div class="row">
+		{% for view in post.get_field('flexible_content') %}
+			{% if view.acf_fc_layout == "subprojects" %}
+				{% for project in view.projects %}
+					<div class="col-12 col-sm-6 {{ view.acf_fc_layout }}">
+						{% if project.graphic %}
+							{# bit of mascara on the eyelashes #}
+							{% set graphic = TimberImage(project.graphic) %}
+							{{ rImage.input(graphic, 'medium', null, item.title) }}
+						{% else %}
+							{# regular project data #}
+							<h4>
+								<a href="{{ project.button_link }}" class="emphasize">
+									{{ project.heading }}
+								</a>
+							</h4>
+							<div class="perex">
+								{{ project.perex|wpautop }}
+							</div>
+							<a href="{{ project.button_link}}" class="btn-primary sml more">
+								{{ project.button_heading }}
+							</a>
+						{% endif %}
+					</div>
+				{% endfor %}
+
+			{% elseif view.acf_fc_layout == "text" %}
+				<div class="col-12 {{ view.acf_fc_layout }}">
+					<h2 class="{{ view.highlight ? 'highlight' : '' }}">
+						{{ view.heading|wpautop }}
+					</h2>
+					<div class="entry">
+						{{ view.content|wpautop }}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}
+
+{% block aside %}
+	{# sure this is bit-big hack form the logic point of view I'm hacking in the global modules not the section specific #}
+	<div class="money_form user_entry">
+		{% set mform = global_aside.get_field('donate') %}
+		{{ moneyForm.input(mform.heading, mform.description, mform.amounts, mform.default_amount, mform.frequency, mform.default_frequency, mform.project_id, mform.client_id) }}
+	</div>
+	<div class="socials">
+		{{ socials.input(global_aside.get_field('social')) }}
+	</div>
+	{# newsletter, just plain html for now #}
+	<div class="newsletter user_entry">
+		{{ newsletter.input() }}
+	</div>
 {% endblock %}

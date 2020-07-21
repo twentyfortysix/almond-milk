@@ -13,7 +13,7 @@ Tags:
 //////////////// TYPOGRAPHY ///////////////
 @primary:#FCD42C;
 @secondary:#00D666;
-@ternary: #DDDDDD;
+@ternary: #F1F1F1;
 @white: #fff;
 // @f: 17.106px;
 * {
@@ -102,6 +102,16 @@ blockquote{
 .description, label{
   font-size: 1rem;
   line-height: 1.3;
+}
+.main_section{
+  h1{
+    font-size: @C0*@_;
+  }
+  .decent{
+    h3{
+      font-size:@B0 * @_;
+    }
+  }
 }
 //////////////// COMMONS ///////////////
 .container-fluid{
@@ -286,6 +296,9 @@ input:focus, select:focus, textarea:focus, button:focus{
     text-decoration: none;
     box-shadow:inset 0 0 2px @ternary;
   }
+  &.sml{
+    padding:@_*.35 @_*.7;
+  }
 }
 .btn-primary{
   background: linear-gradient(to bottom, @primary 0%,@primary 66%,darken(@primary, 10%) 100%);
@@ -371,6 +384,9 @@ input:focus, select:focus, textarea:focus, button:focus{
 }
 .space{
   margin-bottom: @_*2;
+}
+.highlight{
+  color:darken(@secondary, 10%);
 }
 ///////////// SPECIFIC  /////////////
 
@@ -469,7 +485,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     }
   }
 }
-.press_file, .entry, .letters, .the_list, .alphabet, .box {
+.press_file, .entry, .letters, .the_list, .alphabet, .box, .text{
   .space;
 }
 .acf-map {
@@ -532,12 +548,17 @@ input:focus, select:focus, textarea:focus, button:focus{
   }
 }
 .publications{
-  padding:@_*2 0;
+  padding:@_*2;
+  border:1px solid #ddd;
+  border-radius:2px;
+  .btn-primary{
+    float: right;
+  }
 }
-.publications, .footer_body{
+.footer_body, .publications{
   background-color:@ternary;
 }
-.main_sections{
+.section{
   padding:@_*2 0;
   h2{
     margin-bottom: 0;
@@ -552,6 +573,52 @@ input:focus, select:focus, textarea:focus, button:focus{
   .key_links{
     a{
       color:darken(@secondary, 20%);
+    }
+  }
+}
+.main_section{
+  h3{
+    color: #fff;
+    display: block;
+    transform: translateY(calc(-100% + @_/2)) translateX(-.4rem);
+    position: absolute;
+    padding:0;
+    max-width: 90%;
+    a{ 
+      background-color: #000;
+      color: #fff; 
+      display: inline;
+      padding: 0 @_*.4;
+      /* Needs prefixing */
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      box-shadow: 0 @_*.3 0 0 #000;
+    }
+  }
+  .post{
+    display: flex;
+    flex-flow: column;
+    .description{
+      padding:@_*1.5 @_/2 @_ @_/2;
+    }
+    .more{
+      justify-self:flex-end;
+      align-self: flex-end;
+      margin-bottom: @_*1.8
+    }
+  }
+  .large{
+    .description{
+      max-width: 50%;
+      padding-bottom:@_*1.3;
+      margin-left: 20%;
+    }
+    .post{
+      flex-flow: row;
+      .more{
+        margin:@_*1.4 0 0 auto;
+        align-self: flex-start;
+      }
     }
   }
 }
@@ -624,6 +691,20 @@ input:focus, select:focus, textarea:focus, button:focus{
     a{
       padding:0 @_/4;
     }
+  }
+}
+.sparse_content{
+  padding:0 @_*3;
+}
+.subprojects{
+  display: flex;
+  flex-flow: column;
+  padding: 0 @_*1.5 @_*3 @_*1.5;
+  h4{
+    margin-bottom: @_*.3;
+  }
+  .more{
+    align-self:flex-end;
   }
 }
 ///////////// HACKS  /////////////

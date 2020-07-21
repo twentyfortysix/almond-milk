@@ -2,6 +2,7 @@
 {% import "macro/menu_items.twig" as menu_items %}
 {% import "macro/responsive_image.twig" as rImage %}
 {% import 'macro/edit-link.twig' as editLink %}
+{% import 'macro/section.twig' as section %}
 
 <!DOCTYPE html>
 <html>
@@ -45,29 +46,44 @@
         {% block content %}
         {% endblock %}
 
-        
-        <div class="publications">
-            <div class="container">
-                <div class="row">
-                    {% set publications_view = footer.get_field('publications') %}
-                    <div class="col-12 col-sm-4">
-                        <h4 class="_h">
-                            {{ publications_view.heading }}
-                        </h4>
-                        <div class="description">
-                            {{ publications_view.description|wpautop }}
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-8 sparse_content">
+                    {% block sparseContent %}
+                    {% endblock %}
+                </div>
+                <div class="col-12 col-sm-4">
+                    {% block aside %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="container publications">
+            <div class="row">
+                {% set publications_view = footer.get_field('publications') %}
+                <div class="col-12 col-sm-4">
+                    <h4 class="_h">
+                        {{ publications_view.heading }}
+                    </h4>
+                    <div class="description">
+                        {{ publications_view.description|wpautop }}
                     </div>
-                    <div class="col-12 col-sm-8">
-                        <div class="row">
-                            {% for item in publications_view.selected %}
-                                <div class="col-6 col-sm-{{ 12 / publications_view.selected|length * 2 }}  col-md-{{ 12 / publications_view.selected|length }}">
-                                    <a href="{{ item.link }}">
-                                        {{ rImage.input(item.thumbnail, 300,450, item.title) }}
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        </div>
+                    {% if publications_view.button_heading and publications_view.button_link %}
+                        <a href="{{ publications_view.button_link }}" class="btn-primary sml">
+                            {{ publications_view.button_heading }}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-12 col-sm-8">
+                    <div class="row">
+                        {% for item in publications_view.selected %}
+                            <div class="col-6 col-sm-{{ 12 / publications_view.selected|length * 2 }}  col-md-{{ 12 / publications_view.selected|length }}">
+                                <a href="{{ item.link }}">
+                                    {{ rImage.input(item.thumbnail, 300,450, item.title) }}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -77,32 +93,7 @@
                 <div class="row">
                     {% for item in footer.get_field('main_sections') %}
                         <div class="col-12 col-sm-6 col-md-3">
-                            <h3>
-                                <a href="{{ item.link }}" class="emphasize">
-                                    {{ item.title }}
-                                </a>
-                            </h3>
-                            <div class="description">
-                                {{ item.perex|wpautop }}
-                            </div>
-                            {% if item.key_pages %}
-                                <div class="key_pages">
-                                    {% for sub in item.get_field('key_pages') %}
-                                        <a href="{{ sub.link }}">
-                                            {{ sub.title }}
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                            {% if item.key_links %}
-                                <div class="key_links">
-                                    {% for link in item.get_field('key_links') %}
-                                        <a href="{{ link.link }}">
-                                            {{ link.heading }}
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                            {{ section.input(item, 'h3') }}
                         </div>
                     {% endfor %}
                 </div>

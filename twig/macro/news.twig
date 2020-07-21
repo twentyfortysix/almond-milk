@@ -1,0 +1,20 @@
+{% macro input(item) %}
+	{% import "macro/responsive_image.twig" as rImage %}
+	<a href="{{ item.link }}">
+		{{ rImage.input(item.thumbnail, 960, 540, item.title) }}
+	</a>
+	<div class="post">
+		<h3>
+			<a href="{{ item.link }}">
+				{{ item.title }}
+			</a>
+		</h3>
+		<div class="description">
+			{{ item.description ? item.description : function("strip_tags", item.content)|truncate(30) }}
+		</div>
+		{# we might get rid of this baby boy, as it fights visually against the heading #}
+		<a href="{{ item.link }}" class="btn-primary sml more">
+			{{  __('Celý párek','arnika') }}
+		</a>
+	</div>
+{% endmacro %}

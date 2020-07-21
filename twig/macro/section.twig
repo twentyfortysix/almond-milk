@@ -1,0 +1,30 @@
+{% macro input(item, h) %}
+    <div class="section">
+    	<{{ h ? h : 'h3' }}>
+            <a href="{{ item.link }}" class="emphasize">
+                {{ item.title }}
+            </a>
+        </{{ h ? h : 'h3' }}>
+        <div class="description">
+            {{ item.perex|wpautop }}
+        </div>
+        {% if item.key_pages %}
+            <div class="key_pages">
+                {% for sub in item.get_field('key_pages') %}
+                    <a href="{{ sub.link }}">
+                        {{ sub.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if item.key_links %}
+            <div class="key_links">
+                {% for link in item.get_field('key_links') %}
+                    <a href="{{ link.link }}">
+                        {{ link.heading }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}

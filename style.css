@@ -136,6 +136,12 @@ label {
   font-size: 1rem;
   line-height: 1.3;
 }
+.main_section h1 {
+  font-size: 2.404336vw;
+}
+.main_section .decent h3 {
+  font-size: 1.959584vw;
+}
 .container-fluid {
   max-width: 1536px;
 }
@@ -331,7 +337,10 @@ button:focus {
 .btn:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.btn.sml {
+  padding: 0.532vw 1.064vw;
 }
 .btn-primary {
   background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);
@@ -349,7 +358,10 @@ button:focus {
 .btn-primary:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.btn-primary.sml {
+  padding: 0.532vw 1.064vw;
 }
 .btn-primary:hover,
 .btn-primary:active,
@@ -372,7 +384,10 @@ button:focus {
 .btn-primary-solid:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.btn-primary-solid.sml {
+  padding: 0.532vw 1.064vw;
 }
 .btn-primary-solid:hover,
 .btn-primary-solid:active,
@@ -395,7 +410,10 @@ button:focus {
 .btn-secondary:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.btn-secondary.sml {
+  padding: 0.532vw 1.064vw;
 }
 .in {
   padding: 1.52vw;
@@ -416,7 +434,7 @@ button:focus {
   display: inline-block;
   width: 1.52vw;
   height: 0.2rem;
-  background-color: #aaaaaa;
+  background-color: #bebebe;
   transition: all 0.4s;
 }
 .switch:before {
@@ -432,7 +450,7 @@ button:focus {
 .switch:hover:after,
 .switch:focus:after,
 .switch:active:after {
-  background-color: #777777;
+  background-color: #8b8b8b;
   transition: all 0.4s;
 }
 .switch.active:before {
@@ -466,7 +484,10 @@ button:focus {
 .user_entry button:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.user_entry button.sml {
+  padding: 0.532vw 1.064vw;
 }
 .user_entry button:hover,
 .user_entry button:active,
@@ -484,6 +505,9 @@ button:focus {
 }
 .space {
   margin-bottom: 3.04vw;
+}
+.highlight {
+  color: #00a34e;
 }
 #logo img {
   height: 3.04vw;
@@ -575,7 +599,8 @@ button:focus {
 .letters,
 .the_list,
 .alphabet,
-.box {
+.box,
+.text {
   margin-bottom: 3.04vw;
 }
 .acf-map {
@@ -620,7 +645,7 @@ button:focus {
   padding-left: 1.672vw;
 }
 .footer {
-  background: linear-gradient(to right, #fff 0%, #fff 50%, #DDDDDD 51%, #DDDDDD 100%);
+  background: linear-gradient(to right, #fff 0%, #fff 50%, #F1F1F1 51%, #F1F1F1 100%);
 }
 .footer .logo_holder {
   display: flex;
@@ -636,29 +661,76 @@ button:focus {
   justify-content: center;
 }
 .publications {
+  padding: 3.04vw;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+.publications .btn-primary {
+  float: right;
+}
+.footer_body,
+.publications {
+  background-color: #F1F1F1;
+}
+.section {
   padding: 3.04vw 0;
 }
-.publications,
-.footer_body {
-  background-color: #DDDDDD;
-}
-.main_sections {
-  padding: 3.04vw 0;
-}
-.main_sections h2 {
+.section h2 {
   margin-bottom: 0;
   min-height: 2.6em;
 }
-.main_sections .key_pages,
-.main_sections .key_links {
+.section .key_pages,
+.section .key_links {
   margin-bottom: 1.52vw;
 }
-.main_sections .key_pages a,
-.main_sections .key_links a {
+.section .key_pages a,
+.section .key_links a {
   display: block;
 }
-.main_sections .key_links a {
+.section .key_links a {
   color: #007035;
+}
+.main_section h3 {
+  color: #fff;
+  display: block;
+  transform: translateY(calc(-100% + 1.52vw/2)) translateX(-0.4rem);
+  position: absolute;
+  padding: 0;
+  max-width: 90%;
+}
+.main_section h3 a {
+  background-color: #000;
+  color: #fff;
+  display: inline;
+  padding: 0 0.608vw;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 0.456vw 0 0 #000;
+}
+.main_section .post {
+  display: flex;
+  flex-flow: column;
+}
+.main_section .post .description {
+  padding: 2.28vw 0.76vw 1.52vw 0.76vw;
+}
+.main_section .post .more {
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-bottom: 2.736vw;
+}
+.main_section .large .description {
+  max-width: 50%;
+  padding-bottom: 1.976vw;
+  margin-left: 20%;
+}
+.main_section .large .post {
+  flex-flow: row;
+}
+.main_section .large .post .more {
+  margin: 2.128vw 0 0 auto;
+  align-self: flex-start;
 }
 .motto {
   padding: 3.04vw 0.1rem;
@@ -731,6 +803,20 @@ button:focus {
 .alphabetical_list .letters a {
   padding: 0 0.38vw;
 }
+.sparse_content {
+  padding: 0 4.56vw;
+}
+.subprojects {
+  display: flex;
+  flex-flow: column;
+  padding: 0 2.28vw 4.56vw 2.28vw;
+}
+.subprojects h4 {
+  margin-bottom: 0.456vw;
+}
+.subprojects .more {
+  align-self: flex-end;
+}
 #top_menu .menu-item-18 a {
   background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);
   font-family: 'Barlow Semi Condensed', sans-serif;
@@ -747,7 +833,10 @@ button:focus {
 #top_menu .menu-item-18 a:focus {
   color: #000;
   text-decoration: none;
-  box-shadow: inset 0 0 2px #DDDDDD;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+#top_menu .menu-item-18 a.sml {
+  padding: 0.532vw 1.064vw;
 }
 #top_menu .menu-item-18 a:hover,
 #top_menu .menu-item-18 a:active,
