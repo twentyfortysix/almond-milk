@@ -4,37 +4,14 @@
 {% import 'macro/socials.twig' as socials %}
 {% import 'macro/newsletter.twig' as newsletter %}
 {% import 'macro/money_form.twig' as moneyForm %}
+{% import 'macro/news_block.twig' as newsBlock %}
 
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
 		{% if view.acf_fc_layout == "latest_news" %}
-			{% import 'macro/news.twig' as newsItem %}
-			{% import 'macro/section.twig' as section %}
 			<div class="container {{ view.acf_fc_layout }} {{ post.main_section ? 'main_section' : '' }} ">
 				<div class="row">
-					{# main section has different layout #}
-					{% if post.main_section %}
-						{# lets get the first news only #}
-						{% for item in view.news|slice(0,1) %}
-							<div class="col-12 col-sm-9 large">
-								{% set p = fn('getObject', item ) %}
-								{{ newsItem.input(p) }}
-							</div>
-						{% endfor %}
-						{# inject the subnavigation #}
-							<div class="col-12 col-sm-3">
-								{{ section.input(post, 'h1') }}
-							</div>
-						{# show the rest of the news #}
-						{% for item in view.news|slice(1,3) %}
-							<div class="col-12 col-sm-4 decent">
-								{% set p = fn('getObject', item ) %}
-								{{ newsItem.input(p) }}
-							</div>
-						{% endfor %}
-					{% else %}
-
-					{% endif %}
+					{{ newsBlock.input(post, view) }}
 				</div>
 			</div>
 

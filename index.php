@@ -3,7 +3,12 @@ $data = Timber::get_context();
 $data['top_menu'] = new TimberMenu('top_menu');
 $data['footer'] = new TimberPost(29);
 
-if(is_front_page() || is_page() ){
+if(is_front_page()){
+	$data['post'] = new TimberPost();
+	$data['global_aside'] = new TimberPost(28);
+	Timber::render('frontpage.twig', $data);
+}
+elseif(is_page() ){
 	$data['post'] = new TimberPost();
 	$data['global_aside'] = new TimberPost(28);
 	Timber::render('modular.twig', $data);

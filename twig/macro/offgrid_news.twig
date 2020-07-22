@@ -1,0 +1,17 @@
+{% macro input(view, from, pieces, cls) %}
+	<div class="{{ cls }}">
+		{% for item in view.news|slice(from, pieces) %}
+			{% set p = fn('getObject', item ) %}
+			<a href="{{ p.link }}" class="item" style="background-image:url({{ p.thumbnail.src('large') }})">
+				<h3>
+					<span>
+						{{ p.title }}
+					</span>
+				</h3>
+				<span class="description">
+					{{ p.description ? p.description : function("strip_tags", p.content)|truncate(12) }}
+				</span>
+			</a>
+		{% endfor %}
+	</div>
+{% endmacro %}

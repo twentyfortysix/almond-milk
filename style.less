@@ -45,8 +45,8 @@ p{
   margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
 }
 blockquote{
-  font-size: calc(@f + ((@D0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((@f * @B0) + ((@C0*@unit*@D0) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(@f + ((@C0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((@f * @A0) + ((@C0*@unit*@C0) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
 }
 @fsizes: @D-1, @A0, @B0, @C0, @D0_, @A1;
 @elements: h6, h5, h4, h3, h2, h1;
@@ -113,6 +113,11 @@ blockquote{
     }
   }
 }
+h2{
+  p{
+    line-height: 1em;
+  }
+}
 //////////////// COMMONS ///////////////
 .container-fluid{
   max-width:1536px;
@@ -121,11 +126,11 @@ blockquote{
   border-bottom:.1em solid @primary;
   padding:0 @_ 0 0;
   display: inline;
-  .anim;
+  .anim();
   &:hover, &:active, &:focus{
     text-decoration: none;
     border-bottom:.1em solid darken(@primary, 10%);
-    .anim;
+    .anim();
   }
 }
 img, iframe{
@@ -237,7 +242,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   text-decoration: none;
 }
 .anchor{
-  ._anchor;
+  ._anchor();
   left: -@_*2;
   display: inline-block;
   text-align: center;
@@ -246,7 +251,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   background:rgba(0,0,0,.5);
   color:#fff;
   border-radius: 0 0 50% 50%;
-  .anim;
+  .anim();
    &:hover, &:active, &:focus{
     color:#fff;
     background-color:black;
@@ -272,13 +277,13 @@ input:focus, select:focus, textarea:focus, button:focus{
   overflow:hidden;
   opacity:0;
   max-height: 0;
-  .anim2;
+  .anim2();
 }
 .opened{
   overflow:auto;
   opacity:1;
   max-height: 999999px;
-  .anim2;
+  .anim2();
 }
 .logged-in{
   .anchor{
@@ -302,21 +307,21 @@ input:focus, select:focus, textarea:focus, button:focus{
 }
 .btn-primary{
   background: linear-gradient(to bottom, @primary 0%,@primary 66%,darken(@primary, 10%) 100%);
-  .btn;
+  .btn();
   &:hover, &:active, &:focus{
     background: linear-gradient(to bottom, lighten(@primary, 5%) 0%,@primary 16%,darken(@primary, 12%) 100%);
   }
 }
 .btn-primary-solid{
   background: @primary;
-  .btn;
+  .btn();
   &:hover, &:active, &:focus{
     background: darken(@primary, 12%);
   }
 }
 .btn-secondary{
   background: linear-gradient(to bottom, @secondary 0%,@secondary 66%,darken(@secondary, 10%) 100%);
-  .btn;
+  .btn();
 }
 .in{
   padding:@_;
@@ -336,7 +341,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     width:@_;
     height:.2rem;
     background-color:darken(@ternary, 20%);
-    .anim;
+    .anim();
   }
   &:before{
     transform:rotate(45deg);
@@ -348,7 +353,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   &:hover,&:focus, &:active{
     &:before, &:after{
       background-color: darken(@ternary, 40%);
-      .anim;
+      .anim();
     }
   }
   &.active{
@@ -366,7 +371,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   width: 100%;
   background:@secondary;
   padding:@_*1.5;
-  .space;
+  .space();
   button{
     .btn-primary-solid;
     padding:@_/4 0;
@@ -387,6 +392,65 @@ input:focus, select:focus, textarea:focus, button:focus{
 }
 .highlight{
   color:darken(@secondary, 10%);
+}
+// offgrid layout for news
+.offgrid{
+  padding:0 @_ @_*2 @_;
+  &._65{
+    width:65%;
+  }
+  &._35{
+    width:35%;
+  }
+  &._55{
+    width:55%;
+  }
+  &._45{
+    width:45%;
+  }
+  &.double{
+    .item{
+      height:calc(50% - @_);
+    }
+  }
+  &._35, &._55, &._45{
+    h3{
+      font-size: @A0*@_;
+    }
+  }
+  .item{
+    height: 100%;
+    min-height: @_*10;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-size:cover;
+    background-position:center;
+    .space();
+  }
+  h3{
+    margin:0 0 @_*.3 -@_/2;
+    span{
+      .mark(#000);
+    }
+  }
+  .description{
+    .mark(@primary);
+    max-width: 80%;
+    color:#000;
+    margin: 0 0 @_ -@_/1.9;
+  }
+}
+.mark(@bcg: #000){
+  background-color: @bcg;
+  color: #fff; 
+  display: inline;
+  padding: 0 @_*.4;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 @_*.3 0 0 @bcg;
 }
 ///////////// SPECIFIC  /////////////
 
@@ -442,7 +506,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   }
 }
 #quick_navigation{
-  .space;
+  .space();
   &:empty{
     display: none;
   }
@@ -464,7 +528,7 @@ input:focus, select:focus, textarea:focus, button:focus{
 .socials{
   display: flex;
   justify-content: space-around;
-  .space;
+  .space();
   a{
     display: inline-block;
     width:@_*2;
@@ -486,7 +550,18 @@ input:focus, select:focus, textarea:focus, button:focus{
   }
 }
 .press_file, .entry, .letters, .the_list, .alphabet, .box, .text{
-  .space;
+  .space();
+}
+.home{
+  .text{
+    h2{
+      margin-bottom: @_*2;
+      p{
+        .mark(@primary);
+        color:#000;
+      }
+    }
+  }
 }
 .acf-map {
   width: 100%;
@@ -506,7 +581,7 @@ input:focus, select:focus, textarea:focus, button:focus{
   height:@_*6;
   overflow:hidden;
   margin-bottom: @_*3;
-  .anim;
+  .anim();
   &:after{
     content:'';
     display: block;
@@ -521,10 +596,10 @@ input:focus, select:focus, textarea:focus, button:focus{
     max-height: @_*500;
     height:auto;
     background: linear-gradient(to top, rgba(255,255,255,0) 0%,rgba(255,255,255,0)100%);
-    .anim2;
+    .anim2();
     &:after{
       height:0;
-      .anim;
+      .anim();
     }
   }
   ol{
@@ -576,6 +651,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     }
   }
 }
+
 .main_section{
   h3{
     color: #fff;
@@ -585,14 +661,7 @@ input:focus, select:focus, textarea:focus, button:focus{
     padding:0;
     max-width: 90%;
     a{ 
-      background-color: #000;
-      color: #fff; 
-      display: inline;
-      padding: 0 @_*.4;
-      /* Needs prefixing */
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-      box-shadow: 0 @_*.3 0 0 #000;
+      .mark(@bcg: #000);
     }
   }
   .post{
@@ -639,14 +708,14 @@ input:focus, select:focus, textarea:focus, button:focus{
       background:darken(@secondary, 10%);
       flex:1;    
       text-align: center;
-      .anim2;
+      .anim2();
       &.active{
         background:@primary;
-        .anim;
+        .anim();
       }
       &:hover, &:focus{
         background:darken(@primary, 15%);
-        .anim;
+        .anim();
       }
     }
   }
@@ -659,9 +728,9 @@ input:focus, select:focus, textarea:focus, button:focus{
   .custom_amount{
     width: 100%;
     position:relative;
-    .closed;
+    .closed();
     &.opened{
-      .opened;
+      .opened();
       margin-bottom: @_/4;
     }
     input{
@@ -711,7 +780,19 @@ input:focus, select:focus, textarea:focus, button:focus{
 #top_menu{
   .menu-item-18{
     a{
-      .btn-primary;
+      .btn-primary();
+    }
+    .dropdown-menu{
+      border-radius:0;
+      padding:@_/1.5;
+      margin-top: 0;
+      background-color:@secondary;
+      a{
+        background:transparent;
+        border:0;
+        box-shadow:none;
+        font-size: 1rem;
+      }
     }
   }
 }

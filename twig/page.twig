@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="container">
 		<div class="row">
-			{%if post.thumbnail %}
+			{% if post.thumbnail %}
 				<aside class="col-6">	
 					<img src="{{ post.thumbnail('large')}}" alt="{{post.title}}" />
 				</aside>

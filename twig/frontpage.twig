@@ -1,0 +1,102 @@
+{% extends 'base.twig' %}
+{% import 'macro/edit-link.twig' as editLink %}
+{% import 'macro/anchor.twig' as anchor %}
+{% import 'macro/socials.twig' as socials %}
+{% import 'macro/newsletter.twig' as newsletter %}
+{% import 'macro/money_form.twig' as moneyForm %}
+{% import 'macro/news_block.twig' as newsBlock %}
+
+{% block content %}
+	{% for view in post.get_field('flexible_content') %}
+		{% if view.acf_fc_layout == "latest_news" %}
+			<div class="container {{ view.acf_fc_layout }} {{ post.main_section ? 'main_section' : '' }} ">
+				<div class="row">
+					{{ newsBlock.input(post, view) }}
+				</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "subprojects" %}
+			{% for project in view.projects %}
+				<div class="container {{ view.acf_fc_layout }}">
+					<div class="row">
+						<div class="col-12 col-sm-6">
+							{% if project.graphic %}
+								{# bit of mascara on the eyelashes #}
+								{% set graphic = TimberImage(project.graphic) %}
+								{{ rImage.input(graphic, 'medium', null, item.title) }}
+							{% else %}
+								{# regular project data #}
+								<h4>
+									<a href="{{ project.button_link }}" class="emphasize">
+										{{ project.heading }}
+									</a>
+								</h4>
+								<div class="perex">
+									{{ project.perex|wpautop }}
+								</div>
+								<a href="{{ project.button_link}}" class="btn-primary sml more">
+									{{ project.button_heading }}
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+		{% elseif view.acf_fc_layout == "text" %}
+			<div class="container {{ view.acf_fc_layout }}">
+				<div class="row">
+					<div class="col-12">
+						<h2 class="{{ view.highlight ? 'highlight' : '' }}">
+							{{ view.heading|wpautop }}
+						</h2>
+						<div class="entry">
+							{{ view.content|wpautop }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "gallery" %}
+			<div class="container {{ view.acf_fc_layout }}">
+				{{ anchor.input(view.anchor, post) }}
+				{% for image in view.images %}
+					{% set img = TimberImage(image.id) %}
+						<div class="col-12 col-sm-4 col-md-4">
+							<img src="{{ img.src('thumbnail') }}" alt="{{ post.title }}">
+						</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+	{% endfor %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-md-4 offset-sm-6 offset-md-8">
+				<div class="socials">
+					{{ socials.input(global_aside.get_field('social')) }}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-4">
+				<div class="money_form user_entry">
+					{% set mform = global_aside.get_field('donate') %}
+					{{ moneyForm.input(mform.heading, mform.description, mform.amounts, mform.default_amount, mform.frequency, mform.default_frequency, mform.project_id, mform.client_id) }}
+				</div>
+			</div>
+			<div class="col-12 col-sm-4">
+				<div class="money_form user_entry">
+					{% set mform = global_aside.get_field('donate') %}
+					{{ moneyForm.input(mform.heading, mform.description, mform.amounts, mform.default_amount, mform.frequency, mform.default_frequency, mform.project_id, mform.client_id) }}
+				</div>
+			</div>
+			<div class="col-12 col-sm-4">
+				{# newsletter, just plain html for now #}
+				<div class="newsletter user_entry">
+					{{ newsletter.input() }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

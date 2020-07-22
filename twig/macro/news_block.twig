@@ -1,0 +1,31 @@
+{% macro input(post, view) %}
+	{% import 'macro/news.twig' as newsItem %}
+	{% import 'macro/section.twig' as section %}
+	{# main section has different layout #}
+	{% if post.main_section %}
+		{# lets get the first news only #}
+		{% for item in view.news|slice(0,1) %}
+			<div class="col-12 col-sm-9 large">
+				{% set p = fn('getObject', item ) %}
+				{{ newsItem.input(p) }}
+			</div>
+		{% endfor %}
+		{# inject the subnavigation #}
+			<div class="col-12 col-sm-3">
+				{{ section.input(post, 'h1') }}
+			</div>
+		{# show the rest of the news #}
+		{% for item in view.news|slice(1,3) %}
+			<div class="col-12 col-sm-4 decent">
+				{% set p = fn('getObject', item ) %}
+				{{ newsItem.input(p) }}
+			</div>
+		{% endfor %}
+	{% else %}
+		{% import 'macro/offgrid_news.twig' as offgridNews %}
+		{{ offgridNews.input(view, 0, 1, 'offgrid _65') }}
+		{{ offgridNews.input(view, 1, 2, 'offgrid _35 double') }}
+		{{ offgridNews.input(view, 2, 1, 'offgrid _55') }}
+		{{ offgridNews.input(view, 3, 1, 'offgrid _45') }}
+	{% endif %}
+{% endmacro %}
