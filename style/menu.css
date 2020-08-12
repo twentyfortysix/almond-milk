@@ -1,0 +1,39 @@
+#top {
+  display: flex;
+  align-items: center;
+}
+#menu-top_menu {
+  margin-bottom: 0;
+}
+.navbar {
+  padding: 0 0 0 1.52vw;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+#top_menu ul {
+  padding-left: 0;
+  margin-left: 0;
+}
+#top_menu ul li {
+  display: inline-block;
+  list-style: none;
+}
+#top_menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  padding-bottom: 0;
+  padding: 0.608vw 0.608vw 0 0.608vw;
+}
+#top_menu ul li.active a {
+  text-decoration: underline;
+}
+#top_menu ul li .dropdown-menu {
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 0 0 transparent;
+}
+#top_menu ul li .dropdown-menu li a {
+  padding: 0.3rem 0;
+  background-color: #fff;
+}

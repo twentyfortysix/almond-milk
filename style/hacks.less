@@ -1,0 +1,25 @@
+@import "./variables.less";
+@import "./commons.less";
+
+/////////// HACKS /////////////
+
+// donation : make the last item button like with extra submenu background
+#top_menu{
+  .menu-item-18{
+    a{
+      .btn-primary();
+    }
+    .dropdown-menu{
+      border-radius:0;
+      padding:@_/1.5;
+      margin-top: 0;
+      background-color:@secondary;
+      a{
+        background:transparent;
+        border:0;
+        box-shadow:none;
+        font-size: 1rem;
+      }
+    }
+  }
+}

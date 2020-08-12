@@ -1,0 +1,34 @@
+@import "./variables.less";
+@import "./commons.less";
+
+.references{
+  position:relative;
+  max-height: @_*6;
+  height:@_*6;
+  overflow:hidden;
+  margin-bottom: @_*3;
+  .anim();
+  &:after{
+    content:'';
+    display: block;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    z-index: 2;
+    height:@_*2;
+    background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,0)100%);
+  }
+  &.open{
+    max-height: @_*500;
+    height:auto;
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%,rgba(255,255,255,0)100%);
+    .anim2();
+    &:after{
+      height:0;
+      .anim();
+    }
+  }
+  ol{
+    padding-left:@_*1.1;
+  }
+}

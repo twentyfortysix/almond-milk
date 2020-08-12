@@ -1,0 +1,54 @@
+@import "./variables.less";
+
+.set-h-size(@_i, @_elements, @_fsizes, @_f) when (@_i > 0) {  
+  @selector: extract(@_elements, @_i);
+  @multiplier: extract(@_fsizes, @_i);
+
+  @{selector} {
+    // font-size: round(1rem * @multiplier);
+    font-size: calc(@f * @multiplier + ((@D0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+    margin-bottom: 1rem * @multiplier / 2;
+    margin-left:@f * @multiplier / -10;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
+    &._h{
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+    }
+  }
+  .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
+}
+.set-h-size(@iterations, @elements, @fsizes, @f);
+
+body {
+  font-size: calc(@f + ((@B0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((@f * @B0) + ((@C0*@unit*1.1) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+}
+p{
+  margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
+}
+blockquote{
+  font-size: calc(@f + ((@C0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc((@f * @A0) + ((@C0*@unit*@C0) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body{
+  background-color: @white;
+  font-size:16px;
+  font-family: 'Georgia', Serif;
+}
+
+#top_menu{
+  margin: @_ 0;
+  a{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+}
+.btn, .meta, #quick_navigation, .key_pages, .key_links, input, textarea, button, .frequencies, .amounts, .letters{
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}

@@ -1,0 +1,47 @@
+@import "./variables.less";
+
+#top{
+  display: flex;
+  align-items: center;
+}
+#menu-top_menu{
+  margin-bottom: 0;
+}
+.navbar{
+  padding:0 0 0 @_;
+}
+.dropdown-toggle::after{
+  display: none;
+}
+#top_menu{
+  ul{
+    padding-left: 0;
+    margin-left: 0;
+    li{
+      display:inline-block;
+      list-style: none;
+      a{
+          display:inline-block;
+          text-decoration: none;
+          padding-bottom:0;
+          padding:@_*.4 @_*.4 0 @_*.4;
+      }
+      &.active{
+        a{
+          text-decoration: underline;
+        }
+      }
+      .dropdown-menu{
+        background-color: @white;
+        border:0;
+        box-shadow: 0 0 0 transparent;
+        li{
+          a{
+            padding:0.3rem 0;
+            background-color: @white;
+          }
+        }
+      }
+    }
+  }
+}

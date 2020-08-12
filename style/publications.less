@@ -1,0 +1,28 @@
+@import "./variables.less";
+
+.publications{
+  padding:@_*2;
+  border:1px solid #ddd;
+  border-radius:2px;
+  .btn-primary{
+    float: right;
+  }
+}
+.section{
+  padding:@_*2 0;
+  h2{
+    margin-bottom: 0;
+    min-height:2.6em;
+  }
+  .key_pages, .key_links{
+    margin-bottom: @_;
+    a{
+      display: block;
+    }
+  }
+  .key_links{
+    a{
+      color:darken(@secondary, 20%);
+    }
+  }
+}

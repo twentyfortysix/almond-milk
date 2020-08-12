@@ -1,0 +1,27 @@
+@import "./variables.less";
+@import "./commons.less";
+
+.socials{
+  display: flex;
+  justify-content: space-around;
+  .space();
+  a{
+    display: inline-block;
+    width:@_*2;
+    height:@_*2;
+    background:url(img/socials.png) 0 0 no-repeat;
+    background-size: auto 100%;
+    &.youtube{
+      background-position: 0 0;
+    }
+    &.instagram{
+      background-position: -183px 0;
+    }
+    &.facebook{
+      background-position: -58px 0;
+    }
+    &.twitter{
+      background-position: -117px 0;
+    }
+  }
+}

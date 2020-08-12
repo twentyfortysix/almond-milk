@@ -1,0 +1,51 @@
+@import "./variables.less";
+@import "./commons.less";
+// offgrid layout for news
+.offgrid{
+  padding:0 @_ @_*2 @_;
+  &._65{
+    width:65%;
+  }
+  &._35{
+    width:35%;
+  }
+  &._55{
+    width:55%;
+  }
+  &._45{
+    width:45%;
+  }
+  &.double{
+    .item{
+      height:calc(50% - @_);
+    }
+  }
+  &._35, &._55, &._45{
+    h3{
+      font-size: @A0*@_;
+    }
+  }
+  .item{
+    height: 100%;
+    min-height: @_*10;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-size:cover;
+    background-position:center;
+    .space();
+  }
+  h3{
+    margin:0 0 @_*.3 -@_/2;
+    span{
+      .mark(#000);
+    }
+  }
+  .description{
+    .mark(@primary);
+    max-width: 80%;
+    color:#000;
+    margin: 0 0 @_ -@_/1.9;
+  }
+}

@@ -1,0 +1,54 @@
+@import "./variables.less";
+@import "./commons.less";
+
+.money_form{
+  .frequencies, .amounts{
+    font-weight: 500;
+    border-radius:.3rem;
+    overflow:hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: @_/4;
+    flex-flow: row;
+    text-transform: lowercase;
+    a{
+      background:darken(@secondary, 10%);
+      flex:1;    
+      text-align: center;
+      .anim2();
+      &.active{
+        background:@primary;
+        .anim();
+      }
+      &:hover, &:focus{
+        background:darken(@primary, 15%);
+        .anim();
+      }
+    }
+  }
+  .amounts{
+    a{
+      padding:@_;
+      font-size:200%;
+    }
+  }
+  .custom_amount{
+    width: 100%;
+    position:relative;
+    .closed();
+    &.opened{
+      .opened();
+      margin-bottom: @_/4;
+    }
+    input{
+      width: 100%;
+      padding:@_/4 @_*2 @_/4 @_/4;
+    }
+  }
+  .currency{
+    position:absolute;
+    right:@_;
+    top:@_/4;
+  }
+}
