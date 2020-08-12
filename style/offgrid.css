@@ -1,121 +1,3 @@
-/*
-Theme Name: Almond milk
-Theme URI: 
-Author: 2046
-Author URI: http://2046.cz/
-Description: 
-Version: 0.2
-License: Aggressive Copyright
-License URI: http://aggresive-copyright.org
-Tags: 
-*/
-h1 {
-  font-size: calc(14px * 2.8 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 1.4rem;
-  margin-left: -3.92px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h1._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-h2 {
-  font-size: calc(14px * 2.2 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 1.1rem;
-  margin-left: -3.08px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h2._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-h3 {
-  font-size: calc(14px * 1.5818 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 0.7909rem;
-  margin-left: -2.21452px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h3._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-h4 {
-  font-size: calc(14px * 1.2892 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 0.6446rem;
-  margin-left: -1.80488px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h4._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-h5 {
-  font-size: calc(14px * 1 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 0.5rem;
-  margin-left: -1.4px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h5._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-h6 {
-  font-size: calc(14px * 0.8409 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  margin-bottom: 0.42045rem;
-  margin-left: -1.17726px;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 600;
-}
-h6._h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-body {
-  font-size: calc(14px + ((1.2892*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1.2892) + ((1.5818*14*1.1) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-}
-p {
-  margin: 0 0 calc(2rem + (2.8 - 0.8409) * ((100vw - 300px)/(1600 - 300))) 0;
-}
-blockquote {
-  font-size: calc(14px + ((1.5818*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1) + ((1.5818*14*1.5818) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-}
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body {
-  background-color: #fff;
-  font-size: 16px;
-  font-family: 'Georgia', Serif;
-}
-#top_menu {
-  margin: 1.52vw 0;
-}
-#top_menu a {
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 500;
-  font-size: 1.2rem;
-}
-.btn,
-.meta,
-#quick_navigation,
-.key_pages,
-.key_links,
-input,
-textarea,
-button,
-.frequencies,
-.amounts,
-.letters {
-  font-family: 'Barlow Semi Condensed', sans-serif;
-}
 .description,
 label {
   font-size: 1rem;
@@ -324,7 +206,6 @@ button:focus {
 }
 .btn-primary {
   background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);
-  font-family: 'Barlow Semi Condensed', sans-serif;
   letter-spacing: 0.02rem;
   font-weight: 500;
   padding: 1.064vw;
@@ -350,7 +231,6 @@ button:focus {
 }
 .btn-primary-solid {
   background: #FCD42C;
-  font-family: 'Barlow Semi Condensed', sans-serif;
   letter-spacing: 0.02rem;
   font-weight: 500;
   padding: 1.064vw;
@@ -376,7 +256,6 @@ button:focus {
 }
 .btn-secondary {
   background: linear-gradient(to bottom, #00D666 0%, #00D666 66%, #00a34e 100%);
-  font-family: 'Barlow Semi Condensed', sans-serif;
   letter-spacing: 0.02rem;
   font-weight: 500;
   padding: 1.064vw;
@@ -475,7 +354,6 @@ button:focus {
 }
 .user_entry button {
   background: #FCD42C;
-  font-family: 'Barlow Semi Condensed', sans-serif;
   letter-spacing: 0.02rem;
   font-weight: 500;
   padding: 1.064vw;
@@ -615,220 +493,6 @@ button:focus {
 .subprojects .more {
   align-self: flex-end;
 }
-#top {
-  display: flex;
-  align-items: center;
-}
-#menu-top_menu {
-  margin-bottom: 0;
-}
-.navbar {
-  padding: 0 0 0 1.52vw;
-}
-.dropdown-toggle::after {
-  display: none;
-}
-#top_menu ul {
-  padding-left: 0;
-  margin-left: 0;
-}
-#top_menu ul li {
-  display: inline-block;
-  list-style: none;
-}
-#top_menu ul li a {
-  display: inline-block;
-  text-decoration: none;
-  padding-bottom: 0;
-  padding: 0.608vw 0.608vw 0 0.608vw;
-}
-#top_menu ul li.active a {
-  text-decoration: underline;
-}
-#top_menu ul li .dropdown-menu {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 0 0 transparent;
-}
-#top_menu ul li .dropdown-menu li a {
-  padding: 0.3rem 0;
-  background-color: #fff;
-}
-.footer {
-  background: linear-gradient(to right, #fff 0%, #fff 50%, #F1F1F1 51%, #F1F1F1 100%);
-}
-.footer .logo_holder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.footer .logo_holder img {
-  width: 80%;
-  height: auto;
-}
-.footer .btn_holder {
-  align-items: center;
-  justify-content: center;
-}
-.footer_body,
-.publications {
-  background-color: #F1F1F1;
-}
-.publications {
-  padding: 3.04vw;
-  border: 1px solid #ddd;
-  border-radius: 2px;
-}
-.publications .btn-primary {
-  float: right;
-}
-.section {
-  padding: 3.04vw 0;
-}
-.section h2 {
-  margin-bottom: 0;
-  min-height: 2.6em;
-}
-.section .key_pages,
-.section .key_links {
-  margin-bottom: 1.52vw;
-}
-.section .key_pages a,
-.section .key_links a {
-  display: block;
-}
-.section .key_links a {
-  color: #007035;
-}
-.single-post h1 {
-  background-color: #fff;
-  padding: 1.52vw 3.04vw;
-  margin-top: -4.56vw;
-}
-.acf-map {
-  width: 100%;
-  height: 400px;
-  border: #ccc solid 1px;
-  margin: 20px 0;
-}
-/* fixes potential theme css conflict */
-.acf-map img {
-  max-width: inherit !important;
-}
-.socials {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 3.04vw;
-}
-.socials a {
-  display: inline-block;
-  width: 3.04vw;
-  height: 3.04vw;
-  background: url(img/socials.png) 0 0 no-repeat;
-  background-size: auto 100%;
-}
-.socials a.youtube {
-  background-position: 0 0;
-}
-.socials a.instagram {
-  background-position: -183px 0;
-}
-.socials a.facebook {
-  background-position: -58px 0;
-}
-.socials a.twitter {
-  background-position: -117px 0;
-}
-.references {
-  position: relative;
-  max-height: 9.12vw;
-  height: 9.12vw;
-  overflow: hidden;
-  margin-bottom: 4.56vw;
-  transition: all 0.4s;
-}
-.references:after {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 2;
-  height: 3.04vw;
-  background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
-}
-.references.open {
-  max-height: 760vw;
-  height: auto;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
-  transition: all 0.8s;
-}
-.references.open:after {
-  height: 0;
-  transition: all 0.4s;
-}
-.references ol {
-  padding-left: 1.672vw;
-}
-.money_form .frequencies,
-.money_form .amounts {
-  font-weight: 500;
-  border-radius: 0.3rem;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 0.38vw;
-  flex-flow: row;
-  text-transform: lowercase;
-}
-.money_form .frequencies a,
-.money_form .amounts a {
-  background: #00a34e;
-  flex: 1;
-  text-align: center;
-  transition: all 0.8s;
-}
-.money_form .frequencies a.active,
-.money_form .amounts a.active {
-  background: #FCD42C;
-  transition: all 0.4s;
-}
-.money_form .frequencies a:hover,
-.money_form .amounts a:hover,
-.money_form .frequencies a:focus,
-.money_form .amounts a:focus {
-  background: #d8af03;
-  transition: all 0.4s;
-}
-.money_form .amounts a {
-  padding: 1.52vw;
-  font-size: 200%;
-}
-.money_form .custom_amount {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  max-height: 0;
-  transition: all 0.8s;
-}
-.money_form .custom_amount.opened {
-  overflow: auto;
-  opacity: 1;
-  max-height: 999999px;
-  transition: all 0.8s;
-  margin-bottom: 0.38vw;
-}
-.money_form .custom_amount input {
-  width: 100%;
-  padding: 0.38vw 3.04vw 0.38vw 0.38vw;
-}
-.money_form .currency {
-  position: absolute;
-  right: 1.52vw;
-  top: 0.38vw;
-}
 .offgrid {
   padding: 0 1.52vw 3.04vw 1.52vw;
 }
@@ -888,47 +552,4 @@ button:focus {
   max-width: 80%;
   color: #000;
   margin: 0 0 1.52vw -0.8vw;
-}
-#top_menu .menu-item-18 a {
-  background: linear-gradient(to bottom, #FCD42C 0%, #FCD42C 66%, #f2c403 100%);
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  letter-spacing: 0.02rem;
-  font-weight: 500;
-  padding: 1.064vw;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-}
-#top_menu .menu-item-18 a:hover,
-#top_menu .menu-item-18 a:active,
-#top_menu .menu-item-18 a:focus {
-  color: #000;
-  text-decoration: none;
-  box-shadow: inset 0 0 2px #F1F1F1;
-}
-#top_menu .menu-item-18 a.sml {
-  padding: 0.532vw 1.064vw;
-}
-#top_menu .menu-item-18 a:hover,
-#top_menu .menu-item-18 a:active,
-#top_menu .menu-item-18 a:focus {
-  background: linear-gradient(to bottom, #fcd945 0%, #FCD42C 16%, #e8bc03 100%);
-}
-#top_menu .menu-item-18 .dropdown-menu {
-  border-radius: 0;
-  padding: 1.01333333vw;
-  margin-top: 0;
-  background-color: #00D666;
-}
-#top_menu .menu-item-18 .dropdown-menu a {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  font-size: 1rem;
-}
-@media all and (max-width: 769px) {
-  .container {
-    width: 100%;
-  }
 }
