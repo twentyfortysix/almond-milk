@@ -160,3 +160,9 @@ function remove_menus () {
     }
 }
 add_action('admin_menu','remove_menus');
+
+function encode_email($e) {
+    $output = '';
+    for ($i = 0; $i < strlen($e); $i++) { $output .= '&#'.ord($e[$i]).';'; }
+    return $output;
+}
