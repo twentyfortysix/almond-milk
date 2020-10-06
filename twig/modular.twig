@@ -5,6 +5,7 @@
 {% import 'macro/newsletter.twig' as newsletter %}
 {% import 'macro/money_form.twig' as moneyForm %}
 {% import 'macro/news_block.twig' as newsBlock %}
+{% import 'macro/subprojects.twig' as projectMiniView %}
 
 {% block content %}
 	{% for view in post.get_field('flexible_content') %}
@@ -26,7 +27,6 @@
 				{% endfor %}
 			</div>
 		{% endif %}
-
 	{% endfor %}
 {% endblock %}
 
@@ -35,26 +35,7 @@
 		{% for view in post.get_field('flexible_content') %}
 			{% if view.acf_fc_layout == "subprojects" %}
 				{% for project in view.projects %}
-					<div class="col-12 col-sm-6 {{ view.acf_fc_layout }}">
-						{% if project.graphic %}
-							{# bit of mascara on the eyelashes #}
-							{% set graphic = TimberImage(project.graphic) %}
-							{{ rImage.input(graphic, 'medium', null, item.title) }}
-						{% else %}
-							{# regular project data #}
-							<h4>
-								<a href="{{ project.button_link }}" class="emphasize">
-									{{ project.heading }}
-								</a>
-							</h4>
-							<div class="perex">
-								{{ project.perex|wpautop }}
-							</div>
-							<a href="{{ project.button_link}}" class="btn-primary sml more">
-								{{ project.button_heading }}
-							</a>
-						{% endif %}
-					</div>
+					{{ projectMiniView.input(project, view.acf_fc_layout) }}
 				{% endfor %}
 
 			{% elseif view.acf_fc_layout == "text" %}

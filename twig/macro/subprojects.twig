@@ -1,0 +1,23 @@
+{% macro input(project, layout) %}
+	{% import "macro/responsive_image.twig" as rImage %}
+	<div class="col-12 col-sm-6 {{ layout }}">
+		{% if project.graphic %}
+			{# bit of mascara on the eyelashes #}
+			{% set graphic = TimberImage(project.graphic) %}
+			{{ rImage.input(graphic, 'medium', null, item.title) }}
+		{% else %}
+			{# regular project data #}
+			<h4>
+				<a href="{{ project.button_link }}" class="emphasize">
+					{{ project.heading }}
+				</a>
+			</h4>
+			<div class="perex">
+				{{ project.perex|wpautop }}
+			</div>
+			<a href="{{ project.button_link}}" class="btn-primary sml more">
+				{{ project.button_heading }}
+			</a>
+		{% endif %}
+	</div>
+{% endmacro %}

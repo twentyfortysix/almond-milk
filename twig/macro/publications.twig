@@ -1,0 +1,27 @@
+{% macro input(publications_view) %}
+	{% import "macro/responsive_image.twig" as rImage %}
+	<div class="col-12 col-sm-4">
+        <h4 class="_h">
+            {{ publications_view.heading }}
+        </h4>
+        <div class="description">
+            {{ publications_view.description|wpautop }}
+        </div>
+        {% if publications_view.button_heading and publications_view.button_link %}
+            <a href="{{ publications_view.button_link }}" class="btn-primary sml">
+                {{ publications_view.button_heading }}
+            </a>
+        {% endif %}
+    </div>
+    <div class="col-12 col-sm-8">
+        <div class="row">
+            {% for item in publications_view.selected %}
+                <div class="col-6 col-sm-{{ 12 / publications_view.selected|length * 2 }}  col-md-{{ 12 / publications_view.selected|length }}">
+                    <a href="{{ item.link }}">
+                        {{ rImage.input(item.thumbnail, 300,450, item.title) }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,40 @@
+{% macro input(footer, theme) %}
+	<div class="footer">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-12 col-sm-2 logo_holder">
+	                <a href="#top">
+	                    <img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.name }}">
+	                </a>
+	            </div>
+	            <div class="col-12 col-sm-10 footer_body">
+	                <div class="row">
+	                    {% for item in footer.get_field('cols') %}
+	                        <div class="col-12 col-sm-4">
+	                            <div class="in">
+	                                {{ item.content|wpautop }}
+	                            </div>
+	                        </div>
+	                    {% endfor %}
+	                    <div class="col-12 col-sm-4 d-flex btn_holder">
+	                        <div class="in">
+	                            <a href="{{ footer.button_link }}" class="btn-primary" target="_blank">
+	                                {{ footer.button_heading }}
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="container">
+	    <div class="row">
+	        <div class="col-12 col-sm-10 offset-sm-2 motto">
+	            <h4>
+	                {{ footer.motto }}
+	            </h4>
+	        </div>
+	    </div>
+	</div>
+{% endmacro %}

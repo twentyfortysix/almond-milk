@@ -1,0 +1,20 @@
+{% macro input(top_menu, theme, site) %}
+	{% import "macro/menu_items.twig" as menu_items %}
+	<div class="container">
+        <div class="row">
+            <div class="col-12" id="top">
+    			<a href="{{ site.url }}" id="logo">
+    				<img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.title }}">
+    			</a>
+                <nav class="navbar navbar-expand-sm" role="navigation">
+    				{{ menu_items.input(top_menu, 'top_menu') }}
+    			</nav>
+    			<button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#top_menu" aria-controls="top_menu" aria-expanded="false" aria-label="Toggle navigation">
+    				<span></span>
+    				<span></span>
+    				<span></span>
+    			</button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

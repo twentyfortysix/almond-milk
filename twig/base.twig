@@ -1,8 +1,11 @@
 {% import 'macro/wpml_switch.twig' as wpml_switch %}
-{% import "macro/menu_items.twig" as menu_items %}
 {% import "macro/responsive_image.twig" as rImage %}
 {% import 'macro/edit-link.twig' as editLink %}
 {% import 'macro/section.twig' as section %}
+{% import 'macro/footer.twig' as footerView %}
+{% import 'macro/publications.twig' as publicationsView %}
+{% import 'macro/top_menu.twig' as topMenu %}
+
 
 <!DOCTYPE html>
 <html>
@@ -24,23 +27,7 @@
     <body class="{{ body_class }}">
         {{ editLink.input(post) }}
         {% block top_menu %}
-            <div class="container">
-                <div class="row">
-                    <div class="col-12" id="top">
-            			<a href="{{ site.url }}" id="logo">
-            				<img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.title }}">
-            			</a>
-                        <nav class="navbar navbar-expand-sm" role="navigation">
-            				{{ menu_items.input(top_menu, 'top_menu') }}
-            			</nav>
-            			<button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#top_menu" aria-controls="top_menu" aria-expanded="false" aria-label="Toggle navigation">
-            				<span></span>
-            				<span></span>
-            				<span></span>
-            			</button>
-                    </div>
-                </div>
-            </div>
+            {{ topMenu.input(top_menu, theme, site) }}
         {% endblock %}
 
         {% block content %}
@@ -62,30 +49,7 @@
         <div class="container publications">
             <div class="row">
                 {% set publications_view = footer.get_field('publications') %}
-                <div class="col-12 col-sm-4">
-                    <h4 class="_h">
-                        {{ publications_view.heading }}
-                    </h4>
-                    <div class="description">
-                        {{ publications_view.description|wpautop }}
-                    </div>
-                    {% if publications_view.button_heading and publications_view.button_link %}
-                        <a href="{{ publications_view.button_link }}" class="btn-primary sml">
-                            {{ publications_view.button_heading }}
-                        </a>
-                    {% endif %}
-                </div>
-                <div class="col-12 col-sm-8">
-                    <div class="row">
-                        {% for item in publications_view.selected %}
-                            <div class="col-6 col-sm-{{ 12 / publications_view.selected|length * 2 }}  col-md-{{ 12 / publications_view.selected|length }}">
-                                <a href="{{ item.link }}">
-                                    {{ rImage.input(item.thumbnail, 300,450, item.title) }}
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                {{ publicationsView.input(publications_view) }}
             </div>
         </div>
         <div class="main_sections">
@@ -99,44 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-2 logo_holder">
-                        <a href="#top">
-                            <img src="{{ theme.path }}/img/arnika-org-logo.svg" alt="{{ site.name }}">
-                        </a>
-                    </div>
-                    <div class="col-12 col-sm-10 footer_body">
-                        <div class="row">
-                            {% for item in footer.get_field('cols') %}
-                                <div class="col-12 col-sm-4">
-                                    <div class="in">
-                                        {{ item.content|wpautop }}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            <div class="col-12 col-sm-4 d-flex btn_holder">
-                                <div class="in">
-                                    <a href="{{ footer.button_link }}" class="btn-primary" target="_blank">
-                                        {{ footer.button_heading }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-10 offset-sm-2 motto">
-                    <h4>
-                        {{ footer.motto }}
-                    </h4>
-                </div>
-            </div>
-        </div>
+        {{ footerView.input(footer, theme) }}
 
     {{wp_footer}}
     </body>
