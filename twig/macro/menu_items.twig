@@ -1,16 +1,23 @@
 {% macro input(menu, name) %}
 	<div id="{{ name }}" class="{{ name }} collapse navbar-collapse">
-		<ul id="menu-{{ name }}" class="menu">
+		<ul id="menu-{{ name }}" class="menu" role="menubar">
 			{% for item in menu.get_items %}
 				{% if (item.get_children) %}
 					<li class="dropdown {{ item.class }}" id="menu-item-{{ item.id }}">
-			            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" target="{{ item.target }}">
+			            <a href="{{ item.link }}" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" target="{{ item.target }}" id="id_{{ item.id }}" role="menuitem">
 			            	{{ item.title }}
 			            </a>
-			            <ul class="dropdown-menu">
+			            <ul class="dropdown-menu" role="menu">
+			            	{# force in parent item for mobile view #}
+			            	<li class="{{ item.class }} d-block d-sm-none" id="menu-item-{{ item.id }}">
+					            <a href="{{ item.link }}" class="dropdown-toggle nav-link" id="id_{{ item.id }}" role="menuitem">
+					            	{{ item.title }}
+					            </a>
+					        </li>
+
 			            	{% for subitem in item.get_children %}
 				            	<li class="{{ subitem.class }}" id="menu-item-{{ subitem.id }}">
-				            		<a href="{{ subitem.get_link }}" target="{{ subitem.target }}" class="nav-link">
+				            		<a href="{{ subitem.get_link }}" target="{{ subitem.target }}" class="nav-link" id="id_{{ item.id }}" role="menuitem">
 										{{ subitem.title }}
 					            	</a>
 					            </li>
@@ -19,7 +26,7 @@
 					</li>
 				{% else %}
 					<li class="{{ item.class }}" id="menu-item-{{ item.id }}">
-						<a href="{{ item.get_link }}" target="{{ item.target }}" class="nav-link">
+						<a href="{{ item.get_link }}" target="{{ item.target }}" class="nav-link" id="id_{{ item.id }}" role="menuitem">
 							{{ item.title }}
 						</a>
 
