@@ -34,17 +34,37 @@ body{
 @B0: 1.1892;
 @A0: 1;
 @D-1: .8409;
+@min_width: 320px;
+@max_width: 1600px;
+@min_font: @A1*@f;
+@max_font: @B0*@f;
+@line_height_min: @B0*@f;
+@line_height_max: @C0*1.1*@f;
+
+.fluid-type(@property, @min-vw, @max-vw, @min-size, @max-size) {
+  @{property}: @min-size;
+  @media screen and (min-width: @min-vw) {
+    @{property}: calc( @min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")" );
+  }
+  @media screen and (min-width: @max-vw) {
+    @{property}: @max-size;
+  }
+}
+
+/* fluid typography */
 body {
-  font-size: calc(@f + ((@C0*@_) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((@f * @B0) + ((@D0*@_*@B0) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
+  .fluid-type(font-size,@min_width, @max_width, @min_font, @max_font);
+  .fluid-type(line-height,@min_width, @max_width, @line_height_min, @line_height_max);
+}
+blockquote{
+  .fluid-type(font-size,@min_width, @max_width, @C0*@f, @A0*@f);
+  .fluid-type(line-height,@min_width, @max_width, @C0*@C0*@f, @A0*@f);
 }
 p{
   margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
 }
-blockquote{
-  font-size: calc(@f + ((@D0*@_) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((@f * @B0) + ((@C0*@_*@D0) - (@A0*@_)) * ((100vw - 300px) / (1600 - 300)));
-}
+
+/* H design */
 @fsizes: @D-1, @A0, @B0, @C0, @D0_, @A1;
 @elements: h6, h5, h4, h3, h2, h1;
 @iterations: length(@elements); // lehgth of @elements
