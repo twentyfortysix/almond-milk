@@ -9,6 +9,30 @@ License: Aggressive Copyright
 License URI: http://aggresive-copyright.org
 Tags: 
 */
+body {
+  font-size: 39.2px;
+  line-height: 18.0488px;
+}
+@media screen and (min-width: 320px) {
+  body {
+    font-size: calc(39.2px  +  -21.1512  * ((100vw -  320px ) / 1280 ));
+  }
+}
+@media screen and (min-width: 1600px) {
+  body {
+    font-size: 18.0488px;
+  }
+}
+@media screen and (min-width: 320px) {
+  body {
+    line-height: calc(18.0488px  +  6.31092  * ((100vw -  320px ) / 1280 ));
+  }
+}
+@media screen and (min-width: 1600px) {
+  body {
+    line-height: 24.35972px;
+  }
+}
 h1 {
   font-size: calc(14px * 2.8 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
   margin-bottom: 1.4rem;
@@ -75,10 +99,6 @@ h6._h {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
 }
-body {
-  font-size: calc(14px + ((1.2892*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1.2892) + ((1.5818*14*1.1) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-}
 p {
   margin: 0 0 calc(2rem + (2.8 - 0.8409) * ((100vw - 300px)/(1600 - 300))) 0;
 }
@@ -114,6 +134,10 @@ button,
 .frequencies,
 .amounts,
 .letters {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.tags {
+  font-size: 12.6px;
   font-family: 'Barlow Semi Condensed', sans-serif;
 }
 .description,
@@ -374,6 +398,33 @@ button:focus {
 .btn-primary-solid:focus {
   background: #e8bc03;
 }
+.btn-primary-dark {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  letter-spacing: 0.02rem;
+  font-weight: 500;
+  padding: 1.064vw;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  background: #000;
+  color: #fff;
+}
+.btn-primary-dark:hover,
+.btn-primary-dark:active,
+.btn-primary-dark:focus {
+  color: #000;
+  text-decoration: none;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.btn-primary-dark.sml {
+  padding: 0.532vw 1.064vw;
+}
+.btn-primary-dark:hover,
+.btn-primary-dark:active,
+.btn-primary-dark:focus {
+  background: #000000;
+}
 .btn-secondary {
   background: linear-gradient(to bottom, #00D666 0%, #00D666 66%, #00a34e 100%);
   font-family: 'Barlow Semi Condensed', sans-serif;
@@ -449,6 +500,24 @@ button:focus {
 .switch.active:after {
   transform: rotate(45deg);
   left: 1.064vw;
+}
+.tags {
+  background-color: #000;
+  color: #fff;
+  display: inline;
+  padding: 0 0.608vw;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 0.456vw 0 0 #000;
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: -14px;
+  padding: 0 14px;
+  line-height: 1rem;
+}
+.tags a {
+  color: #fff;
 }
 #quick_navigation {
   font-size: 1.52vw;
@@ -550,48 +619,6 @@ button:focus {
   box-shadow: 0 0.456vw 0 0 #FCD42C;
   color: #000;
 }
-.main_section h3 {
-  color: #fff;
-  display: block;
-  transform: translateY(calc(-100% + 1.52vw/2)) translateX(-0.4rem);
-  position: absolute;
-  padding: 0;
-  max-width: 90%;
-}
-.main_section h3 a {
-  background-color: #000;
-  color: #fff;
-  display: inline;
-  padding: 0 0.608vw;
-  /* Needs prefixing */
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  box-shadow: 0 0.456vw 0 0 #000;
-}
-.main_section .post {
-  display: flex;
-  flex-flow: column;
-}
-.main_section .post .description {
-  padding: 2.28vw 0.76vw 1.52vw 0.76vw;
-}
-.main_section .post .more {
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin-bottom: 2.736vw;
-}
-.main_section .large .description {
-  max-width: 50%;
-  padding-bottom: 1.976vw;
-  margin-left: 20%;
-}
-.main_section .large .post {
-  flex-flow: row;
-}
-.main_section .large .post .more {
-  margin: 2.128vw 0 0 auto;
-  align-self: flex-start;
-}
 .motto {
   padding: 3.04vw 0.1rem;
 }
@@ -653,6 +680,163 @@ button:focus {
 #top_menu ul li .dropdown-menu li a {
   padding: 0.3rem 0;
   background-color: #fff;
+}
+.main_section h3 {
+  color: #fff;
+  display: block;
+  transform: translateY(calc(-100% + 1.52vw/2)) translateX(-0.4rem);
+  position: absolute;
+  padding: 0;
+  max-width: 90%;
+}
+.main_section h3 a {
+  background-color: #000;
+  color: #fff;
+  display: inline;
+  padding: 0 0.608vw;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 0.456vw 0 0 #000;
+}
+.main_section .post {
+  display: flex;
+  flex-flow: column;
+}
+.main_section .post .description {
+  padding: 2.28vw 0.76vw 1.52vw 0.76vw;
+}
+.main_section .post .more {
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-bottom: 2.736vw;
+}
+.main_section .large {
+  margin-bottom: 28px;
+}
+.main_section .large .description {
+  max-width: 50%;
+  padding-bottom: 1.976vw;
+  margin-left: 20%;
+}
+.main_section .large .post {
+  flex-flow: row;
+}
+.main_section .large .post .more {
+  margin: 2.128vw 0 0 auto;
+  align-self: flex-start;
+}
+.main_section .large.format_1 .in {
+  display: flex;
+  flex-flow: column;
+  background-color: #FCD42C;
+  padding: 42px;
+}
+.main_section .large.format_1 .in .tags {
+  color: #000;
+  background-color: transparent;
+  padding: 0;
+  box-shadow: 0 0 0 0 #000;
+  margin-bottom: 14px;
+}
+.main_section .large.format_1 .in .tags a {
+  color: #000;
+}
+.main_section .large.format_1 .in .btn {
+  align-self: flex-end;
+}
+.main_section .large.format_1 .in .description {
+  margin-left: 0;
+}
+.main_section .large.format_2 {
+  display: flex;
+}
+.main_section .large.format_2 .in {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.main_section .large.format_2 .in h2 {
+  margin-left: -28px;
+}
+.main_section .large.format_2 .in h2 a {
+  background-color: #000;
+  color: #fff;
+  display: inline;
+  padding: 0 0.608vw;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 0.456vw 0 0 #000;
+}
+.main_section .large.format_2 .in .tags {
+  margin-left: -28px;
+}
+.main_section .large.format_2 .in .description {
+  display: none;
+}
+.main_section .large.format_2 .in .btn {
+  align-self: flex-end;
+  background: #FCD42C;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  letter-spacing: 0.02rem;
+  font-weight: 500;
+  padding: 1.064vw;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+.main_section .large.format_2 .in .btn:hover,
+.main_section .large.format_2 .in .btn:active,
+.main_section .large.format_2 .in .btn:focus {
+  color: #000;
+  text-decoration: none;
+  box-shadow: inset 0 0 2px #F1F1F1;
+}
+.main_section .large.format_2 .in .btn.sml {
+  padding: 0.532vw 1.064vw;
+}
+.main_section .large.format_2 .in .btn:hover,
+.main_section .large.format_2 .in .btn:active,
+.main_section .large.format_2 .in .btn:focus {
+  background: #e8bc03;
+}
+.main_section .large.format_3 .in {
+  display: flex;
+  flex-flow: column;
+  background-color: #FCD42C;
+  background-size: 50% auto;
+  background-position: calc(100% -  14px) 14px;
+  background-repeat: no-repeat;
+}
+.main_section .large.format_3 .in h2 {
+  order: 2;
+}
+.main_section .large.format_3 .in h2 a {
+  background-color: #000;
+  color: #fff;
+  display: inline;
+  padding: 0 0.608vw;
+  /* Needs prefixing */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 0 0.456vw 0 0 #000;
+}
+.main_section .large.format_3 .in .tags {
+  order: 3;
+  margin-left: -3.5px;
+  padding: 0 7px;
+}
+.main_section .large.format_3 .in .description {
+  margin-left: 0;
+  order: 1;
+  width: 35%;
+}
+.main_section .large.format_3 .in .btn {
+  order: 4;
+  align-self: flex-end;
 }
 .money_form .frequencies,
 .money_form .amounts {

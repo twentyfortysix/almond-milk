@@ -1,5 +1,28 @@
 @import "./variables.less";
 
+.fluid-type(@property, @min-vw, @max-vw, @min-size, @max-size) {
+  @{property}: @min-size;
+  @media screen and (min-width: @min-vw) {
+    @{property}: calc( @min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")" );
+  }
+  @media screen and (min-width: @max-vw) {
+    @{property}: @max-size;
+  }
+}
+
+body {
+  .fluid-type(font-size,@min_width, @max_width, @min_font, @max_font);
+  .fluid-type(line-height,@min_width, @max_width, @line_height_min, @line_height_max);
+}
+blockquote{
+  .fluid-type(font-size,@min_width, @max_width, @C0*@f, @A0*@f);
+  .fluid-type(line-height,@min_width, @max_width, @C0*@C0*@f, @A0*@f);
+}
+p{
+  margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
+}
+
+
 .set-h-size(@_i, @_elements, @_fsizes, @_f) when (@_i > 0) {  
   @selector: extract(@_elements, @_i);
   @multiplier: extract(@_fsizes, @_i);
@@ -20,17 +43,7 @@
 }
 .set-h-size(@iterations, @elements, @fsizes, @f);
 
-body {
-  font-size: calc(@f + ((@B0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((@f * @B0) + ((@C0*@unit*1.1) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
-}
-p{
-  margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
-}
-blockquote{
-  font-size: calc(@f + ((@C0*@unit) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((@f * @A0) + ((@C0*@unit*@C0) - (@A0*@unit)) * ((100vw - 300px) / (1600 - 300)));
-}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,5 +63,9 @@ body{
   }
 }
 .btn, .meta, #quick_navigation, .key_pages, .key_links, input, textarea, button, .frequencies, .amounts, .letters{
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.tags{
+  font-size: .9*@f;
   font-family: 'Barlow Semi Condensed', sans-serif;
 }
