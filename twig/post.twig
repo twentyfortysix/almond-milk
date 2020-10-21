@@ -2,6 +2,7 @@
 {% import 'macro/socials.twig' as socials %}
 {% import 'macro/newsletter.twig' as newsletter %}
 {% import 'macro/money_form.twig' as moneyForm %}
+{% import 'macro/image_gallery.twig' as galleryGrid %}
 
 {% block content %}
 	<div class="container-fluid">
@@ -27,6 +28,13 @@
 				<div class="entry">
 					{{ post.content }}
 				</div>
+				{# image gallery #}
+				{% if post.ImageGallery_images %}
+					<div class="image_gallery type_{{ post.ImageGallery_type }}">
+						{{ galleryGrid.input(post.ImageGallery_images, post.ImageGallery_type) }}
+					</div>
+				{% endif %}
+				{# references list #}
 				{% if post.references %}
 					<div class="references">
 						<h4>

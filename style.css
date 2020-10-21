@@ -33,6 +33,33 @@ body {
     line-height: 24.35972px;
   }
 }
+blockquote {
+  font-size: 22.1452px;
+  line-height: 35.02927736px;
+}
+@media screen and (min-width: 320px) {
+  blockquote {
+    font-size: calc(22.1452px  +  -8.1452  * ((100vw -  320px ) / 1280 ));
+  }
+}
+@media screen and (min-width: 1600px) {
+  blockquote {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 320px) {
+  blockquote {
+    line-height: calc(35.02927736px  +  -21.02927736  * ((100vw -  320px ) / 1280 ));
+  }
+}
+@media screen and (min-width: 1600px) {
+  blockquote {
+    line-height: 14px;
+  }
+}
+p {
+  margin: 0 0 calc(2rem + (2.8 - 0.8409) * ((100vw - 300px)/(1600 - 300))) 0;
+}
 h1 {
   font-size: calc(14px * 2.8 + ((2*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
   margin-bottom: 1.4rem;
@@ -98,13 +125,6 @@ h6 {
 h6._h {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
-}
-p {
-  margin: 0 0 calc(2rem + (2.8 - 0.8409) * ((100vw - 300px)/(1600 - 300))) 0;
-}
-blockquote {
-  font-size: calc(14px + ((1.5818*14) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
-  line-height: calc((14px * 1) + ((1.5818*14*1.5818) - (1*14)) * ((100vw - 300px) / (1600 - 300)));
 }
 * {
   -webkit-font-smoothing: antialiased;
@@ -622,12 +642,6 @@ button:focus {
 .motto {
   padding: 3.04vw 0.1rem;
 }
-.alphabetical_list .the_list .item {
-  display: block;
-}
-.alphabetical_list .letters a {
-  padding: 0 0.38vw;
-}
 .sparse_content {
   padding: 0 4.56vw;
 }
@@ -950,6 +964,36 @@ button:focus {
 }
 .section .key_links a {
   color: #007035;
+}
+.alphabetical_list .the_list .item {
+  display: block;
+}
+.alphabetical_list .letters a {
+  padding: 0 0.38vw;
+}
+.image_gallery {
+  margin: 0;
+  padding: 0;
+}
+.image_gallery img {
+  width: 100%;
+  height: auto;
+}
+.image_gallery div {
+  margin: 0;
+  padding: 0;
+}
+.image_gallery .d-flex {
+  flex: 1;
+}
+.image_gallery .cl {
+  flex-flow: column;
+}
+.image_gallery a {
+  flex: 1;
+  display: block;
+  background-size: cover;
+  background-position: center center;
 }
 .footer {
   background: linear-gradient(to right, #fff 0%, #fff 50%, #F1F1F1 51%, #F1F1F1 100%);

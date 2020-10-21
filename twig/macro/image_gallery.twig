@@ -1,0 +1,74 @@
+{% macro input(imageIds, type) %}
+	{% import 'macro/image_link.twig' as imgLink %}
+	{# simple photogrid #}
+	{% if type == 0 %}
+		<div class="row">
+			{% for id in imageIds %}
+				<div class="col-6 col-sm-4 col-md-3">
+					{% set img = TimberImage(id) %}
+					{{ imgLink.input(img.caption, img) }}
+				</div>
+			{% endfor %}
+		</div>
+	{# fancy grid #}
+	{% else %}
+		{% for gallery in imageIds|batch(5) %}
+			<div class="row no-gutters">
+				{% set imagesNumber = gallery|length %}
+				{% if imagesNumber == 3 %}
+					{% set featured_width = 'col-sm-4' %}
+				{% else %}
+					{% set featured_width = 'col-sm-6' %}
+				{% endif %}
+
+				{# big image #}
+				{% if loop.index is not divisible by(2) %}
+					<div class="col-12 {{ featured_width }}">
+						{% set img = TimberImage(gallery|slice(0,1)[0]) %}
+						{{ imgLink.input(img.caption, img) }}
+					</div>
+				{% endif %}
+
+				{# dynamic set of images #}
+				{% if imagesNumber == 2 %}
+					{% for id in gallery|slice(1, length) %}
+						<div class="col-12 col-sm-6">
+							{% set img = TimberImage(id) %}
+							{{ imgLink.input(img.caption, img) }}
+						</div>
+					{% endfor %}
+				{% elseif imagesNumber == 3 %}
+					{% for id in gallery|slice(1, length) %}
+						<div class="col-12 col-sm-4">
+							{% set img = TimberImage(id) %}
+							{{ imgLink.input(img.caption, img) }}
+						</div>
+					{% endfor %}
+				{% elseif imagesNumber >= 4 %}
+					<div class="col-12 col-sm-6 d-flex">
+						<div class="row d-flex">
+							{% set half = ((gallery|slice(1, length)|length / 2)|round(0, 'ceil')) %}
+							{% for col in gallery|slice(1, length)|batch(half) %}
+								<div class="col-6 d-flex cl">
+									{% for id in col %}
+										{% set img = TimberImage(id) %}
+										<a href="{{ img.src('large') }}" style="background-image:url({{ img.src('large') }})" rel="lightbox">
+										</a>
+									{% endfor %}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
+
+				{# big image #}
+				{% if loop.index is divisible by(2) %}
+					<div class="col-12 {{ featured_width }}">
+						{% set img = TimberImage(gallery|slice(0,1)[0]) %}
+						{{ imgLink.input(img.caption, img) }}
+					</div>
+				{% endif %}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endmacro %}

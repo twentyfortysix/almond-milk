@@ -1,0 +1,5 @@
+{% macro input(title, image) %}
+	<a href="{{ image.src('large') }}" rel="lightbox">
+		<img src="{{ image.src|resize(780,494) }}" alt="{{ title }}">
+	</a>
+{% endmacro %}
