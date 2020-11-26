@@ -166,3 +166,16 @@ function encode_email($e) {
     for ($i = 0; $i < strlen($e); $i++) { $output .= '&#'.ord($e[$i]).';'; }
     return $output;
 }
+
+function getYoutubeVideoIdFromUrl($url){
+    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+    return $match[1];
+}
+function getVimeoVideoIdFromUrl($url = '') {
+    $regs = array();
+    $id = '';
+    if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
+        $id = $regs[3];
+    }
+    return $id;
+}
