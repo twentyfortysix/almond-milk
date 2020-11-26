@@ -97,10 +97,19 @@ img, iframe{
 }
 a{
   color:#000;
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
   &:hover, &:active, &:focus{
     outline: none;
+    text-decoration: none;
+  }
+}
+p{
+  a{
+    text-decoration: underline;
+    &:hover, &:active, &:focus{
+      text-decoration: underline;
+    }
   }
 }
 
