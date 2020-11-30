@@ -1,5 +1,6 @@
 {% import 'macro/wpml_switch.twig' as wpml_switch %}
 {% import "macro/menu_items.twig" as menu_items %}
+{% import 'macro/edit-link.twig' as editLink %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +19,7 @@
         {{ fn('wp_head') }}
     </head>
     <body class="{{ body_class }}">
+	{{ editLink.input(post) }}
         {% block top_menu %}
             <nav class="navbar navbar-expand-sm">
                 <div class="container">
