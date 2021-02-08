@@ -29,8 +29,6 @@
 						<a href="{{ item.get_link }}" target="{{ item.target }}" class="nav-link" id="id_{{ item.id }}" role="menuitem">
 							{{ item.title }}
 						</a>
-
-						{% include "macro/menu_items.twig" with {'menu': item.get_children} %}
 					</li>
 				{% endif %}
 			{% endfor %}
