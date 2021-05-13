@@ -13,22 +13,12 @@ Tags:
 //////////////// TYPOGRAPHY ///////////////
 @grey: #565656;
 @white: #fff;
-@f: 17.106px;
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body{
-  background-color: @white;
-  font-size:16px;
-  font-family: 'Georgia', Serif;
-}
 
-@_:12;
+@_:11;
 @f : @_ * 1px;
 @lh: 1rem * @D0;
-@A1: 4;
-@D0_: 2.6818; // 1.6818
+@A1: 2.046;
+@D0_: 1.818; // 1.6818
 @D0: 1.6818; // 1.6818
 @C0: 1.4142;
 @B0: 1.1892;
@@ -51,17 +41,22 @@ body{
   }
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body{
+  background-color: @white;
+  font-family: 'Noto Sans JP', sans-serif;
+}
 /* fluid typography */
 body {
   .fluid-type(font-size,@min_width, @max_width, @min_font, @max_font);
-  .fluid-type(line-height,@min_width, @max_width, @line_height_min, @line_height_max);
+  line-height:1.3;
 }
 blockquote{
   .fluid-type(font-size,@min_width, @max_width, @C0*@f, @A0*@f);
   .fluid-type(line-height,@min_width, @max_width, @C0*@C0*@f, @A0*@f);
-}
-p{
-  margin:0 0 calc(@lh + (@A1 - @D-1) * ((100vw - 300px)/(1600 - 300))) 0;
 }
 
 /* H design */
@@ -77,11 +72,7 @@ p{
     font-size: 1rem * @multiplier;
     margin-bottom: 1rem * @multiplier / 2;
     margin-left:@f * @multiplier / -10;
-    font-family: 'Barlow Semi Condensed', sans-serif;
     font-weight: 400;
-    &._h{
-      font-family: 'Oswald', sans-serif;
-    }
   }
   .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
 }
@@ -168,7 +159,9 @@ p{
 }
 
 ///////////// SPECIFIC  /////////////
-
+#logo{
+  padding: .5rem 1rem;
+}
 
 #top_menu{
   ul{
@@ -210,11 +203,17 @@ p{
   z-index:10;
   top:@f;
   right:@f;
+  border:0;
+  &:hover, &:active, &:focus{
+    border:0;
+    box-shadow:none;
+    outline: none;
+  }
   span{
     display: block;
     width:30px;
     height:0;
-    margin-bottom:@f/2;
+    margin-bottom:6px;
     border-bottom:1px solid #000;
   }
 }
@@ -236,6 +235,11 @@ p{
 
 ///////////// MEDIA QUERY  /////////////
 
+@media all and (min-width: 768px) {
+  .navbar-toggler{
+    display: none;
+  }
+}
 @media all and (max-width: 769px) {
   .container{
     width:100%;
