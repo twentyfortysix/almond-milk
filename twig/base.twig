@@ -1,4 +1,3 @@
-{% import 'macro/wpml_switch.twig' as wpml_switch %}
 {% import "macro/menu_items.twig" as menu_items %}
 {% import 'macro/edit-link.twig' as editLink %}
 <!DOCTYPE html>
@@ -12,35 +11,27 @@
         <meta name="code-by" content="2046.cz" />
         <!-- web coded by http://2046.cz -->
         <!-- some code licensed under Aggressive Copyright http://aggressive-copyright.org -->
-
-        <!--[if lt IE 9]>
-            <script src="{{ theme.path }}/js/vendor/respond.min.js"></script>
-        <![endif]-->
         {{ fn('wp_head') }}
     </head>
     <body class="{{ body_class }}">
-	{{ editLink.input(post) }}
+	   {{ editLink.input(post) }}
         {% block top_menu %}
-           <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <nav class="navbar" role="navigation">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top_menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
-						<a href="{{ site.url }}" id="logo">
-							<img src="{{ theme.path }}/img/logo.svg" alt="{{ site.title }}">
-						</a>
-						{{ menu_items.input(top_menu, 'top_menu') }}
-					</nav>
-                </div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top_menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+            <nav class="navbar navbar-expand-lg" role="navigation">
+				<a href="{{ site.url }}" id="logo">
+					<img src="{{ theme.path }}/img/logo.svg" alt="{{ site.title }}">
+				</a>
+				{{ menu_items.input(top_menu, 'top_menu') }}
             </nav>
         {% endblock %}
 
         {% block content %}
         {% endblock %}
 
-    {{ fn('wp_footer') }}
+        {{ fn('wp_footer') }}
     </body>
 </html>
