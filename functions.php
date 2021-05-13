@@ -1,4 +1,5 @@
 <?php
+require_once( __DIR__ . '/vendor/autoload.php' );
 
 require_once(TEMPLATEPATH. '/include/theme-support.php');
 require_once(TEMPLATEPATH. '/include/remove_api.php');
@@ -48,13 +49,7 @@ add_action('wp_enqueue_scripts', 'f_2046_add_scripts');
 
 
 // TIMBER related
-// let users know the timber is not loaded
-if ( ! class_exists( 'Timber' ) ) {
-	add_action( 'admin_notices', function() {
-			echo '<div class="error"><p><a href="http://upstatement.com/timber/">Timber</a> not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
-		} );
-	return;
-}
+$timber = new Timber\Timber();
 // set default *.twig location
 Timber::$dirname = 'twig';
 
