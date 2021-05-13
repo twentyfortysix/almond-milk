@@ -1,10 +1,10 @@
 {% macro input(menu, name) %}
-	<div id="{{ name }}" class="{{ name }} collapse navbar-collapse" id="menu-{{ name }}">
+	<div id="{{ name }}" class="{{ name }} collapse navbar-collapse">
 		<ul class="navbar-nav">
 			{% for item in menu.get_items %}
 				{% if (item.get_children) %}
 					<li class="dropdown {{ item.class }}" id="menu-item-{{ item.id }}">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ item.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ item.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			            	{{ item.title }}
 			            </a>
 			            <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ item.id }}">
