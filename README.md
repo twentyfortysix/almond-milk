@@ -21,6 +21,9 @@
 - - /partial/
 - - - *
 
+run within the theme directory:
+composer require twbs/bootstrap:5.0.0
+composer require timber/timber
 
 What I use over and over again, is:
 - Register custom post types /includes/register-custom-post-types.php
