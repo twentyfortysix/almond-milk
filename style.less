@@ -173,6 +173,7 @@ p{
       a{  
           display:inline-block;
           text-decoration: none;
+          color:#000;
       }
       &.active{
         a{
@@ -189,11 +190,6 @@ p{
             background-color: @white;
           }
         }
-      }
-    }
-    &:first-child{
-      a{
-        padding-left: 0;
       }
     }
   }
@@ -243,6 +239,9 @@ p{
 @media all and (max-width: 769px) {
   .container{
     width:100%;
+  }
+  .nav-item{
+    padding-left: @f*1.5;
   }
 }
 
