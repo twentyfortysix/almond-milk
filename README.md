@@ -20,12 +20,12 @@
 - /twig/
 - - - *
 
-installation:
+Installation:
 - either as *.zip
 - use shell script https://github.com/twentyfortysix/wp_init to install and set up the WP for ya, with this theme in it
 - or use Bedrock (https://roots.io/bedrock/) and this composer.json https://gist.github.com/twentyfortysix/5b88880c4e8e65ac7d012ff45a2b8294
 
-run within the theme directory:
+In case of wp-init.sh run within the theme directory:
 - composer require twbs/bootstrap:5.0.0
 - composer require timber/timber
 
