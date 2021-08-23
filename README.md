@@ -4,8 +4,8 @@
 - style.css done in style.less
 - index.php as router
 - functions.php Timber init, script & styles init, plus ready to use includes as follows
-- /css/ Bootstrap 4
-- /js/ Bootstrap 4
+- /css/ 
+- /js/ 
 - /includes/
   - create-taxonomies.php
   - customize-menu-order.php
