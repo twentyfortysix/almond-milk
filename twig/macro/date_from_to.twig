@@ -1,0 +1,3 @@
+{% macro input(dfrom, dto) %}
+	{{ dfrom ? dfrom|date('j. n.') : '' }}{{ (dfrom and dto) and (dfrom|date('Ymd') != dto|date('Ymd')) ? '–' ~  dto|date('j. n.') }}{{ dto and dform|date('Y') != dto|date('Y') ? dto|date('Y') : dfrom|date('Y') }}
+{% endmacro %}
