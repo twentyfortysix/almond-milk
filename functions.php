@@ -15,6 +15,7 @@ require_once(TEMPLATEPATH. '/include/remove_api.php');
 // require_once(TEMPLATEPATH. '/include/page-step-navigation.php');
 // require_once(TEMPLATEPATH. '/include/create-taxonomies.php');
 // require_once(TEMPLATEPATH. '/include/googleAPI.php');
+// require_once(TEMPLATEPATH. '/include/GQL_ACF.php');
 
 // 
 // ;ocalize
