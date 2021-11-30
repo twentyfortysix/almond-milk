@@ -21,3 +21,13 @@ function custom_menu_order($menu_ord) {
 }
 add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order
 add_filter('menu_order', 'custom_menu_order');
+
+// hide admin menu items
+// add_action( 'admin_init', '__remove_menu_pages' );
+// function __remove_menu_pages() {
+//   if ( !current_user_can('administrator') ) { //your user id
+
+//    remove_menu_page('edit.php'); // Posts
+//    remove_menu_page('edit.php?post_type=page'); // Pages
+//   }
+// }
