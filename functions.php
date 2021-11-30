@@ -6,7 +6,7 @@ require_once(TEMPLATEPATH. '/include/theme-support.php');
 require_once(TEMPLATEPATH. '/include/remove_api.php');
 // require_once(TEMPLATEPATH. '/include/acf-wysiwyg-autoheight.php');
 // require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
-// require_once(TEMPLATEPATH. '/include/customize-menu-order.php');
+// require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
 // require_once(TEMPLATEPATH. '/include/rename-pages.php');
 // require_once(TEMPLATEPATH. '/include/p2p-registers.php');
