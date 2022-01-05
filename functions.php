@@ -31,11 +31,11 @@ function localize_theme(){
 
 function f_2046_add_scripts() {
 	// register scripts
-	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/vendor/twbs/bootstrap/dist/js/bootstrap.min.js', array('jquery'), '', true);
-    wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
+	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/bootstrap/js/bootstrap.min.js', array('jquery'), '', true);
+    	wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
 
-    // register styles
-	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/vendor/twbs/bootstrap/dist/css/bootstrap.min.css');
+    	// register styles
+	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/bootstrap/css/bootstrap.min.css');
 	wp_register_style ( 'my-css', get_bloginfo('template_directory') .'/style.css', array('bootstrap-css'));
 	wp_register_style ( 'font', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap');
 
