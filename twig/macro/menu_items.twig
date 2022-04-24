@@ -2,13 +2,13 @@
 	<div id="{{ name }}" class="{{ name }} collapse navbar-collapse">
 		<ul class="navbar-nav">
 			{% for item in menu.get_items %}
-				{% if (item.get_children) %}
+				{% if (item.children) %}
 					<li class="dropdown {{ item.class }}" id="menu-item-{{ item.id }}">
 						<a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ item.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			            	{{ item.title }}
 			            </a>
 			            <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ item.id }}">
-			            	{% for subitem in item.get_children %}
+			            	{% for subitem in item.children %}
 				            	<li class="{{ subitem.class }}" id="menu-item-{{ subitem.id }}">
 				            		<a href="{{ subitem.get_link }}" target="{{ subitem.target }}" class="nav-link">
 										{{ subitem.title }}

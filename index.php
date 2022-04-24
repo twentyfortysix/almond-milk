@@ -2,6 +2,7 @@
 $data = Timber::context();
 
 // $data['top_menu'] = new TimberMenu('top_menu_'.ICL_LANGUAGE_CODE);
+$data['top_menu'] = Timber::get_menu('top_menu');
 // $data['languages'] = apply_filters( 'wpml_active_languages', NULL, 'orderby=code&order=asc&skip_missing=0' );
 // $data['current_language'] = ICL_LANGUAGE_CODE;
 $data['base'] =  Timber::get_post(get_option('page_on_front'));
