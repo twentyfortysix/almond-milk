@@ -1,17 +1,17 @@
 <?php
 require_once( $_SERVER['DOCUMENT_ROOT']. '/../vendor/autoload.php' ); // while on Bedrock
 // require_once( __DIR__ . '/vendor/autoload.php' ); // if you compose inside your template
-// require_once( $_SERVER['DOCUMENT_ROOT']. '/bedrock/vendor/autoload.php' ); // while on Bedrock redirected by .htaccess
 $timber = new Timber\Timber();
+require_once(TEMPLATEPATH. '/include/timber.php');
 require_once(TEMPLATEPATH. '/include/theme-support.php');
 require_once(TEMPLATEPATH. '/include/remove_api.php');
-// require_once(TEMPLATEPATH. '/include/acf-wysiwyg-autoheight.php');
+require_once(TEMPLATEPATH. '/include/acf.php');
+require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
 // require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
 // require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
 // require_once(TEMPLATEPATH. '/include/rename-pages.php');
 // require_once(TEMPLATEPATH. '/include/p2p-registers.php');
-// require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
 // require_once(TEMPLATEPATH. '/include/remove-taxonomies.php');
 // require_once(TEMPLATEPATH. '/include/page-step-navigation.php');
 // require_once(TEMPLATEPATH. '/include/create-taxonomies.php');
@@ -19,7 +19,7 @@ require_once(TEMPLATEPATH. '/include/remove_api.php');
 // require_once(TEMPLATEPATH. '/include/GQL_ACF.php');
 
 // 
-// ;ocalize
+// localize
 add_action('after_setup_theme', 'localize_theme');
 
 #remove admin bar
@@ -27,7 +27,7 @@ add_filter('show_admin_bar', '__return_false');
 
 
 function localize_theme(){
-	load_theme_textdomain( 'arnika', get_bloginfo('template_directory').'/languages' );
+	load_theme_textdomain( 'almond', get_bloginfo('template_directory').'/languages' );
 }
 
 function f_2046_add_scripts() {
@@ -51,36 +51,6 @@ function f_2046_add_scripts() {
 add_action('wp_enqueue_scripts', 'f_2046_add_scripts');
 
 
-// TIMBER related
-// let users know the timber is not loaded
-if ( ! class_exists( 'Timber' ) ) {
-	add_action( 'admin_notices', function() {
-			echo '<div class="error"><p><a href="http://upstatement.com/timber/">Timber</a> not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
-		} );
-	return;
-}
-// set default *.twig location
-Timber::$dirname = 'twig';
-
-// add Timber helpers
-add_filter('get_twig', 'add_to_twig');
-function add_to_twig($twig) {
-    /* this is where you can add your own fuctions to twig */
-    $function = new Twig_SimpleFunction('enqueue_script', function ($handle) {
-        // register it elsewhere
-        wp_enqueue_script( $handle);
-    });
-    $twig->addFunction($function);
-
-    $function = new Twig_SimpleFunction('enqueue_style', function ($handle) {
-        // register it elsewhere
-        wp_enqueue_style( $handle);
-    });
-    $twig->addFunction($function);
-
-
-    return $twig;
-}
 
 // remove image dimensions
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
@@ -118,30 +88,6 @@ function hide_menu() {
 
 add_action('admin_head', 'hide_menu');
 
-// colorize the ACF cells a bit 
-add_action('admin_head', 'my_custom_fonts');
-
-function my_custom_fonts() {
-  echo '<style>
-    .acf-flexible-content .layout .acf-fc-layout-handle{background: #dedede;} 
-    .acf-flexible-content .layout{box-shadow: 0 4px 15px #e2e2e2;}
-    .acf-flexible-content .layout.ui-sortable-helper{
-    	layout{box-shadow: 0 10px 50px #e2e2e2;
-    }
-    .acf-field .acf-label label {
-    	font-size: 16px;
-	    font-weight: 400;
-	    margin: 0;
-	    padding: 9px 15px 4px 0;
-	    line-height: 29px;
-    }
-
-    .acf-field .acf-fields .acf-label label {
-    	font-size: 14px;
-	    line-height:1.2em;
-    }
-  </style>';
-}
 // NO dashbord nonsense
 function dashboard_redirect(){
     wp_redirect(admin_url('edit.php?post_type=page'));

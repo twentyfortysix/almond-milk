@@ -1,5 +1,6 @@
 ## What you got is:
 
+Based on Timber 2.0.0-alpha.4
 
 - style.css done in style.less
 - index.php as router

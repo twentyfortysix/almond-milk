@@ -2,7 +2,7 @@
 {% import 'macro/anchor.twig' as anchor %}
 
 {% block content %}
-	{% for view in post.get_field('flexible_content') %}
+	{% for view in post.meta('flexible_content') %}
 		{% if view.acf_fc_layout == "lead" %}
 			<div class="container {{ view.acf_fc_layout }}" style="background-image:url({{ view.image.sizes.large }})">
 			</div>
