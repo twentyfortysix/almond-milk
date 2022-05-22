@@ -2,7 +2,7 @@
 	{% if languages %}
 		<div id="languages">
 			{% for lang in languages %}
-				<a href="{{ lang.url }}" class="{{ lang.native_name == current_language ? "current-menu-item current_language lng" : "lng" }} {{ lang.native_name }}">
+				<a href="{{ lang.url }}" class="{{ lang.native_name == current_language ? "current-menu-item current_language lng" : "lng" }} {{ lang.code }}">
 					{{ lang.native_name }}
 				</a>
 				{% if not loop.last %}
