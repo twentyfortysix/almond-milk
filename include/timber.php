@@ -1,12 +1,7 @@
 <?php 
 // TIMBER related
-// let users know the timber is not loaded
-if ( ! class_exists( 'Timber' ) ) {
-	add_action( 'admin_notices', function() {
-			echo '<div class="error"><p><a href="http://upstatement.com/timber/">Timber</a> not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
-		} );
-	return;
-}
+$timber = new Timber\Timber();
+
 // set default *.twig location
 Timber::$dirname = 'twig';
 
@@ -24,6 +19,43 @@ function add_to_twig($twig) {
         wp_enqueue_style( $handle);
     });
     $twig->addFunction($function);
+    
     return $twig;
 }
 add_filter('timber/twig', 'add_to_twig');
+
+
+add_filter( 'timber/twig/filters', function( $filters ) {
+    $filters['typo'] = [
+        'callable' => 'fix_typo',
+    ];
+
+    return $filters;
+} );
+
+
+
+function fix_typo( $text ) {
+    // remove multiple spaces
+    $text =  preg_replace('/[\s]+/mu', ' ', $text);
+    
+	$strings = [
+		// ve spojení neslabičných předložek k, s, v, z s následujícím slovem, např. k mostu, s bratrem, v Plzni, z nádraží,
+		'k', 's', 'v', 'z',
+		// ve spojení slabičných předložek o, u a spojek a, i s výrazem, který po nich následuje, např. u babičky, o páté,
+		'o', 'u', 'a',
+		// mezi číslem a zkratkou počítaného předmětu nebo písmennou značkou jednotek a měn, např. 5 str., 8 hod., s. 53, č. 9, obr. 1, tab. 3, ..
+		'např.', 'str.', 's.', 'č.', 'obr.', 'tab',
+		// mezi zkratkami typu tj., tzv., tzn. a výrazem, který za nimi bezprostředně následuje, např. tzv. klikání,
+		'tj.', 'tzv.', 'tzn.',
+		// mezi zkratkou titulu nebo hodnosti uváděnou před osobním jménem, např. p. Čečetková, mjr. Veselý, Ing. Poliaková 
+		'p.', 'MgA', 'Ing', 'mjr.'
+		];
+
+    for ($i=0; $i < count($strings); $i++) { 
+    	// $(this).html(text.replace(new RegExp(' '+myArrayItem+' ', 'g') , ' '+myArrayItem+'&nbsp;'));
+    	$text = str_replace( ' ' . $strings[$i] . ' ', '&nbsp;' . $strings[$i] . '&nbsp;', $text);
+    }
+    
+    return $text;
+}
