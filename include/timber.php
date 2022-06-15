@@ -49,7 +49,7 @@ function fix_typo( $text ) {
 		// mezi zkratkami typu tj., tzv., tzn. a výrazem, který za nimi bezprostředně následuje, např. tzv. klikání,
 		'tj.', 'tzv.', 'tzn.',
 		// mezi zkratkou titulu nebo hodnosti uváděnou před osobním jménem, např. p. Čečetková, mjr. Veselý, Ing. Poliaková 
-		'p.', 'MgA', 'Ing', 'mjr.'
+		'p.', 'MgA', 'Ing', 'mjr.', 'A.',  'art.', 'doc.', 'Ph.'
 		];
 
     for ($i=0; $i < count($strings); $i++) { 
