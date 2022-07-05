@@ -1,6 +1,6 @@
 <?php 
 // TIMBER related
-$timber = new Timber\Timber();
+Timber\Timber::init();
 
 // set default *.twig location
 Timber::$dirname = 'twig';
