@@ -31,6 +31,8 @@ function localize_theme(){
 }
 
 function f_2046_add_scripts() {
+// 	remove guttenberg mess
+	wp_dequeue_style( 'global-styles' ); 
 	// register scripts
 	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/bootstrap/js/bootstrap.min.js', array('jquery'), '', true);
     	wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
@@ -129,3 +131,5 @@ function getVimeoVideoIdFromUrl($url = '') {
     }
     return $id;
 }
+
+
