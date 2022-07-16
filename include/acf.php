@@ -7,7 +7,8 @@ if( function_exists('acf_add_options_page') ) {
       'menu_title'  => 'Frontend',
       'menu_slug'   => 'frontend-settings',
       'capability'  => 'edit_posts',
-      'redirect'    => false
+      'redirect'    => false,
+      'icon_url' => 'dashicons-admin-network',
     ]
   );
 
