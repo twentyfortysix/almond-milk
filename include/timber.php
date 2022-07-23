@@ -54,7 +54,7 @@ function fix_typo( $text ) {
 
     for ($i=0; $i < count($strings); $i++) { 
     	// $(this).html(text.replace(new RegExp(' '+myArrayItem+' ', 'g') , ' '+myArrayItem+'&nbsp;'));
-    	$text = str_replace( ' ' . $strings[$i] . ' ', '&nbsp;' . $strings[$i] . '&nbsp;', $text);
+    	$text = str_replace( ' ' . $strings[$i] . ' ', ' ' . $strings[$i] . '&nbsp;', $text);
     }
     
     return $text;
