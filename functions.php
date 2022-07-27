@@ -137,3 +137,17 @@ function yoasttobottom() {
     return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'yoasttobottom');
+
+
+function superNaturalSort($a, $b){
+    $A = diacriticEqvivalent($a);
+    $B = diacriticEqvivalent($b);//str_replace($czechCharsS, $czechCharsR, $b);
+    return strnatcasecmp($A, $B);
+};
+
+function diacriticEqvivalent($a){
+    static $czechCharsS = array('Á', 'Č', 'Ď', 'É', 'Ě' , 'Ch' , 'Í', 'Ň', 'Ó', 'Ř', 'Š', 'Ť', 'Ú', 'Ů' , 'Ý', 'Ž', 'á', 'č', 'ď', 'é', 'ě' , 'ch' , 'í', 'ň', 'ó', 'ř', 'š', 'ť', 'ú', 'ů' , 'ý', 'ž');
+    static $czechCharsR = array('AZ','CZ','DZ','EZ','EZZ','HZZZ','IZ','NZ','OZ','RZ','SZ','TZ','UZ','UZZ','YZ','ZZ','az','cz','dz','ez','ezz','hzzz','iz','nz','oz','rz','sz','tz','uz','uzz','yz','zz');
+    $a = str_replace($czechCharsS, $czechCharsR, $a);
+    return $a;
+}
