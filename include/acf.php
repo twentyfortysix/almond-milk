@@ -64,3 +64,28 @@ function PREFIX_apply_acf_modifications() {
  * -----------------------------------------------------------------------------
 */
 add_action('acf/input/admin_footer', 'PREFIX_apply_acf_modifications');
+
+/ custom tinymce
+add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_toolbars'  );
+function my_toolbars( $toolbars ){
+
+// Array ( [Full] => Array ( [1] => Array ( [0] => formatselect [1] => bold [2] => italic [3] => bullist [4] => numlist [5] => blockquote [6] => alignleft [7] => aligncenter [8] => alignright [9] => link [10] => wp_more [11] => spellchecker [12] => fullscreen [13] => wp_adv ) [2] => Array ( [0] => strikethrough [1] => hr [2] => forecolor [4] => removeformat [5] => charmap [6] => outdent [7] => indent [8] => undo [9] => redo [10] => wp_help ) [3] => Array ( ) [4] => Array ( ) ) [Basic] => Array ( [1] => Array ( [0] => bold [1] => italic [2] => underline [3] => blockquote [4] => strikethrough [5] => bullist [6] => numlist [7] => alignleft [8] => aligncenter [9] => alignright [10] => undo [11] => redo [12] => link [13] => fullscreen ) ) )
+
+  // Add a new toolbar called "Very Simple"
+  // - this toolbar has only 1 row of buttons
+  $toolbars['Very Simple' ] = array();
+  $toolbars['Very Simple' ][1] = array('link', 'bold' , 'italic' , 'underline', 'bullist', 'numlist', 'blockquote', 'alignleft', 'aligncenter', 'alignright', 'superscript', 'redo', 'undo'  );
+
+  // // Edit the "Full" toolbar and remove 'code'
+  // // - delet from array code from http://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key
+  // if( ($key = array_search('code' , $toolbars['Full' ][2])) !== false )
+  // {
+  //     unset( $toolbars['Full' ][2][$key] );
+  // }
+
+  // // remove the 'Basic' toolbar completely
+  // unset( $toolbars['Basic' ] );
+
+  // return $toolbars - IMPORTANT!
+  return $toolbars;
+
