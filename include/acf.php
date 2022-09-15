@@ -74,7 +74,7 @@ function my_toolbars( $toolbars ){
   // Add a new toolbar called "Very Simple"
   // - this toolbar has only 1 row of buttons
   $toolbars['Very Simple' ] = array();
-  $toolbars['Very Simple' ][1] = array('link', 'bold' , 'italic' , 'underline', 'bullist', 'numlist', 'blockquote', 'alignleft', 'aligncenter', 'alignright', 'superscript', 'redo', 'undo'  );
+  $toolbars['Very Simple' ][1] = array('link', 'bold' , 'italic' , 'bullist', 'numlist', 'blockquote', 'alignleft', 'aligncenter', 'alignright', 'superscript', 'redo', 'undo'  );
 
   // // Edit the "Full" toolbar and remove 'code'
   // // - delet from array code from http://stackoverflow.com/questions/7225070/php-array-delete-by-value-not-key
