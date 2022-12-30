@@ -7,6 +7,7 @@ require_once(TEMPLATEPATH. '/include/theme-support.php');
 require_once(TEMPLATEPATH. '/include/remove_api.php');
 require_once(TEMPLATEPATH. '/include/acf.php');
 require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
+// require_once(TEMPLATEPATH. '/include/customize-appereance-menus.php');
 // require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
 // require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');

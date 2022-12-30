@@ -16,20 +16,14 @@ Tags:
 
 @_:16;
 @f : @_ * 1px;
-@lh: 1rem * @D0;
-@A1: 2.046;
-@D0_: 1.818; // 1.6818
-@D0: 1.6818; // 1.6818
-@C0: 1.4142;
-@B0: 1.1892;
-@A0: 1;
-@D-1: .8409;
-@min_width: 320px;
-@max_width: 1600px;
-@min_font: @B0*@f;
-@max_font: @D0*@f;
-@line_height_min: @B0*@f;
-@line_height_max: @C0*1.1*@f;
+@lh: @f * 1.4;
+@H1: 2.046;
+@H2: 1.818;
+@H3: 1.6818;
+@H4: 1.4142;
+@H5: 1.1892;
+@H6: 1;
+
 
 :root{
   --fs:@f;
@@ -47,13 +41,13 @@ Tags:
 }
 body{
   background-color: @white;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Lora', serif;
   font-size: var(--fs);
   line-height: var(--lh);
 }
 
 /* H design */
-@fsizes: @D-1, @A0, @B0, @C0, @D0_, @A1;
+@fsizes: @H6, @H5, @H4, @H3, @H2, @H1;
 @elements: h6, h5, h4, h3, h2, h1;
 @iterations: length(@elements); // lehgth of @elements
 
@@ -70,6 +64,7 @@ body{
   .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
 }
 .set-h-size(@iterations, @elements, @fsizes, var(--fs));
+
 
 
 

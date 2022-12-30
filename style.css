@@ -11,12 +11,12 @@ Tags:
 */
 :root {
   --fs: 16px;
-  --lh: 1.6818rem;
+  --lh: 22.4px;
 }
 @media all and (max-width: 768px) {
   :root {
     --fs: 16px * 1.1;
-    --lh: 1.6818rem * 1.1;
+    --lh: 22.4px * 1.1;
   }
 }
 * {
@@ -25,7 +25,7 @@ Tags:
 }
 body {
   background-color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Lora', serif;
   font-size: var(--fs);
   line-height: var(--lh);
 }
@@ -43,27 +43,27 @@ h2 {
   font-weight: 400;
 }
 h3 {
+  font-size: 1.6818rem;
+  margin-bottom: 1.6818rem / 2;
+  margin-left: 26.9088px / -10;
+  font-weight: 400;
+}
+h4 {
   font-size: 1.4142rem;
   margin-bottom: 1.4142rem / 2;
   margin-left: 22.6272px / -10;
   font-weight: 400;
 }
-h4 {
+h5 {
   font-size: 1.1892rem;
   margin-bottom: 1.1892rem / 2;
   margin-left: 19.0272px / -10;
   font-weight: 400;
 }
-h5 {
+h6 {
   font-size: 1rem;
   margin-bottom: 1rem / 2;
   margin-left: 16px / -10;
-  font-weight: 400;
-}
-h6 {
-  font-size: 0.8409rem;
-  margin-bottom: 0.8409rem / 2;
-  margin-left: 13.4544px / -10;
   font-weight: 400;
 }
 img,
