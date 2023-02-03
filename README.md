@@ -2,6 +2,8 @@
 
 ## What you got is:
 
+Wordpress Twig based template
+/includes/ little bit of sweet Almond fat
 Based on Timber 2.0.0-alpha.4
 
 - style.css done in style.less
@@ -10,16 +12,22 @@ Based on Timber 2.0.0-alpha.4
 - /css/ 
 - /js/ 
 - /includes/
-  - create-taxonomies.php
-  - customize-menu-order.php
-  - p2p-registers.php
-  - page-step-navigation.php
-  - register-custom-post-types.php
-  - remove-page-wyswig.php
-  - remove-taxonomies.php
-  - rename-pages.php
-  - rename-posts.php
-  - theme-support.php
+- /include/timber.php
+- /include/theme-support.php
+- /include/remove_api.php
+- /include/acf.php
+- /include/remove-page-wyswig.php
+- /include/customize-appereance-menus.php
+- /include/register-custom-post-types.php
+- /include/customize-admin-menu.php
+- /include/rename-posts.php
+- /include/rename-pages.php
+- /include/p2p-registers.php
+- /include/remove-taxonomies.php
+- /include/page-step-navigation.php
+- /include/register-taxonomies.php
+- /include/googleAPI.php
+- /include/GQL_ACF.php
 - /twig/
 - - - *
 
