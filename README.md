@@ -1,4 +1,4 @@
-![Screenshot](almond-milk.png){ style="margin: 0 auto" }
+<p align="center"><img src="almond-milk.png" /></p>
 
 ## What you got is:
 
