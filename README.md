@@ -1,3 +1,5 @@
+![Screenshot](almond-milk.png){ style="margin: 0 auto" }
+
 ## What you got is:
 
 Based on Timber 2.0.0-alpha.4

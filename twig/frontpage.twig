@@ -11,7 +11,7 @@
 			<div class="container {{ view.acf_fc_layout }}">	
 				{{ anchor.input(view.anchor, post) }}
 				{% for image in view.images %}
-					{% set img = TimberImage(image.id) %}
+					{% set img = get_image(image.id) %}
 						<div class="col-12 col-sm-4 col-md-4">
 							<img src="{{ img.src('thumbnail') }}" alt="{{ post.title }}">
 						</div>

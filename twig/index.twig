@@ -6,11 +6,11 @@
 			<h1>{{ post.title }}</h1>	
 		</div>
 		<span class="terms">
-			    {% for term in post.terms %}
+		    {% for term in post.terms %}
 				<a href="{{ fn('get_term_link', term.id, 'category') }}">
 					{{ term.title }}
 				</a>{{ loop.last ? '' : ', ' }}
-			    {% endfor %}
-		    </span>
+		    {% endfor %}
+	    </span>
 	</div>
 {% endblock %}

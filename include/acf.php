@@ -65,7 +65,7 @@ function PREFIX_apply_acf_modifications() {
 */
 add_action('acf/input/admin_footer', 'PREFIX_apply_acf_modifications');
 
-/ custom tinymce
+// custom tinymce
 add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_toolbars'  );
 function my_toolbars( $toolbars ){
 
@@ -89,3 +89,4 @@ function my_toolbars( $toolbars ){
   // return $toolbars - IMPORTANT!
   return $toolbars;
 
+}
