@@ -1,7 +1,4 @@
 <?php
-require_once( $_SERVER['DOCUMENT_ROOT']. '/../vendor/autoload.php' ); // while on Bedrock
-// require_once( __DIR__ . '/vendor/autoload.php' ); // if you compose inside your template
-
 require_once(TEMPLATEPATH. '/include/timber.php');
 require_once(TEMPLATEPATH. '/include/theme-support.php');
 require_once(TEMPLATEPATH. '/include/remove_api.php');
