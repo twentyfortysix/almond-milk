@@ -1,0 +1,24 @@
+{
+    "name": "twentyfortysix/almond-milk",
+    "description": "WP Timber template",
+    "type": "library",
+    "require": {
+        "jarednova/timber": "^2.0.0-alpha.6"
+    },
+    "require-dev": {
+        "jarednova/timber": "^2.0.0-alpha.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Twentyfortysix\\AlmondMilk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "2046",
+            "email": "2046@2046.cz"
+        }
+    ],
+    "minimum-stability": "beta"
+}
