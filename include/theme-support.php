@@ -20,4 +20,4 @@ function remove_default_image_sizes( $sizes) {
 add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 
 // add custom image sizes
-add_image_size( 'gallery', '360', '270', true );
+// add_image_size( 'gallery', '360', '270', true );
