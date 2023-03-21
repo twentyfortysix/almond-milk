@@ -59,3 +59,14 @@ add_action('load-index.php','dashboard_redirect');
 
 /* Disable WordPress Admin Bar for all users */
 add_filter( 'show_admin_bar', '__return_false' );
+
+
+// remove unwanted image sizes
+function remove_default_image_sizes( $sizes) {
+    unset( $sizes['medium_large']); // 768px
+    unset( $sizes['large']);
+    unset( $sizes['1536x1536']);
+    unset( $sizes['2048x2048']);
+    return $sizes;
+}
+add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
