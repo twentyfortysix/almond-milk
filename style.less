@@ -57,8 +57,8 @@ body{
 
   @{selector} {
     font-size: 1rem * @multiplier;
-    margin-bottom: 1rem * @multiplier / 2;
-    margin-left:@f * @multiplier / -10;
+    margin-bottom: 1rem * @multiplier * .5;
+    margin-left:@f * @multiplier * -0.1;
     font-weight: 400;
   }
   .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
