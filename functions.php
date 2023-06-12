@@ -38,7 +38,7 @@ function f_2046_add_scripts() {
 
     	// register styles
 	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/bootstrap/css/bootstrap.min.css');
-	wp_register_style ( 'my-css', get_bloginfo('template_directory') .'/style.css', array('bootstrap-css'));
+	wp_register_style ( 'my-css', get_bloginfo('template_directory') .'/style.css', array('bootstrap-css'), filemtime( plugin_dir_path( __FILE__ )  .'/style.css'));
 	wp_register_style ( 'font', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap');
 
 	// enque scripts
