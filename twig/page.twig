@@ -1,16 +1,138 @@
 {% extends 'base.twig' %}
+{% import 'macro/anchor.twig' as Anchor %}
 
 {% block content %}
-	<div class="container">
-		<div class="row">
-			<article class="col-6">
-				<h1>
-					{{ post.title }}
-				</h1>
-				<div class="entry">
-					{{ post.content }}
+	{% for view in post.meta('flexible_content') %}
+		{% if view.acf_fc_layout == "anchorBlock" %}
+			<div class="container {{ view.acf_fc_layout }}">
+				{{ Anchor.input(view.anchor) }}
+			</div>
+		
+		{% elseif view.acf_fc_layout == "galleryBlock" %}
+			<div class="container w {{ view.acf_fc_layout }}">	
+				<div class="row">
+					{% for image in view.items %}
+						<div class="col-12 col-sm-4 col-md-2">
+							<a href="{{ image.sizes.large }}">
+								<img src="{{ image.sizes.thumbnail }}" alt="{{ post.title }}">
+							</a>
+						</div>
+					{% endfor %}
 				</div>
-			</article>
-		</div>
-	</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "posterBlock" %}
+			<div class="{{ view.acf_fc_layout }}" style="background-image:url({{ view.image.sizes.large }})">
+				<div class="in">
+					<div class="container g-0">
+						<div class="row g-0">
+							<div class="col-12 col-md-6">
+								<div class="w">
+									{% if view.heading %}
+										<h2 class="heading">
+											{{ view.heading }}
+										</h2>
+									{% endif %}
+									{% if view.text %}
+										<div class="text">
+											{{ view.text|wpautop|typo }}
+										</div>
+									{% endif %}
+									{% if view.button %}
+										<a href="{{ view.button.link }}" target="{{ view.button.target }}" class="btn btn-secondary">
+											{{ view.button.title }}
+										</a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		{% elseif view.acf_fc_layout == "imageBlock" %}
+			<div class="container w {{ view.acf_fc_layout }}">	
+				<div class="row">
+					<div class="col-12 col-md-8 offset-md-2">
+						<a href="{{ view.image.sizes.large }}">
+							<img src="{{ view.image.sizes.large }}" alt="{{ post.title }}">
+						</a>
+					</div>
+				</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "foldableTextBlock" %}
+			<div class="container w {{ view.acf_fc_layout }}">
+				<div class="row">
+					<div class="col-12 col-md-8 offset-md-2">
+						{% if view.heading %}
+							<h2 class="heading">
+								{{ view.heading }}
+							</h2>
+						{% endif %}
+						{% if view.text %}
+							<div class="text">
+								{{ view.text|wpautop|typo }}
+							</div>
+						{% endif %}
+						{% if view.items %}
+							{% if view.show_more_text %}
+								<div class="show_more_text">
+									<a href="#" class="btn expose">
+										{{ view.show_more_text }}
+									</a>
+								</div>
+							{% endif %}		
+							{% for item in view.items %}
+							    <div class="item secret">
+							    	<h3>
+							    		{{ item.title }}
+							    	</h3>
+							    	<div class="text">
+							    		{{ item.text|wpautop|typo }}
+							    	</div>
+							    </div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "textBlock" %}
+			<div class="container w {{ view.acf_fc_layout }}">
+				<div class="row">
+					<div class="col-12 col-md-8 offset-md-2">
+						{% if view.heading %}
+							<h2 class="heading">
+								{{ view.heading }}
+							</h2>
+						{% endif %}
+						{% if view.text %}
+							<div class="text">
+								{{ view.text|wpautop|typo }}
+							</div>
+						{% endif %}
+						{% if view.button %}
+							<div class="button_holder">
+								<a href="{{ view.button.link }}" target="{{ view.button.target }}" class="btn btn-secondary">
+									{{ view.button.title }}
+								</a>
+							</div>
+						{% endif %}		
+					</div>
+				</div>
+			</div>
+
+		{% elseif view.acf_fc_layout == "videoBlock" %}
+			<div class="container w {{ view.acf_fc_layout }}">
+				<div class="row">
+					<div class="col-12 col-md-8 offset-md-2">
+						<div class="video-container">
+							{{ view.oembed }}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
 {% endblock %}

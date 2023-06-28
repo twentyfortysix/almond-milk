@@ -57,6 +57,14 @@ function dashboard_redirect(){
 }
 add_action('load-index.php','dashboard_redirect');
 
+
+// Remove dashboard from menu
+function remove_dashboard_menu() {
+  remove_menu_page('index.php');
+}
+add_action('admin_menu', 'remove_dashboard_menu');
+
+
 /* Disable WordPress Admin Bar for all users */
 add_filter( 'show_admin_bar', '__return_false' );
 

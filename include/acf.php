@@ -1,26 +1,26 @@
 <?php
-if( function_exists('acf_add_options_page') ) {
+// if( function_exists('acf_add_options_page') ) {
   
-  acf_add_options_page(
-    [
-      'page_title'  => 'Frontend',
-      'menu_title'  => 'Frontend',
-      'menu_slug'   => 'frontend-settings',
-      'capability'  => 'edit_posts',
-      'redirect'    => false,
-      'icon_url' => 'dashicons-admin-network',
-    ]
-  );
+//   acf_add_options_page(
+//     [
+//       'page_title'  => 'Frontend',
+//       'menu_title'  => 'Frontend',
+//       'menu_slug'   => 'frontend-settings',
+//       'capability'  => 'edit_posts',
+//       'redirect'    => false,
+//       'icon_url' => 'dashicons-admin-network',
+//     ]
+//   );
 
-  acf_add_options_sub_page(
-    [
-      'page_title'  => 'Footer',
-      'menu_title'  => 'Footer',
-      'parent_slug' => 'frontend-settings',
-    ]
-  );
+//   acf_add_options_sub_page(
+//     [
+//       'page_title'  => 'Footer',
+//       'menu_title'  => 'Footer',
+//       'parent_slug' => 'frontend-settings',
+//     ]
+//   );
   
-}
+// }
 
 /*
  * -----------------------------------------------------------------------------

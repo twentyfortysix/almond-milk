@@ -5,9 +5,9 @@ require_once(TEMPLATEPATH. '/include/remove_api.php');
 require_once(TEMPLATEPATH. '/include/acf.php');
 require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
 require_once(TEMPLATEPATH. '/include/wp_cleanup.php');
+require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/customize-appereance-menus.php');
 // require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
-// require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
 // require_once(TEMPLATEPATH. '/include/rename-pages.php');
 // require_once(TEMPLATEPATH. '/include/p2p-registers.php');
@@ -33,8 +33,9 @@ function f_2046_add_scripts() {
 // 	remove guttenberg mess
 	wp_dequeue_style( 'global-styles' ); 
 	// register scripts
-	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/bootstrap/js/bootstrap.min.js', array('jquery'), '', true);
-    	wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
+	wp_register_script ( 'bootstrap-js', get_bloginfo('template_directory') .'/bootstrap/js/bootstrap.min.js', [], '', true);
+    wp_register_script ( 'main-js', get_bloginfo('template_directory') .'/js/main.js', [], '', true);
+    // wp_register_script ( 'autoprefix-js', get_bloginfo('template_directory') .'/vendor/prefixfree/js/prefixfree.min.js', '', '', true);
 
     	// register styles
 	wp_register_style ( 'bootstrap-css', get_bloginfo('template_directory') .'/bootstrap/css/bootstrap.min.css');
@@ -42,8 +43,9 @@ function f_2046_add_scripts() {
 	wp_register_style ( 'font', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap');
 
 	// enque scripts
-	wp_enqueue_script( 'autoprefix-js' );
+	// wp_enqueue_script( 'autoprefix-js' );
 	wp_enqueue_script( 'bootstrap-js' );
+    wp_enqueue_script( 'main-js' );
 	// enque styles
 	wp_enqueue_style( 'bootstrap-css' );
 	wp_enqueue_style( 'my-css' );
@@ -72,10 +74,6 @@ function getVimeoVideoIdFromUrl($url = '') {
 }
 
 
-function yoasttobottom() {
-    return 'low';
-}
-add_filter( 'wpseo_metabox_prio', 'yoasttobottom');
 
 
 function superNaturalSort($a, $b){
