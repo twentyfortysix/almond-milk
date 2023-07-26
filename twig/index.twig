@@ -6,10 +6,9 @@
 			<h1>{{ post.title }}</h1>	
 		</div>
 		<span class="terms">
-		    {% for term in post.terms %}
-				<a href="{{ fn('get_term_link', term.id, 'category') }}">
-					{{ term.title }}
-				</a>{{ loop.last ? '' : ', ' }}
+		    {% set types = post.terms|filter(term => 'type' in term.taxonomy) %}
+			{% for term in types %}
+				<a href="{{ fn('get_term_link', term.term_id, 'type') }}">{{ term.name }}</a>{{ loop.last ? '' : ', ' }}
 		    {% endfor %}
 	    </span>
 	</div>
