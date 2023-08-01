@@ -47,6 +47,24 @@ body{
 }
 
 
+/* H design */
+@fsizes: @H6, @H5, @H4, @H3, @H2, @H1;
+@elements: h6, h5, h4, h3, h2, h1;
+@iterations: length(@elements); // lehgth of @elements
+
+.set-h-size(@_i, @_elements, @_fsizes, @_f) when (@_i > 0) {  
+  @selector: extract(@_elements, @_i);
+  @multiplier: extract(@_fsizes, @_i);
+
+  @{selector}, ._@{selector} {
+    font-size: 1rem * @multiplier;
+    margin-bottom: 1rem * @multiplier * .5;
+    margin-left:@f * @multiplier * -.1;
+    font-weight: 900;
+  }
+  .set-h-size(@_i - 1, @_elements, @_fsizes, @_f);
+}
+.set-h-size(@iterations, @elements, @fsizes, var(--fs));
 
 
 //////////////// COMMONS ///////////////
