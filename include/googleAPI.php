@@ -2,7 +2,8 @@
 
 // google map api
 function googleApi(){
-    return isset(getenv('GOOGLE_API')) ? getenv('GOOGLE_API') : null;
+    $api = null != getenv('GOOGLE_API') ? getenv('GOOGLE_API') : null;
+    return $api;
 }
 function googleServerApi(){
     return '--key--';
