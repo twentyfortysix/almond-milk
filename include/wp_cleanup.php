@@ -34,7 +34,7 @@ $role_object->add_cap( 'edit_theme_options' );
 function hide_menu() {
 
     if (current_user_can('editor')) {
-
+        remove_menu_page('index.php'); //Dashboard
         remove_submenu_page( 'themes.php', 'themes.php' ); // hide the theme selection submenu
         remove_submenu_page( 'themes.php', 'widgets.php' ); // hide the widgets submenu
         remove_submenu_page( 'themes.php', 'customize.php?return=%2Fwp-admin%2Ftools.php' ); // hide the customizer submenu
