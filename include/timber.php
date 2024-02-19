@@ -41,7 +41,7 @@ function fix_typo( $text ) {
         // ve spojení neslabičných předložek k, s, v, z s následujícím slovem, např. k mostu, s bratrem, v Plzni, z nádraží,
         'k', 's', 'v', 'z',
         // ve spojení slabičných předložek o, u a spojek a, i s výrazem, který po nich následuje, např. u babičky, o páté,
-        'o', 'u', 'a',
+        'o', 'u', 'a', 'i',
         // mezi číslem a zkratkou počítaného předmětu nebo písmennou značkou jednotek a měn, např. 5 str., 8 hod., s. 53, č. 9, obr. 1, tab. 3, ..
         'např.', 'str.', 's.', 'č.', 'obr.', 'tab',
         // mezi zkratkami typu tj., tzv., tzn. a výrazem, který za nimi bezprostředně následuje, např. tzv. klikání,
