@@ -1,3 +1,17 @@
-{% macro input(dfrom, dto) %}
-	{{ dfrom ? dfrom|date('j. n.') : '' }}{{ (dfrom and dto) and (dfrom|date('Ymd') != dto|date('Ymd')) ? '–' ~  dto|date('j. n.') }}{{ dto and dform|date('Y') != dto|date('Y') ? dto|date('Y') : dfrom|date('Y') }}
+{% macro input(dfrom, dto, dtime) %}
+	{% if dfrom or dto or dtime %}
+		{% apply spaceless %}
+			{{dfrom|date('j. F')}}
+			{# from_time #}
+			{{ dtime ? dtime ~ ', ' : '' }}
+			{# from d.m. #}
+			{{ dfrom|date('Ymd') == dto|date('Ymd') ? '–' ~ dfrom|date(' j. F') }}
+			{# date from year if not the same as end year #}
+			{{ dfrom|date('Y') != dto|date('Y') ? dfrom|date('Y') : '' }}
+			{# to d.m. #}
+			{{ dfrom and dto and (dfrom|date('Ymd') != dto|date('Ymd')) ? ' – ' ~  dto|date('j. F')|lower }}
+			{# end year  #}
+			{{ dto and dform|date('Y') != dto|date('Y') ? dto|date('Y') : dfrom|date(' Y') }}
+		{% endapply %}
+	{% endif %}
 {% endmacro %}
