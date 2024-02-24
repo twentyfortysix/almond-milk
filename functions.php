@@ -71,7 +71,14 @@ function getVimeoVideoIdFromUrl($url = '') {
     return $id;
 }
 
-
+// wrap iframes for responsivity
+add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
+ if(strpos($html, 'youtube.com') !== false || strpos($html, 'youtu.be') !== false){
+ return '<div class="video-container">' . $html . '</div>';
+ } else {
+ return $html;
+ }
+}, 10, 4);
 
 
 function superNaturalSort($a, $b){
