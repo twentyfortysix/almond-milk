@@ -93,3 +93,14 @@ function diacriticEqvivalent($a){
     $a = str_replace($czechCharsS, $czechCharsR, $a);
     return $a;
 }
+
+
+function cacheQuery($args, $use_cache = true){
+    $transient_key  = json_encode($args);
+    $result = get_transient($transient_key);
+    if (false === $result || false === $use_cache) {
+        $result = Timber::get_posts($args);
+        set_transient($transient_key, $result, HOUR_IN_SECONDS);
+    }
+    return $result;
+}
