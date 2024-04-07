@@ -41,7 +41,11 @@ function codex_work_init() {
 			'hierarchical'       => true,
 			'menu_position'      => null,
 			'supports'           => array( 'title', 'editor', 'thumbnail' ),
-			'menu_icon'          => 'dashicons-groups'
+			'menu_icon'          => 'dashicons-groups',
+			'capabilities' => array(
+			    'create_posts' => false, // Removes support for the "Add New" function ( use 'do_not_allow' instead of false for multisite set ups )
+			),
+			'map_meta_cap' => true, // Set to `false`, if users are not allowed to edit/delete existing posts
 		);
 
 		register_post_type( 'work', $cm_args );
