@@ -5,7 +5,7 @@ function get_schema(){
         'contributor' => [
             'post_title' => ['fieldlist/field' => ['@index', 'prijmeni','#text']], // find, match, pick
             'post_content' => ['fieldlist/field' => ['@index', 'bio', '#text']], 
-            'meta_value' => [
+            'meta_input' => [
                 'uid' => ['fieldlist/field' => ['@index', 'uid', '#text']],
                 'pid' => ['fieldlist/field' => ['@index', 'pid', '#text']],
                 'name' => ['fieldlist/field' => ['@index', 'jmeno', '#text']],
@@ -19,7 +19,7 @@ function get_schema(){
             'type' => 'post',
             'post_title' => ['fieldlist/field' => ['@index', 'title', '#text']],
             'post_content' => ['fieldlist/field' => ['@index', 'info', '#text']],
-            'meta_value' => [
+            'meta_input' => [
                 'uid' => ['fieldlist/field' => ['@index', 'uid', '#text']], 
                 'pid' => ['fieldlist/field' => ['@index', 'pid', '#text']], 
                 'subtitle' => ['fieldlist/field' => ['@index', 'subtitle', '#text']],
@@ -32,7 +32,7 @@ function get_schema(){
         //     'type' => 'post',
         //     'post_title' => 'title',
         //     'post_content' => 'bio',
-        //     'meta_value' => [
+        //     'meta_input' => [
         //         'uid' => 'uid',
         //         'pid' => 'pid',
         //         'subtitle' => 'subtitle',
@@ -44,7 +44,7 @@ function get_schema(){
         // 'artwork' => [
         //     'type' => 'post',
         //     'post_title' => 'title',
-        //     'meta_value' => [
+        //     'meta_input' => [
         //         'uid' => 'uid',
         //         'pid' => 'pid',
         //         'relations' => [

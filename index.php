@@ -1,6 +1,7 @@
 <?php 
 $importer = new Importer();
-// $data = $importer->import('contributor');
+// var_dump($importer->purge());
+$data = $importer->import('contributor');
 echo '<pre>';
 var_dump($data);
 echo '</pre>';
