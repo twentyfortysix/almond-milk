@@ -1,5 +1,5 @@
 /*
-Theme Name: Almond milk
+Theme Name: Artlist
 Theme URI: 
 Author: 2046
 Author URI: http://2046.cz/
@@ -28,6 +28,49 @@ body {
   font-family: 'Lora', serif;
   font-size: var(--fs);
   line-height: var(--lh);
+}
+/* H design */
+h1,
+._h1 {
+  font-size: 2.046rem;
+  margin-bottom: 1.023rem;
+  margin-left: -3.6828px;
+  font-weight: 900;
+}
+h2,
+._h2 {
+  font-size: 1.818rem;
+  margin-bottom: 0.909rem;
+  margin-left: -3.2724px;
+  font-weight: 900;
+}
+h3,
+._h3 {
+  font-size: 1.6818rem;
+  margin-bottom: 0.8409rem;
+  margin-left: -3.02724px;
+  font-weight: 900;
+}
+h4,
+._h4 {
+  font-size: 1.4142rem;
+  margin-bottom: 0.7071rem;
+  margin-left: -2.54556px;
+  font-weight: 900;
+}
+h5,
+._h5 {
+  font-size: 1.1892rem;
+  margin-bottom: 0.5946rem;
+  margin-left: -2.14056px;
+  font-weight: 900;
+}
+h6,
+._h6 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: -1.8px;
+  font-weight: 900;
 }
 img,
 iframe {
@@ -109,6 +152,15 @@ p a:focus {
 }
 .anim_ {
   transition: all 0.8s ease-out;
+}
+.aPeaceful {
+  transition: all 1300ms cubic-bezier(0.315, 0.03, 0.465, 0.96);
+}
+.aNatural {
+  transition: all 800ms cubic-bezier(0.22, -0.14, 0.405, 1.08);
+}
+.aAbrupt {
+  transition: all 800ms cubic-bezier(0, 0.935, 0.855, 1.045);
 }
 .logged-in .anchor {
   opacity: 1;
@@ -218,12 +270,12 @@ p a:focus {
   padding-left: clamp(1rem, 8vw, 300px);
   padding-right: clamp(1rem, 8vw, 300px);
 }
-.videoBlock .video-container {
+.video-container {
   position: relative;
   padding-top: 56.25%;
   /* 16:9 aspect ratio */
 }
-.videoBlock .video-container iframe {
+.video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -256,6 +308,21 @@ p a:focus {
 #fancybox-wrap,
 #fancybox-content {
   box-sizing: content-box;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 @media all and (min-width: 768px) {
   .navbar-toggler {

@@ -6,8 +6,8 @@ require_once(TEMPLATEPATH. '/include/acf.php');
 require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
 require_once(TEMPLATEPATH. '/include/wp_cleanup.php');
 require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
+require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
 // require_once(TEMPLATEPATH. '/include/customize-appereance-menus.php');
-// require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
 // require_once(TEMPLATEPATH. '/include/rename-pages.php');
 // require_once(TEMPLATEPATH. '/include/p2p-registers.php');
@@ -17,6 +17,7 @@ require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
 // require_once(TEMPLATEPATH. '/include/googleAPI.php');
 // require_once(TEMPLATEPATH. '/include/GQL_ACF.php');
 
+require_once(TEMPLATEPATH. '/import/importer.php');
 // 
 // localize
 add_action('after_setup_theme', 'localize_theme');
@@ -26,7 +27,7 @@ add_filter('show_admin_bar', '__return_false');
 
 
 function localize_theme(){
-	load_theme_textdomain( 'almond', get_bloginfo('template_directory').'/languages' );
+	load_theme_textdomain( 'artlist', get_bloginfo('template_directory').'/languages' );
 }
 
 function f_2046_add_scripts() {
