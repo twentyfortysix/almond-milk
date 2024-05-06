@@ -3,10 +3,17 @@ function custom_menu_order($menu_ord) {
     if (!$menu_ord) return true;
      
     return array(
-        'edit.php?post_type=page', // Pages
-        // 'index.php', // Dashboard
+        'edit.php?post_type=artwork',
+        'edit.php?post_type=artist',
+        'edit.php?post_type=theorist',
+        'edit.php?post_type=group',
+        'edit.php?post_type=space',
+        'edit.php?post_type=video',
+        'edit.php?post_type=contributor',
         'separator1', // First separator
-        'edit.php', // Posts
+        'edit.php?post_type=page',
+        // 'index.php', // Dashboard
+        // 'edit.php', // Posts
         'upload.php', // Media
         // 'link-manager.php', // Links
         // 'edit-comments.php', // Comments

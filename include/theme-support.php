@@ -1,6 +1,6 @@
 <?php
 // featured images
-add_theme_support( 'post-thumbnails', array( 'page' ) );    
+add_theme_support( 'post-thumbnails', [ 'page', 'video', 'work', 'contributor', 'theorist', 'artist', 'place'] );    
 
 // add excerpt to page
 // add_post_type_support( 'page', 'excerpt' );

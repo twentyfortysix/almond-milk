@@ -6,14 +6,14 @@ require_once(TEMPLATEPATH. '/include/acf.php');
 require_once(TEMPLATEPATH. '/include/remove-page-wyswig.php');
 require_once(TEMPLATEPATH. '/include/wp_cleanup.php');
 require_once(TEMPLATEPATH. '/include/customize-admin-menu.php');
+require_once(TEMPLATEPATH. '/include/register-taxonomies.php');
 require_once(TEMPLATEPATH. '/include/register-custom-post-types.php');
-// require_once(TEMPLATEPATH. '/include/customize-appereance-menus.php');
+require_once(TEMPLATEPATH. '/include/customize-appereance-menus.php');
 // require_once(TEMPLATEPATH. '/include/rename-posts.php');
 // require_once(TEMPLATEPATH. '/include/rename-pages.php');
 // require_once(TEMPLATEPATH. '/include/p2p-registers.php');
 // require_once(TEMPLATEPATH. '/include/remove-taxonomies.php');
 // require_once(TEMPLATEPATH. '/include/page-step-navigation.php');
-// require_once(TEMPLATEPATH. '/include/register-taxonomies.php');
 // require_once(TEMPLATEPATH. '/include/googleAPI.php');
 // require_once(TEMPLATEPATH. '/include/GQL_ACF.php');
 
@@ -105,3 +105,4 @@ function cacheQuery($args, $use_cache = true){
     }
     return $result;
 }
+

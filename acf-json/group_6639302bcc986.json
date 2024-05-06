@@ -1,30 +1,31 @@
 {
-    "key": "group_662814c975f75",
-    "title": "Přispěvatel",
+    "key": "group_6639302bcc986",
+    "title": "Video",
     "fields": [
         {
-            "key": "field_662d4665f66dd",
-            "label": "email",
-            "name": "email",
+            "key": "field_6639307e97cc5",
+            "label": "realizace",
+            "name": "made_by",
             "aria-label": "",
-            "type": "email",
+            "type": "textarea",
             "instructions": "",
-            "required": false,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "20",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
+            "rows": "",
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": ""
         },
         {
-            "key": "field_662d468ef66de",
-            "label": "phone",
-            "name": "phone",
+            "key": "field_6639304997cc4",
+            "label": "datum",
+            "name": "date",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -42,9 +43,9 @@
             "append": ""
         },
         {
-            "key": "field_6638f351bdc1d",
-            "label": "sifra",
-            "name": "cipher",
+            "key": "field_6639309b97cc6",
+            "label": "artycok post ID",
+            "name": "post_id",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -62,47 +63,27 @@
             "append": ""
         },
         {
-            "key": "field_6638f31cbdc1c",
-            "label": "bio",
-            "name": "biography",
+            "key": "field_663930c697cc7",
+            "label": "artycok video ID",
+            "name": "video_id",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "20",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "tabs": "all",
-            "toolbar": "very_simple",
-            "media_upload": 0,
-            "delay": 0
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_662d469cf66df",
-            "label": "soukromá poznámka",
-            "name": "note_confidential",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "very_simple",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
-            "key": "field_662814c965844",
+            "key": "field_6639302bcf876",
             "label": "uid",
             "name": "uid",
             "aria-label": "",
@@ -122,7 +103,7 @@
             "append": ""
         },
         {
-            "key": "field_662814f065845",
+            "key": "field_6639302bcf8ad",
             "label": "pid",
             "name": "pid",
             "aria-label": "",
@@ -142,7 +123,7 @@
             "append": ""
         },
         {
-            "key": "field_6638f385bdc1e",
+            "key": "field_6639302bcf8e5",
             "label": "l10n_parent",
             "name": "l10n_parent",
             "aria-label": "",
@@ -164,7 +145,7 @@
             "append": ""
         },
         {
-            "key": "field_6638f2f348e95",
+            "key": "field_6639302bcf91c",
             "label": "hidden",
             "name": "hidden",
             "aria-label": "",
@@ -189,18 +170,18 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "contributor"
+                "value": "video"
             }
         ]
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1715024719
+    "modified": 1715024217
 }
