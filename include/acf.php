@@ -90,3 +90,35 @@ function my_toolbars( $toolbars ){
   return $toolbars;
 
 }
+
+
+
+// add name to relationships UI
+function customize_acf_format_value( $title, $post, $field, $post_id ) {
+  // var_dump($post->post_type);
+    // if($post->post_type == 'artist' || $post->post_type == 'theorist' || $post->post_type == 'contributor'){
+      $name = get_post_meta( $post->ID, 'name', true );
+      $title = isset($name) && !empty($name) ? $name . ' ' . $title . ' [' . $post->ID . ']' :  $title . ' [' . $post->ID . ']';
+    // }
+    // elseif($post->post_type == 'artwork' || $post->post_type == 'video'){
+    //   $title = !empty($post->post_title) ? $title . ' [' . $post->ID . ']' : 'no title [' . $post->ID . ']';
+    // }
+    return $title;
+    // return '*';
+}
+
+// apply the function to the acf/fields/post_object/result filter
+add_filter('acf/fields/post_object/result', 'customize_acf_format_value', 10, 4);
+add_filter('acf/fields/relationship/result', 'customize_acf_format_value', 10, 4);
+
+
+// modify the query to sort by date published
+function customize_acf_post_object_query( $args, $field, $post_id ) {
+    $args['orderby'] = 'date';
+    $args['order'] = 'DESC'; // or 'ASC' for ascending order
+    return $args;
+}
+
+// apply the function to the acf/fields/post_object/query filter
+add_filter('acf/fields/post_object/query', 'customize_acf_post_object_query', 10, 3);
+add_filter('acf/fields/relationship/query', 'customize_acf_post_object_query', 10, 3);
