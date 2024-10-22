@@ -1,7 +1,7 @@
 {% import "macro/menu_items.twig" as menu_items %}
 {% import 'macro/edit-link.twig' as editLink %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ current_language ? current_language : 'cs' }}">
     <head>
         <link rel="shortcut icon" href="{{ theme.path }}/img/favicon.png" />
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
