@@ -2,7 +2,13 @@
 
 ## What you got is:
 
-`composer create-project roots/bedrock`
+`
+composer create-project roots/bedrock
+cd bedrock
+rm composer.json
+[wget https://gist.github.com/twentyfortysix/5b88880c4e8e65ac7d012ff45a2b8294](https://gist.githubusercontent.com/twentyfortysix/5b88880c4e8e65ac7d012ff45a2b8294/raw/5d5d4be0be806d2174d2584ba4f1945a0ed453c4/composer.json)
+composer update
+`
  
 Wordpress Twig based template<br>
 /includes/ little bit of sweet Almond fat<br>
