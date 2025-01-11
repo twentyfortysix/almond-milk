@@ -2,6 +2,8 @@
 
 ## What you got is:
 
+`composer create-project roots/bedrock`
+ 
 Wordpress Twig based template<br>
 /includes/ little bit of sweet Almond fat<br>
 <a href="https://timber.github.io/docs/v2/" target="_blank">Timber (2.0.0-alpha.4)</a><br>
