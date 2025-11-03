@@ -155,7 +155,26 @@ p{
     opacity:1;
   }
 }
-
+.madeby{
+  position: fixed;
+  z-index: 2046;
+  bottom: 1.5rem;
+  right: -.5rem;
+  transform: rotate(-90deg);
+  color: #fff;
+  filter: ;
+  mix-blend-mode: difference;
+  opacity: .8;
+  &:hover, &:active, &:focus{
+    color: #fff;
+    opacity: 1;
+  }
+}
+.logged-in {
+  .madeby{
+    bottom: 5rem;
+  }
+}
 ///////////// SPECIFIC  /////////////
 #logo{
   padding: .5rem 1rem;
